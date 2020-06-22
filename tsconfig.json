@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es5", // specify ECMAScript target version
+    "lib": ["dom", "dom.iterable", "esnext"], // list of library files to be included in the compilation
+    "skipLibCheck": true, // skip type checking of all declaration files
+    "esModuleInterop": true, // disbles namespace imports (import * as fs from "fs") and enables CJS/AMD/UMD style imports (import fs from "fs")
+    "allowSyntheticDefaultImports": true, // allow default imports from modules with no default export
+    "strict": true, // enable all strict type checking options
+    "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file.
+    "module": "es6", // specify module code generation
+    "moduleResolution": "node", // resolve modules using Node.js style
+    "resolveJsonModule": true, // include modules imported with .json extension
+    "noEmit": false, // do not emit output (meaning do not compile code, only perform type checking)
+    "jsx": "react", // support JSX in .tsx files
+    "downlevelIteration": true,
+    "sourceMap": true, // *** generate corrresponding .map file ***
+    "declaration": false, // *** generate corresponding .d.ts file ***
+    "noUnusedLocals": true, // *** report errors on unused locals ***
+    "noUnusedParameters": true, // *** report errors on unused parameters ***
+    "experimentalDecorators": true, // *** enables experimental support for ES decorators ***
+    "incremental": true, // *** enable incremental compilation by reading/writing information from prior compilations to a file on disk ***
+    "noFallthroughCasesInSwitch": true // *** report errors for fallthrough cases in switch statement ***
+  },
+  "typeRoots": ["@types", "node_modules/@types"],
+  "include": ["**/*"],
+  "exclude": ["node_modules"] // *** the files to not type check ***
+}
