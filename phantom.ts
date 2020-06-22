@@ -1,6 +1,3 @@
-const phantom = require("./dist/phantom");
-console.log(phantom);
-
 function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
   function LAUNCHDOM() {
     const body = document.body;
