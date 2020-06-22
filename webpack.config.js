@@ -13,6 +13,9 @@ module.exports = {
   output: {
     filename: "phantom.js",
     path: path.resolve(__dirname, "dist"),
+    library: "@sidiousvic/phantom",
+    libraryTarget: "commonjs2",
+    libraryExport: "default",
   },
   devtool: "inline-source-map",
   devServer: {
