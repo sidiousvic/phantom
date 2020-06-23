@@ -11,7 +11,6 @@
     "moduleResolution": "node", // resolve modules using Node.js style
     "resolveJsonModule": true, // include modules imported with .json extension
     "noEmit": false, // do not emit output (meaning do not compile code, only perform type checking)
-    "jsx": "react", // support JSX in .tsx files
     "downlevelIteration": true,
     "sourceMap": true, // *** generate corrresponding .map file ***
     "declaration": false, // *** generate corresponding .d.ts file ***
@@ -23,5 +22,5 @@
   },
   "typeRoots": ["@types", "node_modules/@types"],
   "include": ["**/*"],
-  "exclude": ["node_modules"] // *** the files to not type check ***
+  "exclude": ["node_modules", "__tests__"] // *** the files to not type check ***
 }
