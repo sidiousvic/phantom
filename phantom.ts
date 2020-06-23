@@ -61,10 +61,10 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
     let DOMElement;
 
     // dom diffing
-    Object.values(pseudoDOM).map((phantomNode: any) => {
+    Object.values(pseudoDOM).map((pseudoDOMNode: any) => {
       if (
-        phantomNode.attributes.id === pseudoElement.attributes.id &&
-        JSON.stringify(phantomNode.dataset) !==
+        pseudoDOMNode.attributes.id === pseudoElement.attributes.id &&
+        JSON.stringify(pseudoDOMNode.dataset) !==
           JSON.stringify(pseudoElement.dataset)
       ) {
         let newNode = document.createElement(tagName);
@@ -87,6 +87,13 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
 
     DOMElement.innerHTML = innerHTML;
     return DOMElement;
+  }
+
+  //@ts-ignore
+  function isEmpty(target: Object | string | DOMStringMap | DOMTokenList) {
+    if (typeof target === "string") return !target.length;
+    const length = Object.keys(JSON.parse(JSON.stringify(target))).length;
+    return !length;
   }
 
   function transmuteXMLtoPseudoElement(xml: string) {
