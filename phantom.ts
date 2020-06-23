@@ -19,7 +19,6 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
       PHANTOM.id = "PHANTOM";
       body?.appendChild(PHANTOM);
     }
-    document.getElementById("X")?.firstChild;
     const DOM = RENDERPSEUDOELEMENT();
     SWAPNODE(DOM, document.querySelector("#PHANTOM"));
     return DOM;
