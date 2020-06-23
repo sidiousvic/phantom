@@ -1,59 +1,67 @@
-type PseudoNode = {
+type PseudoElement = {
   tagName: string;
-  attributes: { id: string; class: string | DOMTokenList };
-  $children: PseudoNode[];
+  attributes: { id?: string; class?: string | DOMTokenList };
+  children: PseudoElement[] | [];
   innerHTML: string;
+  dataset?: DOMTokenList | {};
 };
 
 type XDOMFunction = {
   (): [string, any];
 };
 
-function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
-  let phantomDOM: any = { test: { attributes: { id: 0 }, dataset: {} } };
+type pseudoDOM = {
+  [key: string]: PseudoElement;
+};
 
-  function LAUNCHDOM() {
+function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
+  let pseudoDOM: pseudoDOM = {
+    test: {
+      tagName: "div",
+      attributes: { id: "PHANTOM" },
+      children: [],
+      innerHTML: "",
+      dataset: {},
+    },
+  };
+
+  function launchDOM() {
     const body = document.body;
     if (!document.querySelector("#PHANTOM")) {
       const PHANTOM = document.createElement("div");
       PHANTOM.id = "PHANTOM";
       body?.appendChild(PHANTOM);
     }
-    const DOM = RENDERPSEUDOELEMENT();
-    SWAPNODE(DOM, document.querySelector("#PHANTOM"));
+    const DOM = renderPseudoElement();
+    swapElement(DOM, document.querySelector("#PHANTOM"));
     return DOM;
   }
 
-  function COALESCEXDOM() {
+  function coalescePhantomDOM() {
     return `
     <div id="PHANTOM">
-    ${XDOM()}
+      ${XDOM()}
     </div>
     `;
   }
 
-  function RENDERPSEUDOELEMENT(
-    pseudoElement = TRANSMUTEXMLTOPSEUDOEL(COALESCEXDOM())
+  function renderPseudoElement(
+    pseudoElement = transmuteXMLtoPseudoElement(coalescePhantomDOM())
   ) {
-    const {
-      tagName,
-      attributes,
-      innerHTML,
-      children /*dataset*/,
-    } = pseudoElement;
+    const { tagName, attributes, innerHTML, children } = pseudoElement;
 
-    let $children: PseudoNode[] = [];
+    let $children: PseudoElement[] = [];
 
     if (children && children.length) {
       ($children as unknown) = Array.prototype.map.call(children, (child) => {
-        RENDERPSEUDOELEMENT(child);
+        renderPseudoElement(child);
       });
     }
 
     let DOMElement;
 
     // dom diffing
-    Object.values(phantomDOM).map((phantomNode: any) => {
+    Object.values(pseudoDOM).map((phantomNode: any) => {
       if (
         phantomNode.attributes.id === pseudoElement.attributes.id &&
         JSON.stringify(phantomNode.dataset) !==
@@ -65,12 +73,12 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
         }
         newNode.innerHTML = innerHTML;
         let targetNode = document.querySelector(`#${attributes.id}`);
-        SWAPNODE(newNode, targetNode);
+        swapElement(newNode, targetNode);
         DOMElement = newNode;
       }
     });
 
-    phantomDOM[attributes.id] = pseudoElement;
+    pseudoDOM[attributes.id] = pseudoElement;
     DOMElement = document.createElement(tagName);
 
     for (const [k, v] of Object.entries(attributes)) {
@@ -81,7 +89,7 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
     return DOMElement;
   }
 
-  function TRANSMUTEXMLTOPSEUDOEL(xml: string) {
+  function transmuteXMLtoPseudoElement(xml: string) {
     if (typeof xml !== "string") xml = (xml as HTMLElement).outerHTML;
     let doc = new DOMParser().parseFromString(xml, "text/html");
     const $el = doc.body.firstChild;
@@ -95,11 +103,11 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
       outerHTML,
     } = $el as HTMLElement;
 
-    let $children: PseudoNode[] = [];
+    let $children: PseudoElement[] = [];
 
     if (children && children.length) {
       ($children as unknown) = Array.prototype.map.call(children, (child) => {
-        return TRANSMUTEXMLTOPSEUDOEL(child);
+        return transmuteXMLtoPseudoElement(child);
       });
     }
 
@@ -116,22 +124,22 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
     };
   }
 
-  function SWAPNODE(
-    pseudoNode: Text | HTMLElement,
-    targetNode: ChildNode | null | undefined
+  function swapElement(
+    swapIn: Text | HTMLElement,
+    swapOut: ChildNode | null | undefined
   ) {
-    targetNode?.replaceWith(pseudoNode);
-    return pseudoNode;
+    swapOut?.replaceWith(swapIn);
+    return swapIn;
   }
 
   reduxStore.subscribe(() => {
-    RENDERPSEUDOELEMENT();
+    renderPseudoElement();
   });
 
   return {
     fire: reduxStore.dispatch,
     data: reduxStore.getState,
-    launch: LAUNCHDOM,
+    launch: launchDOM,
   };
 }
 
