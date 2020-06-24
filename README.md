@@ -22,14 +22,14 @@ export default function Pizza(slices) {
 
 <br>
 
-### 🚀 [Get launched](#-get-launched)
-### 🍕 [Manage state](#-manage-state)
-### ❓ [FAQ](#-faq)
-### 🔧 [Developers](#-developers)
+### 🚀 [Get launched](#get-launched)
+### 🍕 [Manage state](#manage-state)
+### ❓ [FAQ](#faq)
+### 🔧 [Developers](#developers)
 
 <br>
 
-# 🚀 Get launched
+# 🚀 <a name="get-launched">Get launched</a>
 
 ### 1. Create a Redux Store
 
@@ -110,7 +110,7 @@ launch(); // initial render
 
 <br>
 
-# 🍕 Manage state
+# 🍕 <a name="manage-state">Manage state</a>
 
 ### Use `data()` to read state from the Redux store.
 
@@ -157,7 +157,7 @@ function eatPizza(e) {
 
 <br>
 
-# ❓ FAQ
+# ❓ <a name="faq">FAQ</a>
 
 ### Why use `phantom` ?
 
@@ -213,7 +213,7 @@ Two reasons, one philosophical, one technical:
 
 <br>
 
-# 🔧 Developers
+# 🔧 <a name="developers">Developers</a>
 
 `phantom` is written in TypeScript and bundled using Webpack.
 
