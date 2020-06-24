@@ -192,7 +192,7 @@ No JSX, no complex API, no syntactic hyperglycemia.
 
 When a component's data changes, `phantom` will re—render that node in the DOM by diffing its internal **PseudoDOM**, an object representation of the DOM.
 
-### Why should I always include the `data-phantom` attribute in _stateful_ elements?
+### Why should I always include the `data-phantom` attribute in stateful elements?
 
 In order for your element to be reactive to data changes, `phantom` needs to know which nodes are bound to the updated data. Specifying a `data-phantom="${yourData}"` attribute is a simple way to do that.
 
