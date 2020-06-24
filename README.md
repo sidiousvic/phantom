@@ -208,7 +208,7 @@ Two reasons, one philosophical, one technical:
 
 # 🔧 Developers
 
-Phantom is written in TypeScript and bundled using Webpack.
+`phantom` is written in TypeScript and bundled using Webpack.
 
 ## Instructions
 
