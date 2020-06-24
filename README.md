@@ -2,11 +2,11 @@
 
 ### A Redux powered, state—reactive DOM rendering engine. 👻
 
-`npm i @sidiousvic/phantom redux`
+### `npm i @sidiousvic/phantom`
 
-<img width=200 src="https://media.giphy.com/media/gGehV1zB72ijQoSFtF/giphy.gif">
+![](https://media.giphy.com/media/gGehV1zB72ijQoSFtF/giphy.gif)
 
-`phantom` lets you template HTML using functional components.
+#### `phantom` lets you build state—reactive UIs using raw HTML in functional components.
 
 ```
 export default function Pizza(slices)  {
@@ -18,16 +18,17 @@ export default function Pizza(slices)  {
 }
 ```
 
-You change the data via Redux actions, and `phantom` swaps DOM nodes for you.
+#### You update data via Redux, and `phantom` swaps DOM nodes for you.
 
-<br>
 <br>
 
 # 🚀 Get launched
 
-## I. Create a Redux Store
+### 1. Create a Redux Store
 
 `phantom` will couple with **Redux** to subscribe DOM rendering to state updates.
+
+#### Install Redux `npm i redux`
 
 ```
 import { createStore } from "redux";
@@ -53,7 +54,7 @@ export default store;
 
 <br>
 
-## II. Write a phantomDOM component
+### 2. Write a phantomDOM component
 
 ```
 function phantomElement() {
@@ -69,7 +70,7 @@ The [`leet-html`](https://marketplace.visualstudio.com/items?itemName=EldarGerfa
 
 <br>
 
-## III. Initialize `phantom`
+### 3. Initialize `phantom`
 
     import phantom from "@sidiousvic/phantom";
     import reduxStore from "./reduxStore.js"
@@ -86,11 +87,10 @@ The [`leet-html`](https://marketplace.visualstudio.com/items?itemName=EldarGerfa
 `launch` will perform the initial DOM render on call.
 
 <br>
-<br>
 
-# 🍕 Data Management
+# 🍕 State
 
-### Use `data` to read data from the store.
+### Use `data` to read state from the Redux store.
 
 ```
 function phantomElement() {
@@ -113,37 +113,59 @@ export default function Pizza(slices)  {
 }
 ```
 
-### ⚠️ Bind an element to its data with the `data-phantom` attribute.
+| :warning: Always bind an element to its data with the `data-phantom` attribute. |
+| :------------------------------------------------------------------------------ |
 
-`<h1 data-phantom="${slices}" id="slices-h1">${slices}</h1>`
 
-In order for `phantom` to be reactive to data changes, you need to pass a `data-phantom="${yourData}"` attribute to bind an **element whose `innerHTML` would change if data is updated**, as shown in the example above.
+| In order for `phantom` to be reactive to data changes, you need to pass a `data-phantom="${yourData}"` attribute to bind a stateful element—that is, an **element whose `innerHTML` would change if data is updated**—as shown in the example above.
 
 ### Use `fire` to fire an action and trigger a state update + re—render.
 
 ```
 document.addEventListener("click", eatPizza);
 
-function eatPizza(e)  {
-  if  (e.target.id === "slices-h1")  {
-    fire({ type: "EAT_PIZZA" }); //
+function eatPizza(e) {
+  if (e.target.id === "slices-h1") {
+    fire({ type: "EAT_PIZZA" }); // fire an action to the store
   }
 }
 ```
 
 <br>
-<br>
 
 # ❓ FAQ
+
+## Why use `phantom` ?
+
+#### A baby panda dies every time you choose a 1MB+\* industrial—level frontend framework to code a pomodoro or a personal portfolio page. 🐼
+
+### 🖍 Declarative
+
+With `phantom`, you can write markup in a declarative way ala JSX using raw HTML strings, and inject dynamic data using template literals—staying fully JS native.
+
+### 🍕 Component—based
+
+`phantom` lets you divide your UI into components, abstracting markup into composable functions.
+
+### 🧪 Reactive
+
+The `phantom` engine integrates with your Redux store and subscribes to state updates. It swaps nodes when their data changes.
+
+### 👩🏾‍🏭 Closer to the JS _metal_
+
+`phantom` only helps with DOM rendering. Listeners, effects, style manipulation, routing—the _fun_ stuff—is still in your hands. 🙌🏼
+
+You don't drive to the corner store,<sup>⌔</sup> but walking is overrated. `phantom` is the bike you need.
+
+No JSX, no complex API, no syntactic hyperglycemia.
+
+#### React is for React devs. Vue is for hipster devs. `phantom` is for JavaScript devs.<sup>○</sup><sup>∆</sup>
 
 ## Does `phantom` use a virtual DOM?
 
 When a component's data changes, `phantom` will re—render that node in the DOM by diffing its internal **PseudoDOM**, an object representation of the DOM.
 
-## Why use `phantom` ?
-
-A baby panda dies every time you choose a 1MB+\* industrial—level frontend framework to code a pomodoro or a personal portfolio page.
-
-Are you a baby panda murderer?
-
-<sub>\*unpacked size</sub>
+<sub>\* unpacked size of ReactDOM is 3MB. Vue is 2.98MB. **Phantom is 30.5 kB.**</sub>
+<sub><sup>⌔</sup> Wait, you do? ..._Why?_</sub>
+<sub><sup>○</sup> `phantom` users may be the hipsterest of them all.</sub>
+<sub><sup>∆</sup> _Angular_? What is Angular?</sub>
