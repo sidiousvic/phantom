@@ -203,3 +203,37 @@ Two reasons, one philosophical, one technical:
 1. Once you get into the habit, specifying `id`s results in remarkably declarative markup. It encourages you to think about each element's specific function in the UI and also helps to identify it visually.
 
 2. `id` is one of the mechanisms that the `phantom` engine uses to detect which nodes to update.
+
+<br>
+
+# 🔧 Developers
+
+Phantom is written in TypeScript and bundled using Webpack.
+
+## Instructions
+
+1.  **Fork** the repo on GitHub
+2.  **Clone** the project to your machine
+3.  **Install** dependencies with `npm i`
+4.  **Commit** updates to your own branch
+5.  **Push** your work to your fork
+6.  **Pull request** for your changes to be reviewed
+
+## Scripts
+
+**`npm run build`**
+generates a static build in `dist/` .
+
+**`npm run test`**
+runs the tests located in `__tests__/`.
+
+**`npm run example/[example name]`**
+runs an example app from `examples/` via `webpack-dev-server`.
+
+## Examples
+
+There are several [examples](./examples) you can run, each furnished with their own `devServer` configuration.
+
+Use **`npm run example/[example name]`** and navigate to the url that appears in your terminal.
+
+### If you find a 🐞, please **[file an issue](https://github.com/sidiousvic/phantom/issues)**.
