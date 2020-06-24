@@ -8,7 +8,7 @@
 
 #### `phantom` lets you build state—reactive UIs using raw HTML in functional components.
 
-```
+```js
 export default function Pizza(slices)  {
   return `
     <div id="pizza-box">
@@ -24,13 +24,18 @@ export default function Pizza(slices)  {
 
 # 🚀 Get launched
 
+
+
 ### 1. Create a Redux Store
 
 `phantom` will couple with **Redux** to subscribe DOM rendering to state updates.
 
 #### Install Redux `npm i redux`
 
-```
+<details>
+<summary><b>Show code</b></summary>
+	
+```js
 import { createStore } from "redux";
 
 const data = {
@@ -51,40 +56,53 @@ const store = createStore(reducer);
 
 export default store;
 ```
+</details>
 
 <br>
 
-### 2. Write a phantomDOM component
+### 2. Write a `phantom` component
 
-```
-function phantomElement() {
+`phantom` components are functions that return HTML template strings. This allows you to inject dynamic data via template literals `${}`.
+
+The [`leet-html`](https://marketplace.visualstudio.com/items?itemName=EldarGerfanov.leet-html) extension for VSCode is recommended for HTML template highlighting.
+
+<details>
+<summary><b>Show code</b></summary>
+
+```js
+function phantomComponent() {
   return `
     ${Pizza()} // inject the Pizza component from above
   `;
 }
 ```
-
-`phantomDOM` components are functions that return HTML template strings. This allows you to inject dynamic data via template literals `${}`.
-
-The [`leet-html`](https://marketplace.visualstudio.com/items?itemName=EldarGerfanov.leet-html) extension for VSCode is recommended for HTML template highlighting.
+</details>
 
 <br>
 
-### 3. Initialize `phantom`
+### 3. Initialize and `phantom.launch()`
 
-    import phantom from "@sidiousvic/phantom";
-    import reduxStore from "./reduxStore.js"
-    import Pizza from "./ui/Pizza.js"
+Start the `phantom` engine with the `reduxStore` and a `phantomElement`.
 
-    export const {fire, data, launch } = phantom(reduxStore, phantomElement);
+<details>
+<summary><b>Show code</b></summary>
+	
+```js
+import phantom from "@sidiousvic/phantom";
+import reduxStore from "./reduxStore.js"
+import Pizza from "./ui/Pizza.js"
 
-    launch(); // initial render
+export const {fire, data, launch } = phantom(reduxStore, phantomElement);
 
-`phantom` will expose three key methods after being initialized with the `reduxStore` and a `phantomElement`: `fire`, `data`, and `launch`.
+launch(); // initial render
+```
+
+`phantom` will expose three key methods: `fire`, `data`, and `launch`.
 
 `fire` and `data` are only syntactic pointers to the `reduxStore`'s `dispatch` and `getState` methods respectively. **You are welcome to avoid them and call the store directly for action dispatching and state getting.**
 
 `launch` will perform the initial DOM render on call.
+</details>
 
 <br>
 
@@ -92,9 +110,9 @@ The [`leet-html`](https://marketplace.visualstudio.com/items?itemName=EldarGerfa
 
 ### Use `data` to read state from the Redux store.
 
-```
+```js
 function phantomElement() {
-  const  {  slices  }  =  data();
+  const  { slices }  =  data();
   return `
     ${Pizza(slices)}
   `;
@@ -103,7 +121,7 @@ function phantomElement() {
 
 ### Pass data as arguments to components, and use them in your HTML templating.
 
-```
+```js
 export default function Pizza(slices)  {
   return `
     <div id="pizza-box">
@@ -113,15 +131,13 @@ export default function Pizza(slices)  {
 }
 ```
 
-| :warning: Always bind an element to its data with the `data-phantom` attribute. |
-| :------------------------------------------------------------------------------ |
-
-
-| In order for `phantom` to be reactive to data changes, you need to pass a `data-phantom="${yourData}"` attribute to bind a stateful element—that is, an **element whose `innerHTML` would change if data is updated**—as shown in the example above.
+| ⚠️ &nbsp; Always bind an element to its data with the `data-phantom` attribute. |
+| :----------------------------------------------------------------------------- |
+| In order for `phantom` to be reactive to data changes, you need to pass a `data-phantom="${yourData}"` attribute to bind a stateful element—that is, an **element whose `innerHTML` would change if data is updated**—as shown in the example above. |
 
 ### Use `fire` to fire an action and trigger a state update + re—render.
 
-```
+```js
 document.addEventListener("click", eatPizza);
 
 function eatPizza(e) {
