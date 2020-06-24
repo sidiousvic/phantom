@@ -22,10 +22,10 @@ export default function Pizza(slices) {
 
 <br>
 
-### 1. [🚀 Get launched](#-get-launched)
-### 2. [🍕 Manage state](#-manage-state)
-### 3. [❓ FAQ](#-faq)
-### 4. [🔧 Developers](#-developers)
+### 🚀 [Get launched](#-get-launched)
+### 🍕 [Manage state](#-manage-state)
+### ❓ [FAQ](#-faq)
+### 🔧 [Developers](#-developers)
 
 <br>
 
