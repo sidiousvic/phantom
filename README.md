@@ -152,7 +152,7 @@ function eatPizza(e) {
 
 # ❓ FAQ
 
-## Why use `phantom` ?
+### Why use `phantom` ?
 
 #### A baby panda dies every time you choose a 1MB+\* industrial—level frontend framework to code a pomodoro or a personal portfolio page. 🐼
 
@@ -161,19 +161,19 @@ function eatPizza(e) {
 
 You don't drive to the corner store,<sup>⌔</sup> but walking is overrated. `phantom` is the bike you need.
 
-### 🖍 Declarative
+#### 🖍 Declarative
 
 With `phantom`, you can write markup in a declarative way ala JSX using raw HTML strings, and inject dynamic data using template literals—staying fully JS native.
 
-### 🍕 Component—based
+#### 🍕 Component—based
 
 `phantom` lets you divide your UI into components, abstracting markup into composable functions.
 
-### 🧪 Reactive
+#### 🧪 Reactive
 
 The `phantom` engine integrates with your Redux store and subscribes to state updates. It swaps nodes when their data changes.
 
-### 👩🏾‍🏭 Closer to the JS _metal_
+#### 👩🏾‍🏭 Closer to the JS _metal_
 
 `phantom` only helps with DOM rendering. Listeners, effects, style manipulation, routing—the _fun_ stuff—is still in your hands. 🙌🏼
 
@@ -188,15 +188,15 @@ No JSX, no complex API, no syntactic hyperglycemia.
 
 </details>
 
-## Does `phantom` use a virtual DOM?
+### Does `phantom` use a virtual DOM?
 
 When a component's data changes, `phantom` will re—render that node in the DOM by diffing its internal **PseudoDOM**, an object representation of the DOM.
 
-## Why should I always include the `data-phantom` attribute in _stateful_ elements?
+### Why should I always include the `data-phantom` attribute in _stateful_ elements?
 
 In order for your element to be reactive to data changes, `phantom` needs to know which nodes are bound to the updated data. Specifying a `data-phantom="${yourData}"` attribute is a simple way to do that.
 
-## Why should I always include an `id` attribute in stateful elements?
+### Why should I always include an `id` attribute in stateful elements?
 
 Two reasons, one philosophical, one technical:
 
