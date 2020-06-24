@@ -22,6 +22,13 @@ export default function Pizza(slices) {
 
 <br>
 
+### 1. [🚀 Get launched](#-get-launched)
+### 2. [🍕 Manage state](#-manage-state)
+### 3. [❓ FAQ](#-faq)
+### 4. [🔧 Developers](#-developers)
+
+<br>
+
 # 🚀 Get launched
 
 ### 1. Create a Redux Store
@@ -103,7 +110,7 @@ launch(); // initial render
 
 <br>
 
-# 🍕 State
+# 🍕 Manage state
 
 ### Use `data()` to read state from the Redux store.
 
@@ -160,7 +167,7 @@ function eatPizza(e) {
 <summary><b>Show rationale ↯</b></summary>
   
 
-You don't drive to the corner store, but walking is overrated. `phantom` is the bike you need.
+#### You don't drive to the corner store, but walking is overrated. `phantom` is the bike you need.
 
 #### 🖍 Declarative
 
@@ -212,6 +219,7 @@ Two reasons, one philosophical, one technical:
 
 ## Instructions
 
+0.  **Read** the [Code of Conduct](./CODEOFCONDUCT.md)
 1.  **Fork** the repo on GitHub
 2.  **Clone** the project to your machine
 3.  **Install** dependencies with `npm i`
