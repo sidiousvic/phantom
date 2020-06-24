@@ -28,14 +28,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
         },
       },
       {
-        test: /\.tsx?$/,
+        test: /\.ts?$/,
         loader: "ts-loader",
         exclude: /node_modules/,
       },
