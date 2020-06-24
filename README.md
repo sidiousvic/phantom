@@ -52,7 +52,7 @@ function reducer(state = data, action) {
 
 const store = createStore(reducer);
 
-export default store;
+export default reduxStore;
 ```
 
 </details>
@@ -88,7 +88,7 @@ import phantom from "@sidiousvic/phantom";
 import reduxStore from "./reduxStore.js";
 import Pizza from "./ui/Pizza.js";
 
-export const { fire, data, launch } = phantom(reduxStore, phantomElement);
+export const { fire, data, launch } = phantom(reduxStore, phantomComponent);
 
 launch(); // initial render
 ```
@@ -123,7 +123,7 @@ export default function Pizza(slices) {
   return `
     <div id="pizza-box">
       <h1 data-phantom="${slices}" id="slices-h1">${slices}</h1>
-	</div>
+    </div>
   `;
 }
 ```
