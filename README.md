@@ -26,9 +26,9 @@ export default function Pizza(slices) {
 
 ### 1. Create a Redux Store
 
-`phantom will couple with **Redux** to subscribe DOM rendering to state updates.
+`phantom` will couple with **Redux** to subscribe DOM rendering to state updates.
 
-#### Install Redux `npm i redux`
+#### Install [Redux](https://redux.js.org/introduction/getting-started) &nbsp;`npm i redux`
 
 <details>
 <summary><b>Show code ↯</b></summary>
