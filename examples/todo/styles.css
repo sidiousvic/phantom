@@ -35,7 +35,7 @@ body,
 .todo-item {
   font-weight: 500;
   color: #111;
-  font-size: 2vw;
+  font-size: calc(15px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
   user-select: none;
   cursor: pointer;
 }
