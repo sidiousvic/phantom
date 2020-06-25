@@ -1,6 +1,6 @@
 type PseudoElement = {
   tagName: string;
-  attributes: { id?: string; class?: string | DOMTokenList };
+  attributes: { id?: string | number; class?: string | DOMTokenList };
   children: PseudoElement[] | [];
   innerHTML: string;
   dataset?: DOMTokenList | {};
@@ -49,7 +49,6 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
     pseudoElement = transmuteXMLtoPseudoElement(coalescePhantomDOM())
   ) {
     const { tagName, attributes, innerHTML, children } = pseudoElement;
-
     let $children: PseudoElement[] = [];
 
     if (children && children.length) {
@@ -72,7 +71,8 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
           newNode.setAttribute(k, v as string);
         }
         newNode.innerHTML = innerHTML;
-        let targetNode = document.querySelector(`#${attributes.id}`);
+
+        let targetNode = document.getElementById(attributes.id);
         swapElement(newNode, targetNode);
         DOMElement = newNode;
       }
@@ -98,6 +98,8 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
 
   function transmuteXMLtoPseudoElement(xml: string) {
     if (typeof xml !== "string") xml = (xml as HTMLElement).outerHTML;
+    // TODO: find a better solution to mapped elements ↓↓↓
+    xml = xml.replace(/>,/g, ">"); // remove commas from mapped element arrays
     let doc = new DOMParser().parseFromString(xml, "text/html");
     const $el = doc.body.firstChild;
     const {
@@ -117,7 +119,6 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
         return transmuteXMLtoPseudoElement(child);
       });
     }
-
     return {
       tagName,
       attributes: {
