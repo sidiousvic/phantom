@@ -1,5 +1,6 @@
 import phantom from "../../phantom.ts";
 import { createStore } from "redux";
+import "./styles.css";
 
 // redux store
 const initialState = {
@@ -33,6 +34,10 @@ function phantomComponent() {
 }
 
 function Pizza(slices) {
+  // event listeners
+  document.addEventListener("click", eatSlice);
+  document.addEventListener("mousedown", changeCursorToGrabbing);
+
   return `
     <div id="pizza-box-div">
       <h1 data-phantom="${slices}" class="slice" id="slice1">${
@@ -48,14 +53,12 @@ function Pizza(slices) {
   `;
 }
 
-// event listeners
-document.addEventListener("click", eatSlice);
 function eatSlice(e) {
   if (e.target.classList.contains("slice")) {
     fire({ type: "EAT_SLICE" });
   }
 }
-document.addEventListener("mousedown", changeCursorToGrabbing);
+
 function changeCursorToGrabbing(e) {
   e.target.style.cursor = "grabbing";
 }
