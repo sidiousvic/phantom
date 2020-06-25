@@ -22,7 +22,14 @@ export default function Pizza(slices) {
 
 <br>
 
-# 🚀 Get launched
+### 🚀 [Get launched](#get-launched)
+### 🍕 [Manage state](#manage-state)
+### ❓ [FAQ](#faq)
+### 🔧 [Developers](#developers)
+
+<br>
+
+# 🚀 <a name="get-launched">Get launched</a>
 
 ### 1. Create a Redux Store
 
@@ -103,7 +110,7 @@ launch(); // initial render
 
 <br>
 
-# 🍕 State
+# 🍕 <a name="manage-state">Manage state</a>
 
 ### Use `data()` to read state from the Redux store.
 
@@ -150,7 +157,7 @@ function eatPizza(e) {
 
 <br>
 
-# ❓ FAQ
+# ❓ <a name="faq">FAQ</a>
 
 ### Why use `phantom` ?
 
@@ -158,8 +165,9 @@ function eatPizza(e) {
 
 <details>
 <summary><b>Show rationale ↯</b></summary>
+  
 
-You don't drive to the corner store,<sup>⌔</sup> but walking is overrated. `phantom` is the bike you need.
+#### You don't drive to the corner store, but walking is overrated. `phantom` is the bike you need.
 
 #### 🖍 Declarative
 
@@ -182,7 +190,6 @@ No JSX, no complex API, no syntactic hyperglycemia.
 #### React is for React devs. Vue is for slightly hipster devs. `phantom` is for JavaScript devs.<sup>○</sup><sup>∆</sup>
 
 <sub>\* unpacked size of ReactDOM is 3MB. Vue is 2.98MB. **Phantom is 30.5 kB.**</sub>
-<sub><sup>⌔</sup> Wait, you do? ..._Why?_</sub>
 <sub><sup>○</sup> `phantom` users may be the hipsterest of them all.</sub>
 <sub><sup>∆</sup> _Angular_? What is Angular?</sub>
 
@@ -192,7 +199,7 @@ No JSX, no complex API, no syntactic hyperglycemia.
 
 When a component's data changes, `phantom` will re—render that node in the DOM by diffing its internal **PseudoDOM**, an object representation of the DOM.
 
-### Why should I always include the `data-phantom` attribute in _stateful_ elements?
+### Why should I always include the `data-phantom` attribute in stateful elements?
 
 In order for your element to be reactive to data changes, `phantom` needs to know which nodes are bound to the updated data. Specifying a `data-phantom="${yourData}"` attribute is a simple way to do that.
 
@@ -206,12 +213,13 @@ Two reasons, one philosophical, one technical:
 
 <br>
 
-# 🔧 Developers
+# 🔧 <a name="developers">Developers</a>
 
-Phantom is written in TypeScript and bundled using Webpack.
+`phantom` is written in TypeScript and bundled using Webpack.
 
 ## Instructions
 
+0.  **Read** the [Code of Conduct](./CODEOFCONDUCT.md)
 1.  **Fork** the repo on GitHub
 2.  **Clone** the project to your machine
 3.  **Install** dependencies with `npm i`
