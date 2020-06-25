@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+
+html,
+body,
+#PHANTOM {
+  background: rgb(0, 252, 134);
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-family: "Indie Flower", cursive;
+}
+
+#PHANTOM {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+#todo-list-div {
+  border-radius: 5px;
+  box-shadow: rgb(2, 44, 24) 7px 7px;
+  padding: 5%;
+  background: whitesmoke;
+  margin: 1%;
+  display: flex;
+  height: 40vh;
+  width: 50vw;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+}
+
+.todo-item {
+  font-weight: 500;
+  color: #111;
+  font-size: 2vw;
+  user-select: none;
+  cursor: pointer;
+}
+
+.todo-item:hover {
+  transform: scale(1.05) translateX(10px);
+}

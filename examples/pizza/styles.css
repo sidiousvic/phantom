@@ -1,0 +1,27 @@
+html,
+body,
+#PHANTOM {
+  background: rgb(97, 0, 252);
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+#pizza-box-div {
+  margin: 1%;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.slice {
+  font-size: 6rem;
+  user-select: none;
+  cursor: grab;
+}
+
+.slice:hover {
+  transform: scale(1.1);
+}
