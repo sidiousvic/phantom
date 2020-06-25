@@ -23,8 +23,11 @@ export default function Pizza(slices) {
 <br>
 
 ### 🚀 [Get launched](#get-launched)
+
 ### 🍕 [Manage state](#manage-state)
+
 ### ❓ [FAQ](#faq)
+
 ### 🔧 [Developers](#developers)
 
 <br>
@@ -165,7 +168,7 @@ function eatPizza(e) {
 
 <details>
 <summary><b>Show rationale ↯</b></summary>
-  
+
 
 #### You don't drive to the corner store, but walking is overrated. `phantom` is the bike you need.
 
@@ -189,7 +192,7 @@ No JSX, no complex API, no syntactic hyperglycemia.
 
 #### React is for React devs. Vue is for slightly hipster devs. `phantom` is for JavaScript devs.<sup>○</sup><sup>∆</sup>
 
-<sub>\* unpacked size of ReactDOM is 3MB. Vue is 2.98MB. **Phantom is 30.5 kB.**</sub>
+<sub>\* unpacked size of ReactDOM is 3MB. Vue is 2.98MB. **Phantom is < 40 kB.**</sub>
 <sub><sup>○</sup> `phantom` users may be the hipsterest of them all.</sub>
 <sub><sup>∆</sup> _Angular_? What is Angular?</sub>
 
