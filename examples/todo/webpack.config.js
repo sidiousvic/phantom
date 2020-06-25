@@ -5,9 +5,9 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
-    port: 9000,
+    port: 9001,
   },
-  entry: "./examples/pizza/index.js",
+  entry: "./examples/todo/index.js",
   resolve: {
     extensions: [".ts", ".js"],
   },
@@ -18,7 +18,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: "./index.html",
-      template: "examples/pizza/index.html",
+      template: "examples/todo/index.html",
     }),
   ],
   module: {
