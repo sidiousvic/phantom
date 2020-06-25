@@ -12,7 +12,8 @@
   "scripts": {
     "build": "webpack",
     "test": "jest",
-    "example/pizza": "webpack --config examples/pizza/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/pizza/webpack.config.js"
+    "example/pizza": "webpack --config examples/pizza/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/pizza/webpack.config.js",
+    "example/todo": "webpack --config examples/todo/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/todo/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -32,7 +33,10 @@
     "url": "https://github.com/sidiousvic/phantom/issues"
   },
   "homepage": "https://github.com/sidiousvic/phantom#readme",
-  "dependencies": {},
+  "dependencies": {
+    "css-loader": "^3.6.0",
+    "style-loader": "^1.2.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
