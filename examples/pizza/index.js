@@ -44,7 +44,7 @@ const { fire, data, launch } = phantom(reduxStore, phantomComponent);
 // initial render
 launch();
 
-//components
+// components
 function phantomComponent() {
   const { slices } = data();
   return `
@@ -53,7 +53,7 @@ function phantomComponent() {
 }
 
 function Pizza(slices) {
-  console.log(allSlicesEaten());
+  // event listeners
   document.addEventListener("click", eatSlice);
   document.addEventListener("mousedown", changeCursorToGrabbing);
   document.addEventListener("mouseup", changeCursorToGrab);
@@ -68,6 +68,7 @@ function Pizza(slices) {
   `;
 }
 
+// utility functions
 function eatSlice(e) {
   if (e.target.classList.contains("slice")) {
     fire({ type: "EAT_SLICE", id: e.target.id });
