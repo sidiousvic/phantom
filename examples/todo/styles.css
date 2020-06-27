@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
 
+/* TODO: ORGANIZE STYLES */
+
 html,
-body,
-#PHANTOM {
+body {
   background: rgb(0, 252, 134);
   height: 100vh;
   padding: 0;
@@ -10,7 +11,7 @@ body,
   font-family: "Indie Flower", cursive;
 }
 
-#PHANTOM {
+body {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,18 +19,36 @@ body,
   width: 100vw;
 }
 
-#todo-list-div {
+#PHANTOM {
   border-radius: 5px;
   box-shadow: rgb(2, 44, 24) 7px 7px;
   padding: 5%;
   background: whitesmoke;
   margin: 1%;
   display: flex;
-  height: 40vh;
-  width: 50vw;
   flex-direction: column;
   align-items: left;
   justify-content: center;
+}
+
+#todo-list-div h1 {
+  margin-top: 0;
+}
+
+input {
+  border-style: hidden;
+  border: 1px rgb(219, 219, 219) solid;
+  border-radius: 5px;
+  min-width: 200px;
+  outline-width: 0;
+  padding: 10px;
+  font-family: "Indie Flower", cursive;
+  font-size: calc(10px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+
+input:hover,
+input:focus {
+  border: 1px rgb(163, 255, 178) solid;
 }
 
 .todo-item {
@@ -38,8 +57,22 @@ body,
   font-size: calc(15px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
   user-select: none;
   cursor: pointer;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .todo-item:hover {
-  transform: scale(1.05) translateX(10px);
+  background: rgb(255, 255, 255);
+}
+
+.trash {
+  margin: 0 10px;
+  padding: 0;
+  opacity: 0.2;
+}
+
+.trash:hover {
+  opacity: 1;
 }

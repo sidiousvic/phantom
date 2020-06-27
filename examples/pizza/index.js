@@ -14,18 +14,23 @@ const initialState = {
 function reducer(state = initialState, action) {
   switch (action.type) {
     case "EAT_SLICE":
-      // remove a slice from array
-      const slices = state.slices.map((slice) => {
+      const newSlices = state.slices.map((slice) => {
         if (slice.id === action.id) slice.emoji = "";
         return slice;
       });
-      return { ...state, slices };
+      return { ...state, slices: newSlices };
     case "RESET_SLICES":
       const initialSlices = state.slices.map((slice) => {
         slice.emoji = "🍕";
         return slice;
       });
       return { ...state, slices: initialSlices };
+    case "SATISFIED":
+      const satisfiedSlices = state.slices.map((slice, i) => {
+        if (i === 0) slice.emoji = "😋";
+        return slice;
+      });
+      return { ...state, slices: satisfiedSlices };
     default:
       return state;
   }
@@ -48,7 +53,7 @@ function phantomComponent() {
 }
 
 function Pizza(slices) {
-  // event listeners
+  console.log(allSlicesEaten());
   document.addEventListener("click", eatSlice);
   document.addEventListener("mousedown", changeCursorToGrabbing);
   document.addEventListener("mouseup", changeCursorToGrab);
@@ -56,15 +61,9 @@ function Pizza(slices) {
 
   return `
     <div id="pizza-box-div">
-      <h1 data-phantom="${slices[0].emoji}" class="slice" id="slice0">${
-    slices[0].emoji || "😋"
-  }</h1>
-      <h1 data-phantom="${slices[1].emoji}" class="slice" id="slice1">${
-    slices[1].emoji
-  }</h1>
-      <h1 data-phantom="${slices[2].emoji}" class="slice" id="slice2">${
-    slices[2].emoji
-  }</h1>
+      <h1 data-phantom="${slices[0].emoji}" class="slice" id="slice0">${slices[0].emoji}</h1>
+      <h1 data-phantom="${slices[1].emoji}" class="slice" id="slice1">${slices[1].emoji}</h1>
+      <h1 data-phantom="${slices[2].emoji}" class="slice" id="slice2">${slices[2].emoji}</h1>
     </div>
   `;
 }
@@ -72,6 +71,7 @@ function Pizza(slices) {
 function eatSlice(e) {
   if (e.target.classList.contains("slice")) {
     fire({ type: "EAT_SLICE", id: e.target.id });
+    if (allSlicesEaten()) fire({ type: "SATISFIED" });
   }
 }
 
@@ -84,7 +84,13 @@ function changeCursorToGrab(e) {
 }
 
 function resetPizzas(e) {
-  if (e.target.id === "slice0" && e.target.innerText === "😋") {
+  if (e.target.innerText === "😋") {
     fire({ type: "RESET_SLICES" });
   }
+}
+
+function allSlicesEaten() {
+  const { slices } = data();
+  const emojis = slices.map((slice) => slice.emoji);
+  return emojis.filter((emoji) => emoji === "🍕").length < 1;
 }
