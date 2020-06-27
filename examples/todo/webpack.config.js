@@ -5,7 +5,8 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
-    port: 9001,
+    port: 9000,
+    open: true,
   },
   entry: "./examples/todo/index.js",
   resolve: {

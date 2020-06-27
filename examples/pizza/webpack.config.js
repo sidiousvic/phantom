@@ -6,6 +6,7 @@ module.exports = {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
     port: 9000,
+    open: true,
   },
   entry: "./examples/pizza/index.js",
   resolve: {
