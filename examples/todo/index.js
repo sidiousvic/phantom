@@ -52,13 +52,14 @@ const { fire, data, launch } = phantom(reduxStore, phantomComponent);
 // initial render
 launch();
 
-//components
+// components
 function phantomComponent() {
   const { list } = data();
   return `
-    <h1>To-do</h1>
+    <h1>To-do <span id="by-sidiousvic">by sidiousvic</span></h1>
     ${TodoInput()}
     ${TodoList(list)}
+    <a href="https://github.com/sidiousvic/phantom" id="made-w-phantom">made with <b>phantom</b></a>
   `;
 }
 
@@ -86,14 +87,14 @@ function TodoList(list) {
 }
 
 function TodoInput() {
+  // event listeners
   document.addEventListener("keydown", addTodo);
   return `
-    <input type="text" id="todo-input" placeholder="Type and press enter"/>
+    <input type="text" id="todo-input" placeholder="🔍 Type and press enter"/>
   `;
 }
 
-// utilities
-
+// utility functions
 function trash(e) {
   if (e.target.classList.contains("trash")) {
     fire({ type: "TRASH", id: e.target.parentElement.id });

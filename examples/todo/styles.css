@@ -1,70 +1,118 @@
-@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
-
-/* TODO: ORGANIZE STYLES */
+@import url("https://fonts.googleapis.com/css2?family=Mallanna&display=swap");
 
 html,
 body {
-  background: rgb(0, 252, 134);
-  height: 100vh;
+  /* colors */
+  background: #f7f7f7;
+  color: #777;
+  /* spacing */
   padding: 0;
   margin: 0;
-  font-family: "Indie Flower", cursive;
+  /* type */
+  font-family: "Mallanna", cursive;
+  font-weight: 300;
 }
 
 body {
+  /* layout */
   display: flex;
   align-items: center;
   justify-content: center;
+  /* size */
   height: 100vh;
   width: 100vw;
 }
 
 #PHANTOM {
-  border-radius: 5px;
-  box-shadow: rgb(2, 44, 24) 7px 7px;
+  /* spacing */
   padding: 5%;
-  background: whitesmoke;
   margin: 1%;
+  /* colors */
+  background: whitesmoke;
+  /* layout */
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: center;
+  /* neumorphism */
+  border-radius: 50px;
+  background: linear-gradient(145deg, #ffffff, #ebebeb);
+  box-shadow: 10px 10px 40px #e0e0e0, -10px -10px 40px #fff;
 }
 
-#todo-list-div h1 {
+h1 {
   margin-top: 0;
 }
 
 input {
-  border-style: hidden;
-  border: 1px rgb(219, 219, 219) solid;
-  border-radius: 5px;
+  /* colors */
+  color: #777;
+  /* sizes */
   min-width: 200px;
+  /* borders */
+  border-style: hidden;
+  border: 0px rgb(219, 219, 219) solid;
+  /* spacing */
+  padding: 20px;
+  margin-bottom: 20px;
+  /* type */
+  font-family: "Mallanna", cursive;
+  font-size: calc(12px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  /* neumorphism */
+  border-radius: 50px;
+  background: #fcfcfc;
+  box-shadow: inset 4px 4px 8px #e0e0e0, inset -4px -4px 8px #ffffff;
+  /* misc */
+  caret-color: rgb(199, 199, 199);
   outline-width: 0;
-  padding: 10px;
-  font-family: "Indie Flower", cursive;
+}
+
+#by-sidiousvic {
+  color: rgb(153, 156, 173);
   font-size: calc(10px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
-input:hover,
-input:focus {
-  border: 1px rgb(163, 255, 178) solid;
+#made-w-phantom {
+  /* colors */
+  color: rgb(157, 161, 179);
+  /* type */
+  text-decoration: none;
+  text-align: right;
+  font-size: calc(9px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  /* animation */
+  transition: ease-in-out 100ms;
+}
+#made-w-phantom:hover {
+  transition: ease-in-out 200ms;
+  color: rgb(123, 128, 146);
+}
+
+input::placeholder {
+  color: rgb(167, 169, 180);
 }
 
 .todo-item {
-  font-weight: 500;
-  color: #111;
-  font-size: calc(15px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
-  user-select: none;
-  cursor: pointer;
-  padding: 10px;
+  color: #777;
+  /* layout */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  /* spacing */
+  margin: 0;
+  padding: 20px;
+  /* type */
+  font-weight: 300;
+  font-size: calc(15px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  user-select: none;
+  /* misc */
+  cursor: pointer;
+  /* animation */
+  transition: ease-in-out 100ms;
 }
 
 .todo-item:hover {
-  background: rgb(255, 255, 255);
+  transform: scale(1.05);
+  color: rgb(75, 74, 74);
 }
 
 .trash {
