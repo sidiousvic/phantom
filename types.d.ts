@@ -1,10 +1,15 @@
-type PseudoNode = {
+type PseudoElement = {
   tagName: string;
-  attributes: { id: string; class: string | DOMTokenList };
-  $children: PseudoNode[];
+  attributes: { id?: string | number; class?: string | DOMTokenList };
+  children: PseudoElement[] | [];
   innerHTML: string;
+  dataset?: DOMTokenList | {};
 };
 
 type XDOMFunction = {
-  (): string;
+  (): [string, any];
+};
+
+type pseudoDOM = {
+  [key: string]: PseudoElement;
 };
