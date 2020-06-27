@@ -30,7 +30,7 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
   }
 
   function renderPseudoElement(
-    pseudoElement = transmuteXMLtoPseudoElement(coalescePhantomDOM())
+    pseudoElement = transmuteHTMLtoPseudoElement(coalescePhantomDOM())
   ) {
     const { tagName, attributes, innerHTML, children } = pseudoElement;
     let $children: PseudoElement[] = [];
@@ -43,7 +43,11 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
 
     let DOMElement;
 
-    // dom diffing
+    // DOM diffing ahead. ↓↓↓
+    // We look at the current pseudoDOM, and for every pseudoNode in it, if
+    // * the id of the pseudoNode and current pseudoElement match, and
+    // * the nodes' dataset (data-phantom) are different (their data has changed),
+    // we swap the nodes.
     Object.values(pseudoDOM).map((pseudoDOMNode: any) => {
       if (
         pseudoDOMNode.attributes.id === pseudoElement.attributes.id &&
@@ -73,11 +77,12 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
     return DOMElement;
   }
 
-  function transmuteXMLtoPseudoElement(xml: string) {
-    if (typeof xml !== "string") xml = (xml as HTMLElement).outerHTML;
+  function transmuteHTMLtoPseudoElement(html: string) {
+    if (typeof html !== "string") html = (html as HTMLElement).outerHTML;
     // TODO: find a better solution to mapped elements ↓↓↓
-    xml = xml.replace(/>,/g, ">"); // remove commas from mapped element arrays
-    let doc = new DOMParser().parseFromString(xml, "text/html");
+    // the next line removes stray commas after stringifying element
+    html = html.replace(/>,/g, ">"); // remove commas from mapped element arrays
+    let doc = new DOMParser().parseFromString(html, "text/html");
     const $el = doc.body.firstChild;
     const {
       tagName,
@@ -93,7 +98,7 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
 
     if (children && children.length) {
       ($children as unknown) = Array.prototype.map.call(children, (child) => {
-        return transmuteXMLtoPseudoElement(child);
+        return transmuteHTMLtoPseudoElement(child);
       });
     }
     return {
