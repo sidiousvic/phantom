@@ -26,6 +26,19 @@ function reducer(state = initialState, action) {
       });
       // remove a slice from array
       return { ...state, list };
+    case "ADD_TODO": {
+      return {
+        ...state,
+        list: [
+          ...state.list,
+          { id: state.list.length, text: action.text, done: false },
+        ],
+      };
+    }
+    case "TRASH": {
+      const newList = state.list.filter((item) => item.id !== +action.id);
+      return { ...state, list: newList };
+    }
     default:
       return state;
   }
@@ -43,6 +56,8 @@ launch();
 function phantomComponent() {
   const { list } = data();
   return `
+    <h1>To-do</h1>
+    ${TodoInput()}
     ${TodoList(list)}
   `;
 }
@@ -52,19 +67,44 @@ function TodoList(list) {
   document.addEventListener("click", toggle);
   document.addEventListener("mousedown", changeCursorToGrabbing);
   document.addEventListener("mouseup", changeCursorToPointer);
-  const todoItems = list.map((item, i) => {
+  document.addEventListener("click", trash);
+  const todoItems = list.map((item) => {
     return `
-      <h1 data-phantom="${item.done}" class="todo-item" id="${i}">${
-      item.done ? "✅&nbsp;&nbsp;&nbsp;" : "❌&nbsp;&nbsp;&nbsp;"
-    }${item.text}</h1>`;
+      <h2 data-phantom="${[item.done, list.length]}" class="todo-item" id="${
+      item.id
+    }">${item.done ? "✅&nbsp;&nbsp;" : "❌&nbsp;&nbsp;"}${
+      item.text
+    }<p class="trash" id="trash-${item.id}">🗑</p></h2>`;
   });
 
   return `
-    <div data-phantom="list" id="todo-list-div">
-    <h1>To-do</h1>
+    <div data-phantom=${list.length} id="todo-list-div">
       ${todoItems}
     </div>
+
   `;
+}
+
+function TodoInput() {
+  document.addEventListener("keydown", addTodo);
+  return `
+    <input type="text" id="todo-input" placeholder="Type and press enter"/>
+  `;
+}
+
+// utilities
+
+function trash(e) {
+  if (e.target.classList.contains("trash")) {
+    fire({ type: "TRASH", id: e.target.parentElement.id });
+  }
+}
+
+function addTodo(e) {
+  if ((e.target.id === "todo-input") & (e.which === 13)) {
+    fire({ type: "ADD_TODO", text: e.target.value });
+    e.target.value = "";
+  }
 }
 
 function toggle(e) {
