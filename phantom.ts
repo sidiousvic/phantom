@@ -89,13 +89,6 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
     return DOMElement;
   }
 
-  //@ts-ignore
-  function isEmpty(target: Object | string | DOMStringMap | DOMTokenList) {
-    if (typeof target === "string") return !target.length;
-    const length = Object.keys(JSON.parse(JSON.stringify(target))).length;
-    return !length;
-  }
-
   function transmuteXMLtoPseudoElement(xml: string) {
     if (typeof xml !== "string") xml = (xml as HTMLElement).outerHTML;
     // TODO: find a better solution to mapped elements ↓↓↓
