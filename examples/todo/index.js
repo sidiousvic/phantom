@@ -104,16 +104,14 @@ function TodoInput() {
 function trash(e) {
   if (e.target.classList.contains("trash")) {
     fire({ type: "TRASH", id: e.target.parentElement.id });
-    const { list } = data();
-    localStorage.setItem("list", JSON.stringify(list));
+    updateLocalStorage();
   }
 }
 
 function addTodo(e) {
   if ((e.target.id === "todo-input") & (e.which === 13)) {
     fire({ type: "ADD_TODO", text: e.target.value });
-    const { list } = data();
-    localStorage.setItem("list", JSON.stringify(list));
+    updateLocalStorage();
     e.target.value = "";
   }
 }
@@ -121,8 +119,7 @@ function addTodo(e) {
 function toggle(e) {
   if (e.target.classList.contains("todo-item")) {
     fire({ type: "TOGGLE", id: e.target.id });
-    const { list } = data();
-    localStorage.setItem("list", JSON.stringify(list));
+    updateLocalStorage();
   }
 }
 
@@ -136,4 +133,9 @@ function changeCursorToPointer(e) {
   if (e.target.classList.contains("todo-item")) {
     e.target.style.transform = "scale(1.1) translateX(20px)";
   }
+}
+
+function updateLocalStorage() {
+  const { list } = data();
+  localStorage.setItem("list", JSON.stringify(list));
 }
