@@ -67,6 +67,10 @@ input {
   outline-width: 0;
 }
 
+input::placeholder {
+  color: rgb(167, 169, 180);
+}
+
 #by-sidiousvic {
   color: rgb(153, 156, 173);
   font-size: calc(10px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
@@ -85,10 +89,6 @@ input {
 #made-w-phantom:hover {
   transition: ease-in-out 200ms;
   color: rgb(123, 128, 146);
-}
-
-input::placeholder {
-  color: rgb(167, 169, 180);
 }
 
 .todo-item {

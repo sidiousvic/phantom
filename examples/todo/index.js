@@ -66,8 +66,8 @@ function phantomComponent() {
 function TodoList(list) {
   // event listeners
   document.addEventListener("click", toggle);
-  document.addEventListener("mousedown", changeCursorToGrabbing);
-  document.addEventListener("mouseup", changeCursorToPointer);
+  document.addEventListener("mousedown", scaleDown);
+  document.addEventListener("mouseup", scaleUp);
   document.addEventListener("click", trash);
   const todoItems = list.map((item) => {
     return `
@@ -115,13 +115,13 @@ function toggle(e) {
   }
 }
 
-function changeCursorToGrabbing(e) {
+function scaleDown(e) {
   if (e.target.classList.contains("todo-item")) {
     e.target.style.transform = "scale(1) translateX(0)";
   }
 }
 
-function changeCursorToPointer(e) {
+function scaleUp(e) {
   if (e.target.classList.contains("todo-item")) {
     e.target.style.transform = "scale(1.1) translateX(20px)";
   }
