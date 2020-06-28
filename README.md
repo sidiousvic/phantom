@@ -169,7 +169,6 @@ function eatPizza(e) {
 <details>
 <summary><b>Show rationale ↯</b></summary>
 
-
 #### You don't drive to the corner store, but walking is overrated. `phantom` is the bike you need.
 
 #### 🖍 Declarative
@@ -244,6 +243,9 @@ runs an example app from `examples/` via `webpack-dev-server`.
 ## Examples
 
 There are several [examples](./examples) you can run, each furnished with their own `devServer` configuration.
+
+<img src="./examples/pizza/pizza.gif" width="40%">
+<img src="./examples/todo/todo.gif" width="40%">
 
 Use **`npm run example/[example name]`** and navigate to the url that appears in your terminal.
 
