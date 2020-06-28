@@ -80,8 +80,7 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
   function transmuteHTMLtoPseudoElement(html: string) {
     if (typeof html !== "string") html = (html as HTMLElement).outerHTML;
     // TODO: find a better solution to mapped elements ↓↓↓
-    // the next line removes stray commas after stringifying element
-    html = html.replace(/>,/g, ">"); // remove commas from mapped element arrays
+    html = html.replace(/>,/g, ">"); // ← remove commas from mapped element arrays
     let doc = new DOMParser().parseFromString(html, "text/html");
     const $el = doc.body.firstChild;
     const {
