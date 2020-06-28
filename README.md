@@ -244,7 +244,7 @@ runs an example app from `examples/` via `webpack-dev-server`.
 
 There are several [examples](./examples) you can run, each furnished with their own `devServer` configuration.
 
-<img src="./examples/pizza/pizza.gif" width="40%"> <img src="./examples/todo/todo.gif" width="40%">
+<img style="border-radius: 5px;" src="./examples/pizza/pizza.gif" width="40%"> <img style="border-radius: 5px;" src="./examples/todo/todo.gif" width="40%">
 
 Use **`npm run example/[example name]`** and navigate to the url that appears in your terminal.
 
