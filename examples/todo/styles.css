@@ -119,6 +119,7 @@ input::placeholder {
   margin: 0 10px;
   padding: 0;
   opacity: 0.2;
+  transition: ease-in-out 100ms;
 }
 
 .trash:hover {
