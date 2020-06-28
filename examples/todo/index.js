@@ -103,6 +103,7 @@ function trash(e) {
 
 function addTodo(e) {
   if ((e.target.id === "todo-input") & (e.which === 13)) {
+    localStorage.setItem(list, [...list]);
     fire({ type: "ADD_TODO", text: e.target.value });
     e.target.value = "";
   }
