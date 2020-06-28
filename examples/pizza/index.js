@@ -64,6 +64,7 @@ function Pizza(slices) {
       <h1 data-phantom="${slices[0].emoji}" class="slice" id="slice0">${slices[0].emoji}</h1>
       <h1 data-phantom="${slices[1].emoji}" class="slice" id="slice1">${slices[1].emoji}</h1>
       <h1 data-phantom="${slices[2].emoji}" class="slice" id="slice2">${slices[2].emoji}</h1>
+      <a href="https://github.com/sidiousvic/phantom" id="made-w-phantom">made with <b>phantom</b></a>
     </div>
   `;
 }

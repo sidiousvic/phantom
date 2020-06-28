@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300;400&display=swap");
+
 html,
 body,
 #PHANTOM {
@@ -24,4 +26,26 @@ body,
 
 .slice:hover {
   transform: scale(1.1);
+}
+
+#made-w-phantom {
+  /* type */
+  font-family: "MuseoModerno", cursive;
+  font-weight: 300;
+  /* spacing */
+  margin: 0;
+  margin-left: 20px;
+  padding: 0;
+  /* colors */
+  color: rgb(225, 206, 255);
+  /* type */
+  text-decoration: none;
+  text-align: right;
+  font-size: calc(9px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  /* animation */
+  transition: ease-in-out 100ms;
+}
+#made-w-phantom:hover {
+  transition: ease-in-out 100ms;
+  color: rgb(242, 239, 255);
 }
