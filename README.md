@@ -30,6 +30,8 @@ export default function Pizza(slices) {
 
 ### 🔧 [Developers](#developers)
 
+### 👻 [Examples](#examples)
+
 <br>
 
 # 🚀 <a name="get-launched">Get launched</a>
@@ -240,7 +242,7 @@ runs the tests located in `__tests__/`.
 **`npm run example/[example name]`**
 runs an example app from `examples/` via `webpack-dev-server`.
 
-## Examples
+# 👻 <a name="examples">Examples</a>
 
 There are several [examples](./examples) you can run, each furnished with their own `devServer` configuration.
 
