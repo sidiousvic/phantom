@@ -3,7 +3,7 @@
 html,
 body,
 #PHANTOM {
-  background: rgb(97, 0, 252);
+  background: rgb(252, 0, 84);
   padding: 0;
   margin: 0;
   height: 100vh;
@@ -37,7 +37,7 @@ body,
   margin-left: 20px;
   padding: 0;
   /* colors */
-  color: rgb(225, 206, 255);
+  color: rgb(255, 206, 217);
   /* type */
   text-decoration: none;
   text-align: right;
