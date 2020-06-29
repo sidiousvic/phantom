@@ -62,7 +62,7 @@ launch();
 function phantomComponent() {
   const { list } = data();
   return `
-    <h1>To-do <span id="by-sidiousvic">by sidiousvic</span></h1>
+    <h1>To-do <a href="https://github.com/sidiousvic" id="by-sidiousvic">by sidiousvic</a></h1>
     ${TodoInput()}
     ${TodoList(list)}
     <a href="https://github.com/sidiousvic/phantom" id="made-w-phantom">made with <b>phantom</b></a>
@@ -96,7 +96,7 @@ function TodoInput() {
   // event listeners
   document.addEventListener("keydown", addTodo);
   return `
-    <input type="text" id="todo-input" placeholder="🔍 Type and press enter"/>
+    <input type="text" id="todo-input" placeholder="&nbsp;🔍 Type and press enter"/>
   `;
 }
 
