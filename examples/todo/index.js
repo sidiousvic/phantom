@@ -15,7 +15,7 @@ const initialState = {
   ],
 };
 
-// Replace Initial State List with Local Storage
+// replace initial state with local storage
 const listStorage = localStorage.getItem("list");
 if (listStorage) {
   initialState.list = JSON.parse(listStorage);
