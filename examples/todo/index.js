@@ -15,6 +15,12 @@ const initialState = {
   ],
 };
 
+// Replace Initial State List with Local Storage
+const listStorage = localStorage.getItem("list");
+if (listStorage) {
+  initialState.list = JSON.parse(listStorage);
+}
+
 function reducer(state = initialState, action) {
   switch (action.type) {
     case "TOGGLE":
@@ -98,13 +104,14 @@ function TodoInput() {
 function trash(e) {
   if (e.target.classList.contains("trash")) {
     fire({ type: "TRASH", id: e.target.parentElement.id });
+    updateLocalStorage();
   }
 }
 
 function addTodo(e) {
   if ((e.target.id === "todo-input") & (e.which === 13)) {
-    localStorage.setItem(list, [...list]);
     fire({ type: "ADD_TODO", text: e.target.value });
+    updateLocalStorage();
     e.target.value = "";
   }
 }
@@ -112,6 +119,7 @@ function addTodo(e) {
 function toggle(e) {
   if (e.target.classList.contains("todo-item")) {
     fire({ type: "TOGGLE", id: e.target.id });
+    updateLocalStorage();
   }
 }
 
@@ -125,4 +133,9 @@ function scaleUp(e) {
   if (e.target.classList.contains("todo-item")) {
     e.target.style.transform = "scale(1.1) translateX(20px)";
   }
+}
+
+function updateLocalStorage() {
+  const { list } = data();
+  localStorage.setItem("list", JSON.stringify(list));
 }
