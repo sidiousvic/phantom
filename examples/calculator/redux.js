@@ -10,7 +10,11 @@ const initialState = {
 function reducer(state = initialState, action) {
   switch (action.type) {
     case "ENTER_DIGIT":
-      return { ...state, screen: [...state.screen, action.digit] };
+      return {
+        ...state,
+        screen: [...state.screen, action.digit],
+        n2: action.digit,
+      };
     case "NEW_OPERATION":
       return {
         ...state,
@@ -22,15 +26,17 @@ function reducer(state = initialState, action) {
       let n1 = parseFloat([...state.screen].join(""));
       return {
         ...state,
-        screen: [],
+        screen: [state.screen.join(""), action.operator],
         n1,
         operator: action.operator,
         state: "calculating",
       };
     case "CALCULATE":
       let result = [];
-      let n2 = parseFloat(state.screen.join("")); // turn what's on the screen to n2
+      console.log(state.screen.join("").split());
+      let n2 = parseFloat(state.n2); // turn what's on the screen to n2
       if (isNaN(n2)) n2 = state.n1; // if no n2 was selected, operate by itself
+      console.log(state.n1, n2);
       switch (state.operator) {
         case "+":
           result = state.n1 + n2;
