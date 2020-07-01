@@ -1,4 +1,4 @@
-import phantom from "../../phantom.ts";
+import phantom from "../../dist/phantom";
 import { createStore } from "redux";
 import "./styles.css";
 
@@ -14,6 +14,12 @@ const initialState = {
     },
   ],
 };
+
+// replace initial state with local storage
+const listStorage = localStorage.getItem("list");
+if (listStorage) {
+  initialState.list = JSON.parse(listStorage);
+}
 
 function reducer(state = initialState, action) {
   switch (action.type) {
@@ -56,7 +62,7 @@ launch();
 function phantomComponent() {
   const { list } = data();
   return `
-    <h1>To-do <span id="by-sidiousvic">by sidiousvic</span></h1>
+    <h1>To-do <a href="https://github.com/sidiousvic" id="by-sidiousvic">by sidiousvic</a></h1>
     ${TodoInput()}
     ${TodoList(list)}
     <a href="https://github.com/sidiousvic/phantom" id="made-w-phantom">made with <b>phantom</b></a>
@@ -66,8 +72,8 @@ function phantomComponent() {
 function TodoList(list) {
   // event listeners
   document.addEventListener("click", toggle);
-  document.addEventListener("mousedown", changeCursorToGrabbing);
-  document.addEventListener("mouseup", changeCursorToPointer);
+  document.addEventListener("mousedown", scaleDown);
+  document.addEventListener("mouseup", scaleUp);
   document.addEventListener("click", trash);
   const todoItems = list.map((item) => {
     return `
@@ -90,7 +96,7 @@ function TodoInput() {
   // event listeners
   document.addEventListener("keydown", addTodo);
   return `
-    <input type="text" id="todo-input" placeholder="🔍 Type and press enter"/>
+    <input type="text" id="todo-input" placeholder="&nbsp;🔍 Type and press enter"/>
   `;
 }
 
@@ -98,13 +104,14 @@ function TodoInput() {
 function trash(e) {
   if (e.target.classList.contains("trash")) {
     fire({ type: "TRASH", id: e.target.parentElement.id });
+    updateLocalStorage();
   }
 }
 
 function addTodo(e) {
   if ((e.target.id === "todo-input") & (e.which === 13)) {
-    localStorage.setItem(list, [...list]);
     fire({ type: "ADD_TODO", text: e.target.value });
+    updateLocalStorage();
     e.target.value = "";
   }
 }
@@ -112,17 +119,23 @@ function addTodo(e) {
 function toggle(e) {
   if (e.target.classList.contains("todo-item")) {
     fire({ type: "TOGGLE", id: e.target.id });
+    updateLocalStorage();
   }
 }
 
-function changeCursorToGrabbing(e) {
+function scaleDown(e) {
   if (e.target.classList.contains("todo-item")) {
     e.target.style.transform = "scale(1) translateX(0)";
   }
 }
 
-function changeCursorToPointer(e) {
+function scaleUp(e) {
   if (e.target.classList.contains("todo-item")) {
     e.target.style.transform = "scale(1.1) translateX(20px)";
   }
+}
+
+function updateLocalStorage() {
+  const { list } = data();
+  localStorage.setItem("list", JSON.stringify(list));
 }

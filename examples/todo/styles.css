@@ -3,8 +3,8 @@
 html,
 body {
   /* colors */
-  background: #f7f7f7;
-  color: #777;
+  background: #131313;
+  color: #ccc;
   /* spacing */
   padding: 0;
   margin: 0;
@@ -27,8 +27,8 @@ body {
   /* spacing */
   padding: 5%;
   margin: 1%;
-  /* colors */
-  background: whitesmoke;
+  /* border */
+  border: 1px rgb(220, 20, 20) dashed;
   /* layout */
   display: flex;
   flex-direction: column;
@@ -36,22 +36,23 @@ body {
   justify-content: center;
   /* neumorphism */
   border-radius: 50px;
-  background: linear-gradient(145deg, #ffffff, #ebebeb);
-  box-shadow: 10px 10px 40px #e0e0e0, -10px -10px 40px #fff;
+  background: linear-gradient(145deg, #141414, #111111);
+  box-shadow: 5px 5px 10px #000000, -5px -5px 10px rgb(27, 27, 27);
 }
 
 h1 {
   margin-top: 0;
+  user-select: none;
 }
 
 input {
   /* colors */
-  color: #777;
+  color: #ccc;
   /* sizes */
-  min-width: 200px;
+  min-width: 240px;
   /* borders */
   border-style: hidden;
-  border: 0px rgb(219, 219, 219) solid;
+  border: 1px rgb(220, 20, 20) dashed;
   /* spacing */
   padding: 20px;
   margin-bottom: 20px;
@@ -60,21 +61,33 @@ input {
   font-size: calc(12px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
   /* neumorphism */
   border-radius: 50px;
-  background: #fcfcfc;
-  box-shadow: inset 4px 4px 8px #e0e0e0, inset -4px -4px 8px #ffffff;
+  background: #131313;
+  box-shadow: inset 4px 4px 8px #000000, inset -4px -4px 8px rgb(27, 27, 27);
   /* misc */
-  caret-color: rgb(199, 199, 199);
+  caret-color: rgb(220, 20, 20);
+  user-select: none;
   outline-width: 0;
 }
 
+input::placeholder {
+  color: #444;
+}
+
 #by-sidiousvic {
-  color: rgb(153, 156, 173);
+  color: #444;
+  text-decoration: none;
+  font-size: calc(10px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  transition: ease-in-out 100ms;
+}
+
+#by-sidiousvic:hover {
+  color: #eee;
   font-size: calc(10px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
 #made-w-phantom {
   /* colors */
-  color: rgb(157, 161, 179);
+  color: #444;
   /* type */
   text-decoration: none;
   text-align: right;
@@ -84,15 +97,11 @@ input {
 }
 #made-w-phantom:hover {
   transition: ease-in-out 200ms;
-  color: rgb(123, 128, 146);
-}
-
-input::placeholder {
-  color: rgb(167, 169, 180);
+  color: #eee;
 }
 
 .todo-item {
-  color: #777;
+  color: #ccc;
   /* layout */
   display: flex;
   flex-direction: row;
@@ -112,7 +121,7 @@ input::placeholder {
 
 .todo-item:hover {
   transform: scale(1.05);
-  color: rgb(75, 74, 74);
+  color: #eee;
 }
 
 .trash {

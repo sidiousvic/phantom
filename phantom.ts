@@ -44,8 +44,8 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
     let DOMElement;
 
     // DOM diffing ahead. ↓↓↓
-    // We look at the current pseudoDOM, and for every pseudoNode in it, if
-    // * the id of the pseudoNode and current pseudoElement match, and
+    // We look at the current pseudoDOM, and for every pseudoDOMNode, if
+    // * the id of the pseudoDOMNode and current pseudoElement match, and
     // * the nodes' dataset (data-phantom) are different (their data has changed),
     // we swap the nodes.
     Object.values(pseudoDOM).map((pseudoDOMNode: any) => {
@@ -80,8 +80,7 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
   function transmuteHTMLtoPseudoElement(html: string) {
     if (typeof html !== "string") html = (html as HTMLElement).outerHTML;
     // TODO: find a better solution to mapped elements ↓↓↓
-    // the next line removes stray commas after stringifying element
-    html = html.replace(/>,/g, ">"); // remove commas from mapped element arrays
+    html = html.replace(/>,/g, ">"); // ← remove commas from mapped element arrays
     let doc = new DOMParser().parseFromString(html, "text/html");
     const $el = doc.body.firstChild;
     const {

@@ -10,7 +10,7 @@ module.exports = {
   },
   entry: "./examples/pizza/index.js",
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: [".js"],
   },
   output: {
     filename: "[name].bundle.js",
@@ -30,11 +30,6 @@ module.exports = {
         use: {
           loader: "babel-loader",
         },
-      },
-      {
-        test: /\.ts?$/,
-        loader: "ts-loader",
-        exclude: /node_modules/,
       },
       {
         test: /\.css$/,
