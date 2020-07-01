@@ -2,11 +2,9 @@ import { fire, data } from "./index";
 
 // logic
 export function enterDigit({ target: { classList, id } }) {
-  const screen = data().screen;
-  if (screen.length > 7) return;
+  const { state } = data();
   if (classList.contains("digit") && !classList.contains("equals")) {
-    if (data().state === "calculated")
-      fire({ type: "NEW_OPERATION", digit: id });
+    if (state === "calculated") fire({ type: "NEW_OPERATION", digit: id });
     else fire({ type: "ENTER_DIGIT", digit: id });
   }
 }
@@ -14,7 +12,8 @@ export function enterDigit({ target: { classList, id } }) {
 export function calculate({ target, target: { classList } }) {
   const { state } = data();
   if (classList.contains("operator") || classList.contains("equals")) {
-    if (state === "idle") fire({ type: "REGISTER_N1", operator: target.id });
+    if (state === "idle" || state === "calculated")
+      fire({ type: "REGISTER_N1", operator: target.id });
     else if (state === "calculating") fire({ type: "CALCULATE" });
   }
 }
@@ -45,7 +44,7 @@ export function scaleDown({ target: { classList, style } }) {
 
 export function scaleUp({ target: { classList, style } }) {
   if (classList.contains("pressable")) {
-    style.transform = "scale(1.05)";
+    style.transform = "scale(1.1)";
   }
 }
 
@@ -59,4 +58,17 @@ export function highlightOperatorKey({ target: { classList } }) {
       } else operatorEl.classList.remove("highlighted");
     }
   }
+}
+
+export function copyToClipboard({ target, target: { id } }) {
+  if (id === "screen")
+    navigator.clipboard.writeText(target.innerText).then(
+      function () {
+        target.innerText = "COPIED!";
+        console.log("Async: Copying to clipboard was successful!");
+      },
+      function (err) {
+        console.error("Async: Could not copy text: ", err);
+      }
+    );
 }
