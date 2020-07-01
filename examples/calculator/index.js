@@ -1,29 +1,21 @@
 import phantom from "../../phantom.ts";
-import { createStore } from "redux";
 import "./styles.css";
+import {
+  enterDigit,
+  calculate,
+  reset,
+  scaleDown,
+  scaleUp,
+  removeOperators,
+  highlightOperatorKey,
+} from "./functions";
+import reduxStore from "./redux";
 
-// redux store
-const initialState = {
-  screen: ["800b5"],
-};
-
-function reducer(state = initialState, action) {
-  switch (action.type) {
-    case "ENTER":
-      return { ...state, screen: [...state.screen, action.digit] };
-    case "CLEAR":
-      return { ...state, screen: [""] };
-    case "RESET":
-      return { ...state, screen: ["80085"] };
-    default:
-      return state;
-  }
-}
-
-const reduxStore = createStore(reducer);
+// shorthands
+const listen = document.addEventListener;
 
 // initialize phantom
-const { fire, data, launch } = phantom(reduxStore, phantomComponent);
+export const { fire, data, launch } = phantom(reduxStore, phantomComponent);
 
 // initial render
 launch();
@@ -31,9 +23,8 @@ launch();
 // components
 function phantomComponent() {
   const { screen } = data();
-  document.addEventListener("click", resetScreen);
   return `
-    <h1>Calculator <span id="by-sidiousvic">by sidiousvic</span></h1>
+    <h1>Calculator <a href="https://github.com/sidiousvic" id="by-sidiousvic">by <b>sidiousvic</b></a></h1>
     ${Screen(screen)}
     ${Digits()}
     <a href="https://github.com/sidiousvic/phantom" id="made-w-phantom">made with <b>phantom</b></a>
@@ -41,68 +32,38 @@ function phantomComponent() {
 }
 
 function Screen(screen) {
-  // event listeners
-  document.addEventListener("mousedown", scaleDown);
-  document.addEventListener("mouseup", scaleUp);
+  listen("mousedown", scaleDown);
+  listen("mouseup", scaleUp);
+  const screenDisplay = removeOperators(screen).join("");
   return `
-    <div data-phantom="${screen}" id="screen">&nbsp;${screen
-    .reverse()
-    .join("")}</div>
+    <div data-phantom="${screen}" id="screen">&nbsp;${screenDisplay}</div>
   `;
 }
 
 function Digits() {
-  // event listeners
-  document.addEventListener("click", enterDigit);
+  listen("click", enterDigit);
+  listen("click", calculate);
+  listen("click", reset);
+  listen("click", highlightOperatorKey);
+
   return `
   <div id="digits">
-    <div class="digit" id="1">1</div>
-    <div class="digit" id="2">2</div>
-    <div class="digit" id="3">3</div>
-    <div class="digit" id="4">4</div>
-    <div class="digit" id="5">5</div>
-    <div class="digit" id="6">6</div>
-    <div class="digit" id="7">7</div>
-    <div class="digit" id="8">8</div>
-    <div class="digit" id="9">9</div>
-    <div class="digit zero" id="0">0</div>
-    <div class="digit operator" id="+">+</div>
-    <div class="digit operator" id="-">-</div>
-    <div class="digit operator" id="/">/</div>
-    <div class="digit operator" id="*">*</div>
+    <div class="digit pressable" id="1">1</div>
+    <div class="digit pressable" id="2">2</div>
+    <div class="digit pressable" id="3">3</div>
+    <div class="digit pressable" id="4">4</div>
+    <div class="digit pressable" id="5">5</div>
+    <div class="digit pressable" id="6">6</div>
+    <div class="digit pressable" id="7">7</div>
+    <div class="digit pressable" id="8">8</div>
+    <div class="digit pressable" id="9">9</div>
+    <div class="digit pressable zero" id="0">0</div>
+    <div class="operator pressable" id="+">+</div>
+    <div class="operator pressable" id="-">-</div>
+    <div class="operator pressable" id="/">/</div>
+    <div class="operator pressable" id="*">*</div>
+    <div class="digit reset" id="reset"><b>🧨</b></div>
+    <div class="digit equals" id="equals">=</div>
   </div>
-  <div class="digit clear" id="clear">Clear</div>
-
   `;
-}
-
-// utility functions
-function enterDigit(e) {
-  if (data().screen.length > 12) return;
-  if (data().screen[0] === "800b5") fire({ type: "CLEAR" });
-  if (e.target.classList.contains("clear")) {
-    fire({ type: "CLEAR" });
-    return;
-  }
-  if (e.target.classList.contains("digit")) {
-    fire({ type: "ENTER", digit: e.target.id });
-  }
-}
-
-function scaleDown(e) {
-  if (e.target.classList.contains("digit")) {
-    e.target.style.transform = "scale(1)";
-  }
-}
-
-function scaleUp(e) {
-  if (e.target.classList.contains("digit")) {
-    e.target.style.transform = "scale(1.05)";
-  }
-}
-
-function resetScreen(e) {
-  if (e.target === document.body) {
-    fire({ type: "RESET" });
-  }
 }
