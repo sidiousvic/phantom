@@ -1,4 +1,4 @@
-import phantom from "../../phantom.ts";
+import phantom from "../../dist/phantom";
 import { createStore } from "redux";
 import "./styles.css";
 
