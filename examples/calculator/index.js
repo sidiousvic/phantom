@@ -6,8 +6,8 @@ import {
   reset,
   scaleDown,
   scaleUp,
-  removeOperators,
   highlightOperatorKey,
+  copyToClipboard,
 } from "./functions";
 import reduxStore from "./redux";
 
@@ -34,9 +34,12 @@ function phantomComponent() {
 function Screen(screen) {
   listen("mousedown", scaleDown);
   listen("mouseup", scaleUp);
-  const screenDisplay = removeOperators(screen).join("");
+  listen("mouseout", scaleDown);
+  listen("mouseover", scaleUp);
+  listen("click", copyToClipboard);
+  // const screenDisplay = removeOperators(screen).join("");
   return `
-    <div data-phantom="${screen}" id="screen">&nbsp;${screenDisplay}</div>
+    <div data-phantom="${screen}" id="screen">&nbsp;${screen.join("")}</div>
   `;
 }
 
@@ -62,8 +65,8 @@ function Digits() {
     <div class="operator pressable" id="-">-</div>
     <div class="operator pressable" id="/">/</div>
     <div class="operator pressable" id="*">*</div>
-    <div class="digit reset" id="reset"><b>🧨</b></div>
-    <div class="digit equals" id="equals">=</div>
+    <div class="digit reset pressable" id="reset"><b>🧨</b></div>
+    <div class="digit equals pressable" id="equals">=</div>
   </div>
   `;
 }
