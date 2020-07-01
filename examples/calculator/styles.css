@@ -59,6 +59,8 @@ h1 {
 }
 
 #screen {
+  /* overflow */
+  overflow: scroll;
   /* colors */
   color: var(--purpleHaze);
   /* sizes */
@@ -73,7 +75,13 @@ h1 {
   font-family: "KISS", sans-serif;
   text-align: right;
   font-size: calc(60px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  /* misc */
+  user-select: none;
 }
+
+/* #screen::-webkit-scrollbar {
+  background-color: #111;
+} */
 
 #digits {
   /* layour */
@@ -81,7 +89,7 @@ h1 {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   /* size */
   width: 100%;
 }
@@ -116,7 +124,6 @@ h1 {
 .operator:hover {
   color: var(--purpleHaze);
   border: 2px var(--purpleHaze) solid;
-  transform: scale(1.05);
 }
 
 .zero {
@@ -148,11 +155,7 @@ h1 {
   font-family: "KISS", sans-serif;
 }
 
-.reset:hover {
-  color: var(--purpleHaze);
-  border: 2px var(--purpleHaze) solid;
-}
-
+.reset:hover,
 .equals:hover {
   color: var(--purpleHaze);
   border: 2px var(--purpleHaze) solid;
