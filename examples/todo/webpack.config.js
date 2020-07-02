@@ -5,10 +5,12 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
-    port: 9000,
+    port: "9000",
     open: true,
+    stats: "minimal",
   },
   entry: "./examples/todo/index.js",
+  mode: "development",
   resolve: {
     extensions: [".js"],
   },

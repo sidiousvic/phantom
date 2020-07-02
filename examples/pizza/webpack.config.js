@@ -7,8 +7,10 @@ module.exports = {
     compress: true,
     port: 9000,
     open: true,
+    stats: "minimal",
   },
   entry: "./examples/pizza/index.js",
+  mode: "development",
   resolve: {
     extensions: [".js"],
   },

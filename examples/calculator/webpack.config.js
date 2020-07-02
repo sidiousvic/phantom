@@ -7,8 +7,10 @@ module.exports = {
     compress: true,
     port: 9000,
     open: true,
+    stats: "minimal",
   },
   entry: "./examples/calculator/index.js",
+  mode: "development",
   resolve: {
     extensions: [".ts", ".js"],
   },
