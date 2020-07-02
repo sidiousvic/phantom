@@ -1,23 +1,23 @@
 function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
   let pseudoDOM: pseudoDOM = {
     test: {
-      tagName: "div",
-      attributes: { id: "PHANTOM" },
+      tagName: 'div',
+      attributes: { id: 'PHANTOM' },
       children: [],
-      innerHTML: "",
+      innerHTML: '',
       dataset: {},
     },
   };
 
   function launchDOM() {
     const body = document.body;
-    if (!document.querySelector("#PHANTOM")) {
-      const PHANTOM = document.createElement("div");
-      PHANTOM.id = "PHANTOM";
+    if (!document.querySelector('#PHANTOM')) {
+      const PHANTOM = document.createElement('div');
+      PHANTOM.id = 'PHANTOM';
       body?.appendChild(PHANTOM);
     }
     const DOM = renderPseudoElement();
-    swapElement(DOM, document.querySelector("#PHANTOM"));
+    swapElement(DOM, document.querySelector('#PHANTOM'));
     return DOM;
   }
 
@@ -78,10 +78,10 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
   }
 
   function transmuteHTMLtoPseudoElement(html: string) {
-    if (typeof html !== "string") html = (html as HTMLElement).outerHTML;
+    if (typeof html !== 'string') html = (html as HTMLElement).outerHTML;
     // TODO: find a better solution to mapped elements ↓↓↓
-    html = html.replace(/>,/g, ">"); // ← remove commas from mapped element arrays
-    let doc = new DOMParser().parseFromString(html, "text/html");
+    html = html.replace(/>,/g, '>'); // ← remove commas from mapped element arrays
+    let doc = new DOMParser().parseFromString(html, 'text/html');
     const $el = doc.body.firstChild;
     const {
       tagName,
