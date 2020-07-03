@@ -1,5 +1,5 @@
-import phantom from '../../phantom.ts';
-import './styles.css';
+import phantom from "../../phantom.ts";
+import "./styles.css";
 import {
   enterDigit,
   calculate,
@@ -8,8 +8,8 @@ import {
   scaleUp,
   highlightOperatorKey,
   copyToClipboard,
-} from './functions';
-import reduxStore from './redux';
+} from "./functions";
+import reduxStore from "./redux";
 
 // shorthands
 const listen = document.addEventListener;
@@ -19,7 +19,6 @@ export const { fire, data, launch } = phantom(reduxStore, phantomComponent);
 
 // initial render
 launch();
-
 
 // components
 function phantomComponent() {
@@ -33,22 +32,22 @@ function phantomComponent() {
 }
 
 function Screen(screen) {
-  listen('mousedown', scaleDown);
-  listen('mouseup', scaleUp);
-  listen('mouseout', scaleDown);
-  listen('mouseover', scaleUp);
-  listen('click', copyToClipboard);
+  listen("mousedown", scaleDown);
+  listen("mouseup", scaleUp);
+  listen("mouseout", scaleDown);
+  listen("mouseover", scaleUp);
+  listen("click", copyToClipboard);
   // const screenDisplay = removeOperators(screen).join("");
   return `
-    <div data-phantom="${screen}" id="screen">&nbsp;${screen.join('')}</div>
+    <div data-phantom="${screen}" id="screen">&nbsp;${screen.join("")}</div>
   `;
 }
 
 function Digits() {
-  listen('click', enterDigit);
-  listen('click', calculate);
-  listen('click', reset);
-  listen('click', highlightOperatorKey);
+  listen("click", enterDigit);
+  listen("click", calculate);
+  listen("click", reset);
+  listen("click", highlightOperatorKey);
 
   return `
   <div id="digits">
