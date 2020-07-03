@@ -20,6 +20,7 @@ export const { fire, data, launch } = phantom(reduxStore, phantomComponent);
 // initial render
 launch();
 
+
 // components
 function phantomComponent() {
   const { screen } = data();
@@ -65,7 +66,7 @@ function Digits() {
     <div class="operator pressable" id="-">-</div>
     <div class="operator pressable" id="/">/</div>
     <div class="operator pressable" id="*">*</div>
-    <div class="digit reset pressable" id="reset">🧨</div>
+    <div class="digit reset pressable" id="reset"><b>🧨</b></div>
     <div class="digit equals pressable" id="equals">=</div>
   </div>
   `;
