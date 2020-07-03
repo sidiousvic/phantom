@@ -253,14 +253,22 @@ runs the tests located in `__tests__/`.
 **`npm run example/[example name]`**
 runs an example app from `examples/` via `webpack-dev-server`.
 
+### If you find a 🐞, please **[file an issue](https://github.com/sidiousvic/phantom/issues)**.
+
 <br>
 
 # 👻 <a name="examples">Examples</a>
 
 There are several [examples](./examples) you can run, each furnished with their own `devServer` configuration.
 
-<img style="border-radius: 5px;" src="./examples/pizza/pizza.gif" width="30%"> <img style="border-radius: 5px;" src="./examples/todo/todo.gif" width="30%"> <img style="border-radius: 5px;" src="./examples/calculator/calculator.gif" width="30%">
+## `phantom` in [CodeSandbox](https://codesandbox.io/)
 
-Use **`npm run example/[example name]`** and navigate to the url that appears in your terminal.
+<a href="https://codesandbox.io/s/phantompizza-668sj" target="_blank"><img style="border-radius: 5px;" src="./examples/pizza/pizza.gif" width="30%"></a> <a href="https://codesandbox.io/s/phantomtodo-n1mfq" target="_blank"><img style="border-radius: 5px;" src="./examples/todo/todo.gif" width="30%"></a> <a href="https://codesandbox.io/s/phantomcalculator-fifgn" target="_blank"><img style="border-radius: 5px;" src="./examples/calculator/calculator.gif" width="30%"></a>
 
-### If you find a 🐞, please **[file an issue](https://github.com/sidiousvic/phantom/issues)**.
+Click on one of the images above to be taken to an online sandbox.
+
+Devs who have cloned `phantom` may use **`npm run example/[example name]`** and navigate to the url that appears in their terminal.
+
+<br>
+
+### <img src="https://media.giphy.com/media/jjBmeA29nxCrm/giphy.gif" width="40px"> `phantom` is made with love and pepperoni by [@sidiousvic](https://www.github.com/sidiousvic)
