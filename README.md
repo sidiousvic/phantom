@@ -197,19 +197,34 @@ No JSX, no complex API, no syntactic hyperglycemia.
 
 ### Does `phantom` use a virtual DOM?
 
+<details>
+<summary><b>Show answer ↯</b></summary>
+
 When a component's data changes, `phantom` will re—render that node in the DOM by diffing its internal **PseudoDOM**, an object representation of the DOM.
+
+</details>
 
 ### Why should I always include the `data-phantom` attribute in stateful elements?
 
+<details>
+<summary><b>Show answer ↯</b></summary>
+
 In order for your element to be reactive to data changes, `phantom` needs to know which nodes are bound to the updated data. Specifying a `data-phantom="${yourData}"` attribute is a simple way to do that.
+
+</details>
 
 ### Why should I always include an `id` attribute in stateful elements?
 
+<details>
+<summary><b>Show answer ↯</b></summary>
+
 Two reasons, one philosophical, one technical:
 
-1. Once you get into the habit, specifying `id`s results in remarkably declarative markup. It encourages you to think about each element's specific function in the UI and also helps to identify it visually.
+**I.** Once you get into the habit, specifying `id`s results in remarkably declarative markup. It encourages you to think about each element's specific function in the UI and also helps to identify it visually.
 
-2. `id` is one of the mechanisms that the `phantom` engine uses to detect which nodes to update.
+**II.** `id` is one of the mechanisms that the `phantom` engine uses to detect which nodes to update.
+
+</details>
 
 <br>
 
