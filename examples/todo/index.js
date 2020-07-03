@@ -1,62 +1,25 @@
 import phantom from "../../dist/phantom";
-import { createStore } from "redux";
 import "./styles.css";
+import reduxStore from "./redux";
+import {
+  toggle,
+  scaleDown,
+  scaleUp,
+  trash,
+  addTodo,
+  setListFromLocalStorage,
+} from "./functions";
 
-// redux store
-const initialState = {
-  list: [
-    { id: 0, text: "Walk the dog", done: false },
-    { id: 1, text: "Wash the dishes", done: false },
-    {
-      id: 2,
-      text: "Topple the Pagan Leprechaun Regime",
-      done: false,
-    },
-  ],
-};
-
-// replace initial state with local storage
-const listStorage = localStorage.getItem("list");
-if (listStorage) {
-  initialState.list = JSON.parse(listStorage);
-}
-
-function reducer(state = initialState, action) {
-  switch (action.type) {
-    case "TOGGLE":
-      const list = state.list.map((item) => {
-        if (item.id === +action.id) {
-          return { ...item, done: !item.done };
-        }
-        return item;
-      });
-      // remove a slice from array
-      return { ...state, list };
-    case "ADD_TODO": {
-      return {
-        ...state,
-        list: [
-          ...state.list,
-          { id: state.list.length, text: action.text, done: false },
-        ],
-      };
-    }
-    case "TRASH": {
-      const newList = state.list.filter((item) => item.id !== +action.id);
-      return { ...state, list: newList };
-    }
-    default:
-      return state;
-  }
-}
-
-const reduxStore = createStore(reducer);
+// shorthands
+const listen = document.addEventListener;
 
 // initialize phantom
-const { fire, data, launch } = phantom(reduxStore, phantomComponent);
+export const { fire, data, launch } = phantom(reduxStore, phantomComponent);
 
 // initial render
 launch();
+
+setListFromLocalStorage();
 
 // components
 function phantomComponent() {
@@ -70,11 +33,10 @@ function phantomComponent() {
 }
 
 function TodoList(list) {
-  // event listeners
-  document.addEventListener("click", toggle);
-  document.addEventListener("mousedown", scaleDown);
-  document.addEventListener("mouseup", scaleUp);
-  document.addEventListener("click", trash);
+  listen("click", toggle);
+  listen("mousedown", scaleDown);
+  listen("mouseup", scaleUp);
+  listen("click", trash);
   const todoItems = list.map((item) => {
     return `
       <h2 data-phantom="${[item.done, list.length]}" class="todo-item" id="${
@@ -94,48 +56,8 @@ function TodoList(list) {
 
 function TodoInput() {
   // event listeners
-  document.addEventListener("keydown", addTodo);
+  listen("keydown", addTodo);
   return `
     <input type="text" id="todo-input" placeholder="&nbsp;🔍 Type and press enter"/>
   `;
-}
-
-// utility functions
-function trash(e) {
-  if (e.target.classList.contains("trash")) {
-    fire({ type: "TRASH", id: e.target.parentElement.id });
-    updateLocalStorage();
-  }
-}
-
-function addTodo(e) {
-  if ((e.target.id === "todo-input") & (e.which === 13)) {
-    fire({ type: "ADD_TODO", text: e.target.value });
-    updateLocalStorage();
-    e.target.value = "";
-  }
-}
-
-function toggle(e) {
-  if (e.target.classList.contains("todo-item")) {
-    fire({ type: "TOGGLE", id: e.target.id });
-    updateLocalStorage();
-  }
-}
-
-function scaleDown(e) {
-  if (e.target.classList.contains("todo-item")) {
-    e.target.style.transform = "scale(1) translateX(0)";
-  }
-}
-
-function scaleUp(e) {
-  if (e.target.classList.contains("todo-item")) {
-    e.target.style.transform = "scale(1.1) translateX(20px)";
-  }
-}
-
-function updateLocalStorage() {
-  const { list } = data();
-  localStorage.setItem("list", JSON.stringify(list));
 }
