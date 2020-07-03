@@ -261,9 +261,9 @@ runs an example app from `examples/` via `webpack-dev-server`.
 
 There are several [examples](./examples) you can run, each furnished with their own `devServer` configuration.
 
-## `phantom` in [CodeSandbox](https://codesandbox.io/)
-
 <a href="https://codesandbox.io/s/phantompizza-668sj" target="_blank"><img style="border-radius: 5px;" src="./examples/pizza/pizza.gif" width="30%"></a> <a href="https://codesandbox.io/s/phantomtodo-n1mfq" target="_blank"><img style="border-radius: 5px;" src="./examples/todo/todo.gif" width="30%"></a> <a href="https://codesandbox.io/s/phantomcalculator-fifgn" target="_blank"><img style="border-radius: 5px;" src="./examples/calculator/calculator.gif" width="30%"></a>
+
+### `phantom` in [CodeSandbox](https://codesandbox.io/s/phantomcalculator-fifgn)
 
 Click on one of the images above to be taken to an online sandbox.
 
