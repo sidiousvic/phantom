@@ -1,4 +1,4 @@
-import phantom from "../phantom";
+import phantom from "../dist/phantom";
 import reduxStore from "./utils/reduxStore";
 
 test("the 'fire' interface points to the reduxStore dispatch", () => {
