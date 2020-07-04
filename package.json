@@ -12,7 +12,7 @@
   "scripts": {
     "build": "webpack",
     "postversion": "npm publish",
-    "preversion": "npm test",
+    "preversion": "npm run build && npm test",
     "postpublish": "git push origin --all; git push origin --tags",
     "test": "jest",
     "example/pizza": "webpack --config examples/pizza/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/pizza/webpack.config.js",

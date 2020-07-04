@@ -1,5 +1,8 @@
 # phantom
 
+[![npm version](https://badge.fury.io/js/%40sidiousvic%2Fphantom.svg)](https://badge.fury.io/js/%40sidiousvic%2Fphantom)
+[![install size](https://badgen.net/packagephobia/install/@sidiousvic/phantom)](https://packagephobia.com/result?p=%40sidiousvic%2Fphantom)
+
 ### A Redux powered, state—reactive DOM rendering engine. 👻
 
 ### `npm i @sidiousvic/phantom`
