@@ -37,9 +37,7 @@
     "url": "https://github.com/sidiousvic/phantom/issues"
   },
   "homepage": "https://github.com/sidiousvic/phantom#readme",
-  "dependencies": {
-    "file-loader": "^6.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
@@ -49,6 +47,7 @@
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.6.0",
+    "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
     "jest": "^26.0.1",
     "nodemon": "^2.0.4",
