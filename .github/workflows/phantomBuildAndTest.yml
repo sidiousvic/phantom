@@ -2,7 +2,7 @@
 # * build the source code
 # * run tests across different versions of node
 
-name: Phantom build && test
+name: build + test
 
 on:
   push:
