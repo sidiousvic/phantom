@@ -1,3 +1,5 @@
+import sanitize from "./sanitizer/sanitizer";
+
 function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
   let pseudoDOM: pseudoDOM = {
     test: {
@@ -58,7 +60,7 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
         for (const [k, v] of Object.entries(attributes)) {
           newNode.setAttribute(k, v as string);
         }
-        newNode.innerHTML = innerHTML;
+        newNode.innerHTML = sanitize(innerHTML);
 
         let targetNode = document.getElementById(attributes.id);
         swapElement(newNode, targetNode);
@@ -73,7 +75,7 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
       DOMElement.setAttribute(k, v as string);
     }
 
-    DOMElement.innerHTML = innerHTML;
+    DOMElement.innerHTML = sanitize(innerHTML);
     return DOMElement;
   }
 
