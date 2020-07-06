@@ -78,7 +78,7 @@ test("PHANTOM DOM is properly rendered", () => {
     const { title } = data();
     return `
     <div id="title-div">
-      <h1 data-phantom="${title}" id="title-h1">${title}</h1>
+      <h1 id="title-h1">${title}</h1>
     </div>
     `;
   }
