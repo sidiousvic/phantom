@@ -13,3 +13,11 @@ type XDOMFunction = {
 type pseudoDOM = {
   [key: string]: PseudoElement;
 };
+
+type AllowedTags = {
+  [key: string]: {
+    [key: string]: (attribute: string | null) => string | null;
+  };
+};
+
+type AllowedCSS = string[string];
