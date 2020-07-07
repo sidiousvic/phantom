@@ -194,7 +194,7 @@ The `phantom` engine integrates with your Redux store and subscribes to state up
 
 No JSX, no complex API, no syntactic hyperglycemia.
 
-<sub>\* unpacked size of ReactDOM is 3MB. Vue is 2.98MB. **Phantom is < 40 kB.**</sub>
+<sub>\* unpacked size of ReactDOM is 3MB. Vue is 2.98MB. **Phantom is < 99 kB.**</sub>
 
 </details>
 
