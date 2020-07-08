@@ -22,8 +22,10 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
       const DOM = renderPseudoElement();
       swapElement(DOM, document.querySelector("#PHANTOM"));
       return DOM;
-    } catch (error) {
-      console.error(error);
+    } catch (errorNode) {
+      throw new DOMException(
+        `🚫Potentially dangerous node, <${errorNode}>. Phantom has destroyed it. If you think this is a mistake, please raise an issue at: https://github.com/sidiousvic/phantom/issues`
+      );
     }
   }
 
