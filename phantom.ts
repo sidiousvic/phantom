@@ -1,4 +1,4 @@
-import sanitize from "./sanitizer/sanitizer";
+import sanitizeHTML from "./sanitizer/sanitizer";
 
 function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
   let pseudoDOM: pseudoDOM = {
@@ -18,9 +18,13 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
       PHANTOM.id = "PHANTOM";
       body?.appendChild(PHANTOM);
     }
-    const DOM = renderPseudoElement();
-    swapElement(DOM, document.querySelector("#PHANTOM"));
-    return DOM;
+    try {
+      const DOM = renderPseudoElement();
+      swapElement(DOM, document.querySelector("#PHANTOM"));
+      return DOM;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   function coalescePhantomDOM() {
@@ -45,11 +49,13 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
 
     let DOMElement;
 
-    // DOM diffing ahead. ↓↓↓
-    // We look at the current pseudoDOM, and for every pseudoDOMNode, if
-    // * the id of the pseudoDOMNode and current pseudoElement match, and
-    // * the nodes' dataset (data-phantom) are different (their data has changed),
-    // we swap the nodes.
+    /* 
+    DOM diffing ahead. ↓↓↓
+    We look at the current pseudoDOM, and for every pseudoDOMNode, if
+    * the id of the pseudoDOMNode and current pseudoElement match, and
+    * the nodes' dataset (data-phantom) are different (their data has changed),
+    we swap the nodes.
+    */
     Object.values(pseudoDOM).map((pseudoDOMNode: any) => {
       if (
         pseudoDOMNode.attributes.id === pseudoElement.attributes.id &&
@@ -60,11 +66,21 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
         for (const [k, v] of Object.entries(attributes)) {
           newNode.setAttribute(k, v as string);
         }
-        newNode.innerHTML = sanitize(innerHTML);
-
-        let targetNode = document.getElementById(attributes.id);
-        swapElement(newNode, targetNode);
-        DOMElement = newNode;
+        /* 
+    Node replacement and sanitization. ↓↓↓
+    We swap the obsolete DOMElement's innerHTML with the updated version.
+    The updated innerHTML is sanitized before this swap.
+    * if safe, we return the updated DOMElement.
+    * if dangerous, log an error and abort rendering
+    */
+        try {
+          newNode.innerHTML = sanitizeHTML(innerHTML);
+          let targetNode = document.getElementById(attributes.id);
+          swapElement(newNode, targetNode);
+          DOMElement = newNode;
+        } catch (dangerousNodeError) {
+          throw new Error(dangerousNodeError);
+        }
       }
     });
 
@@ -75,8 +91,19 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
       DOMElement.setAttribute(k, v as string);
     }
 
-    DOMElement.innerHTML = sanitize(innerHTML);
-    return DOMElement;
+    /* 
+    HTML replacement and sanitization. ↓↓↓
+    We swap the obsolete DOMElement's innerHTML with the updated version.
+    The updated innerHTML is sanitized before this swap.
+    * if safe, we return the updated DOMElement.
+    * if dangerous, log an error and abort rendering
+    */
+    try {
+      DOMElement.innerHTML = sanitizeHTML(innerHTML);
+      return DOMElement;
+    } catch (dangerousNodeError) {
+      throw new Error(dangerousNodeError);
+    }
   }
 
   function transmuteHTMLtoPseudoElement(html: string) {
