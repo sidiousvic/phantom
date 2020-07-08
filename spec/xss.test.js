@@ -5,19 +5,29 @@ import reduxStore from "./utils/reduxStore";
  * Test Phantom's HTML sanitization vs XSS injection
  */
 
-test("<img src='X' onerror='alert(0)'> produces an error", () => {
-  // init phantomDOM
+test("<img src='X' onerror='alert(0)'> is sanitized", () => {
   const { launch } = phantom(reduxStore, phantomDOM);
+
   function phantomDOM() {
     return `
-    <div>
-      <h1>PHANTOM</h1>
-    </div>
+      <img src='X' onerror='alert(0)'>
     `;
   }
-  launch();
 
-  const PHANTOMEl = document.body.firstChild;
+  const sanitized = `<img src="X">`;
+  const shouldBeSanitized = launch().innerHTML.trim();
 
-  expect(PHANTOMEl.id).toBe("PHANTOM");
+  expect(shouldBeSanitized).toBe(sanitized);
+});
+
+test("Attempting to render <iframe> throws an DOMException", () => {
+  const { launch } = phantom(reduxStore, phantomDOM);
+
+  function phantomDOM() {
+    return `
+      <iframe>
+    `; // iframe is a forbidden element
+  }
+
+  expect(launch).toThrowError(DOMException);
 });
