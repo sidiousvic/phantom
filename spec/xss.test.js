@@ -26,7 +26,7 @@ test("Attempting to render <iframe> throws an DOMException", () => {
   function phantomDOM() {
     return `
       <iframe>
-    `; // iframe is a forbidden element
+    `; // iframe is a forbidden tag
   }
 
   expect(launch).toThrowError(DOMException);
