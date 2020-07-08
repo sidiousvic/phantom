@@ -22,5 +22,5 @@
   },
   "typeRoots": ["@types", "node_modules/@types"],
   "include": ["**/*"],
-  "exclude": ["node_modules", "__tests__"] // *** the files to not type check ***
+  "exclude": ["node_modules", "spec"] // *** the files to not type check ***
 }
