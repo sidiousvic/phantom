@@ -21,9 +21,7 @@ function sanitizeNode(node: HTMLElement) {
   if (!allowedTags.hasOwnProperty(nodeName)) {
     // ain't dealing with this node
 
-    throw new Error(
-      `🚫Potentially dangerous node, <${nodeName}>. Phantom has destroyed it. If you think this is a mistake, please raise an issue at: https://github.com/sidiousvic/phantom/issues`
-    );
+    throw new Error(nodeName);
   }
 
   const sanitizedNode = doc.createElement(nodeName);
