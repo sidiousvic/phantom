@@ -19,17 +19,14 @@ function sanitizeNode(node: HTMLElement) {
 
   // throw error in case of disallowed nodes
   if (!allowedTags.hasOwnProperty(nodeName)) {
-    console.error(
-      `🚫Potentially dangerous node, <${nodeName}>. Phantom has destroyed it. If you think this is a mistake, please raise an issue at: https://github.com/sidiousvic/phantom/issues
-      `
-    ); // ain't dealing with this node
-    let errorElement = doc.createElement("div");
-    errorElement.innerText =
-      "⚠️ Potentially dangerous node. Check the console for error messages.";
-    return errorElement;
+    // ain't dealing with this node
+
+    throw new Error(
+      `🚫Potentially dangerous node, <${nodeName}>. Phantom has destroyed it. If you think this is a mistake, please raise an issue at: https://github.com/sidiousvic/phantom/issues`
+    );
   }
 
-  var sanitizedNode = doc.createElement(nodeName);
+  const sanitizedNode = doc.createElement(nodeName);
 
   // re-inject allowed attributes
   for (
@@ -54,16 +51,16 @@ function sanitizeNode(node: HTMLElement) {
 
   // recursively sanitize childNodes
   while (node.childNodes.length > 0) {
-    var child = node.removeChild(node.childNodes[0]);
+    const child = node.removeChild(node.childNodes[0]);
     sanitizedNode.appendChild(sanitizeNode(child as HTMLElement));
   }
   return sanitizedNode;
 }
 
-export default function sanitize(potentiallyDangerousHTML: string) {
+export default function sanitizeHTML(potentiallyDangerousHTML: string) {
   const doc = document.implementation.createHTMLDocument();
 
-  var div = doc.createElement("div");
+  const div = doc.createElement("div");
   div.innerHTML = potentiallyDangerousHTML;
 
   return (sanitizeNode(div) as HTMLElement).innerHTML;
