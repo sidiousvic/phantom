@@ -9,9 +9,6 @@
     "dist",
     "types.d.ts"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "scripts": {
     "build": "webpack",
     "postversion": "npm publish",
