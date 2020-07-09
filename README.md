@@ -1,4 +1,4 @@
-# <img src="https://i.imgur.com/0o2ZFjo.gif" width="60"> **Phantom** 
+# **Phantom** <img src="https://i.imgur.com/0o2ZFjo.gif" width="100">
 
 [![npm version](https://badge.fury.io/js/%40sidiousvic%2Fphantom.svg)](https://badge.fury.io/js/%40sidiousvic%2Fphantom) ![](https://github.com/sidiousvic/phantom/workflows/build%20+%20test/badge.svg)
 [![install size](https://badgen.net/packagephobia/install/@sidiousvic/phantom)](https://packagephobia.com/result?p=%40sidiousvic%2Fphantom)
