@@ -1,6 +1,6 @@
 {
   "name": "@sidiousvic/phantom",
-  "version": "1.4.992",
+  "version": "1.4.5",
   "description": "A Redux—powered, reactive state DOM renderer",
   "main": "dist/phantom.js",
   "access": "public",
