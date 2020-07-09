@@ -9,6 +9,9 @@
     "dist",
     "types.d.ts"
   ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
     "build": "webpack",
     "postversion": "npm publish",
@@ -52,6 +55,7 @@
     "jest": "^26.0.1",
     "nodemon": "^2.0.4",
     "redux": "^4.0.5",
+    "serialize-javascript": "^4.0.0",
     "style-loader": "^1.2.1",
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.5",
