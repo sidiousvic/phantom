@@ -1,4 +1,4 @@
-# `phantom`
+# Phantom
 
 [![npm version](https://badge.fury.io/js/%40sidiousvic%2Fphantom.svg)](https://badge.fury.io/js/%40sidiousvic%2Fphantom) ![](https://github.com/sidiousvic/phantom/workflows/build%20+%20test/badge.svg)
 [![install size](https://badgen.net/packagephobia/install/@sidiousvic/phantom)](https://packagephobia.com/result?p=%40sidiousvic%2Fphantom)
@@ -9,7 +9,7 @@
 
 ![](https://media.giphy.com/media/gGehV1zB72ijQoSFtF/giphy.gif)
 
-#### `phantom` lets you build state—reactive UIs using raw HTML in functional components.
+#### Phantom lets you build state—reactive UIs using raw HTML in functional components.
 
 ```js
 export default function Pizza(slices) {
@@ -21,7 +21,7 @@ export default function Pizza(slices) {
 }
 ```
 
-#### You update data via Redux, and `phantom` swaps DOM nodes for you.
+#### You update data via Redux, and Phantom swaps DOM nodes for you.
 
 <br>
 
@@ -41,7 +41,7 @@ export default function Pizza(slices) {
 
 ### 1. Create a Redux Store
 
-`phantom` will couple with **Redux** to subscribe DOM rendering to state updates.
+Phantom will couple with **Redux** to subscribe DOM rendering to state updates.
 
 #### Install [Redux](https://redux.js.org/introduction/getting-started) &nbsp;`npm i redux`
 
@@ -72,9 +72,9 @@ export default reduxStore;
 
 </details>
 
-### 2. Write an entry `phantom` component
+### 2. Write an entry Phantom component
 
-`phantom` components are functions that return HTML template strings. This allows you to inject dynamic data (including other components) via template literals `${}`.
+Phantom components are functions that return HTML template strings. This allows you to inject dynamic data (including other components) via template literals `${}`.
 
 We [`leet-html`](https://marketplace.visualstudio.com/items?itemName=EldarGerfanov.leet-html) extension for VSCode is recommended for HTML template highlighting.
 
@@ -93,7 +93,7 @@ function phantomComponent() {
 
 ### 3. Initialize and `phantom.launch()`
 
-Start the `phantom` engine with the `reduxStore` and a `phantomElement`.
+Start the Phantom engine with the `reduxStore` and a `phantomElement`.
 
 <details>
 <summary><b>Show code ↯</b></summary>
@@ -108,7 +108,7 @@ export const { fire, data, launch } = phantom(reduxStore, phantomComponent);
 launch(); // initial render
 ```
 
-`phantom` will expose three key methods: `fire`, `data`, and `launch`.
+Phantom will expose three key methods: `fire`, `data`, and `launch`.
 
 `fire` and `data` are only syntactic pointers to the `reduxStore`'s `dispatch` and `getState` methods respectively. **You are welcome to avoid them and call the store directly for action dispatching and state getting.**
 
@@ -147,6 +147,8 @@ export default function Pizza(slices) {
 | :--------------------------------------------------------------------------- |
 
 
+<br>
+
 | ⚠️ &nbsp; Specify an id attribute for _all_ elements. |
 | :---------------------------------------------------- |
 
@@ -167,30 +169,30 @@ function eatPizza(e) {
 
 # ❓ <a name="faq">FAQ</a>
 
-### Why use `phantom` ?
+### Why use Phantom ?
 
 #### A baby panda dies every time you choose a 1MB+\* industrial—level frontend framework to code a pomodoro or a personal portfolio page. 🐼
 
 <details>
 <summary><b>Show rationale ↯</b></summary>
 
-#### You don't drive to the corner store, but walking is overrated. `phantom` is the bike you need.
+#### You don't drive to the corner store, but walking is overrated. Phantom is the bike you need.
 
 #### 🖍 Declarative
 
-With `phantom`, you can write markup in a declarative way ala JSX using raw HTML strings, and inject dynamic data using template literals—staying fully JS native.
+With Phantom, you can write markup in a declarative way ala JSX using raw HTML strings, and inject dynamic data using template literals—staying fully JS native.
 
 #### 🍕 Component—based
 
-`phantom` lets you divide your UI into components, abstracting markup into composable functions.
+Phantom lets you divide your UI into components, abstracting markup into composable functions.
 
 #### 🧪 Reactive
 
-The `phantom` engine integrates with your Redux store and subscribes to state updates. It swaps nodes when their data changes.
+The Phantom engine integrates with your Redux store and subscribes to state updates. It swaps nodes when their data changes.
 
 #### 👩🏾‍🏭 Closer to the JS _metal_
 
-`phantom` only helps with DOM rendering. Listeners, effects, style manipulation, routing—the _fun_ stuff—is still in your hands. 🙌🏼
+Phantom only helps with DOM rendering. Listeners, effects, style manipulation, routing—the _fun_ stuff—is still in your hands. 🙌🏼
 
 No JSX, no complex API, no syntactic hyperglycemia.
 
@@ -198,12 +200,12 @@ No JSX, no complex API, no syntactic hyperglycemia.
 
 </details>
 
-### Does `phantom` use a virtual DOM?
+### Does Phantom use a virtual DOM?
 
 <details>
 <summary><b>Show answer ↯</b></summary>
 
-When a component's data changes, `phantom` will re—render that node in the DOM by diffing its internal **PseudoDOM**, an object representation of the DOM.
+When a component's data changes, Phantom will re—render that node in the DOM by diffing its internal **PseudoDOM**, an object representation of the DOM.
 
 </details>
 
@@ -212,7 +214,7 @@ When a component's data changes, `phantom` will re—render that node in the DOM
 <details>
 <summary><b>Show answer ↯</b></summary>
 
-In order for your element to be reactive to data changes, `phantom` needs to know which nodes are bound to the updated data. Specifying a `data-phantom="${yourData}"` attribute is a simple way to do that.
+In order for your element to be reactive to data changes, Phantom needs to know which nodes are bound to the updated data. Specifying a `data-phantom="${yourData}"` attribute is a simple way to do that.
 
 </details>
 
@@ -225,7 +227,7 @@ Two reasons, one philosophical, one technical:
 
 **I.** Once you get into the habit, specifying `id`s results in remarkably declarative markup. It encourages you to think about each element's specific function in the UI and also helps to identify it visually.
 
-**II.** `id` is one of the mechanisms that the `phantom` engine uses to detect which nodes to update.
+**II.** `id` is one of the mechanisms that the Phantom engine uses to detect which nodes to update.
 
 </details>
 
@@ -233,7 +235,7 @@ Two reasons, one philosophical, one technical:
 
 # 🔧 <a name="developers">Developers</a>
 
-`phantom` is written in TypeScript and bundled using Webpack.
+Phantom is written in TypeScript and bundled using Webpack.
 
 ## Instructions
 
@@ -266,12 +268,12 @@ There are several [examples](./examples) you can run, each furnished with their 
 
 <a href="https://codesandbox.io/s/phantompizza-668sj" target="_blank"><img style="border-radius: 5px;" src="./examples/pizza/pizza.gif" width="30%"></a> <a href="https://codesandbox.io/s/phantomtodo-n1mfq" target="_blank"><img style="border-radius: 5px;" src="./examples/todo/todo.gif" width="30%"></a> <a href="https://codesandbox.io/s/phantomcalculator-fifgn" target="_blank"><img style="border-radius: 5px;" src="./examples/calculator/calculator.gif" width="30%"></a>
 
-### `phantom` in [CodeSandbox](https://codesandbox.io/s/phantomcalculator-fifgn)
+### Phantom in [CodeSandbox](https://codesandbox.io/s/phantomcalculator-fifgn)
 
 Click on one of the images above to be taken to an online sandbox.
 
-Devs who have cloned `phantom` may use **`npm run example/[example name]`** and navigate to the url that appears in their terminal.
+Devs who have cloned Phantom may use **`npm run example/[example name]`** and navigate to the url that appears in their terminal.
 
 <br>
 
-### <img src="https://media.giphy.com/media/jjBmeA29nxCrm/giphy.gif" width="40px"> `phantom` is made with love and pepperoni by [@sidiousvic](https://www.github.com/sidiousvic)
+### <img src="https://media.giphy.com/media/jjBmeA29nxCrm/giphy.gif" width="40px"> Phantom is made with love and pepperoni by [@sidiousvic](https://www.github.com/sidiousvic)
