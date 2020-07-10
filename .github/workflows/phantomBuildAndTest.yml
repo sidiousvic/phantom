@@ -2,7 +2,7 @@
 # * build the source code
 # * run tests across different versions of node
 
-name: 🔨 Build and Test
+name: Build and Test
 
 on:
   push:
