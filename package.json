@@ -41,9 +41,7 @@
     "functional",
     "component"
   ],
-  "dependencies": {
-    "prettier": "^2.0.5"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
@@ -58,6 +56,7 @@
     "husky": "^4.2.5",
     "jest": "^26.0.1",
     "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "redux": "^4.0.5",
     "serialize-javascript": "^4.0.0",
