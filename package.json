@@ -13,7 +13,7 @@
   "types": "types.d.ts",
   "files": [
     "dist",
-    "types.d.ts"
+    "src/types.d.ts"
   ],
   "repository": {
     "type": "git",
