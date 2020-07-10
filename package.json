@@ -4,11 +4,26 @@
   "description": "A Redux—powered, reactive state DOM renderer",
   "main": "dist/phantom.js",
   "access": "public",
+  "author": "sidiousvic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sidiousvic/phantom/issues"
+  },
+  "homepage": "https://github.com/sidiousvic/phantom#readme",
   "types": "types.d.ts",
   "files": [
     "dist",
     "types.d.ts"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sidiousvic/phantom.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "scripts": {
     "build": "webpack",
     "preversion": "npm run build && npm test",
@@ -18,10 +33,6 @@
     "example/todo": "webpack --config examples/todo/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/todo/webpack.config.js",
     "example/calculator": "webpack --config examples/calculator/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/calculator/webpack.config.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sidiousvic/phantom.git"
-  },
   "keywords": [
     "renderer",
     "frontend",
@@ -30,13 +41,9 @@
     "functional",
     "component"
   ],
-  "author": "sidiousvic",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sidiousvic/phantom/issues"
+  "dependencies": {
+    "prettier": "^2.0.5"
   },
-  "homepage": "https://github.com/sidiousvic/phantom#readme",
-  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
@@ -48,8 +55,10 @@
     "css-loader": "^3.6.0",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
+    "husky": "^4.2.5",
     "jest": "^26.0.1",
     "nodemon": "^2.0.4",
+    "pretty-quick": "^2.0.1",
     "redux": "^4.0.5",
     "serialize-javascript": "^4.0.0",
     "style-loader": "^1.2.1",
