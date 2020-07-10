@@ -68,6 +68,7 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
         for (const [k, v] of Object.entries(attributes)) {
           newNode.setAttribute(k, v as string);
         }
+
         /* 
     Node replacement and sanitization. ↓↓↓
     We swap the obsolete DOMElement's innerHTML with the updated version.
