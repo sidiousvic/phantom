@@ -11,8 +11,8 @@
   ],
   "scripts": {
     "build": "webpack",
-    "preversion": "npm run build && npm test",
-    "postversion": "git push origin --all; git push origin --tags",
+    "pretag": "npm run build && npm test",
+    "posttag": "git push origin --all; git push origin --tags",
     "test": "jest",
     "example/pizza": "webpack --config examples/pizza/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/pizza/webpack.config.js",
     "example/todo": "webpack --config examples/todo/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/todo/webpack.config.js",
