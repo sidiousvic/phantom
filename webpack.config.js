@@ -4,7 +4,7 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   entry: {
-    app: "./phantom.ts",
+    app: "./src/phantom.ts",
   },
   resolve: {
     extensions: [".ts", ".js"],
