@@ -18,6 +18,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - run: git push origin --all; git push origin --tags
       - run: npm ci
       - run: npm test
 
