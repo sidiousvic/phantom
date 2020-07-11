@@ -4,4 +4,4 @@ import { message, danger } from "danger";
 const modifiedMD = danger.git.modified_files.join("🍍 ");
 message("You have modified these files. \n - " + modifiedMD);
 
-// this is another test.
+// this is a test.
