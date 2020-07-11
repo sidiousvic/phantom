@@ -15,8 +15,9 @@ if (baseBranch === "production") {
   );
 
 // INCLUDE CHANGELOG WHEN MODIFYING PHANTOM.TS
-const hasModifiedPhantom = danger.git.modified_files.includes("phantom.ts");
+const hasModifiedPhantom = danger.git.modified_files.includes("src/phantom.ts");
 const includesChangelog = danger.git.modified_files.includes("CHANGELOG.md");
+
 if (hasModifiedPhantom && !includesChangelog) {
   markdown(
     `<h3>Where's CHANGELOG.md?</h3>You've been playing with <code>phantom.ts</code>, so you got to log your changes in CHANGELOG.md! 🐸&nbsp;&nbsp;⚠️<br></br><!--`
