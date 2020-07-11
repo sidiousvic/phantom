@@ -20,7 +20,7 @@ let message = "";
 if (PRAgainstProd && !userIsAdmin) message += YouOpenedAPRAgainstProd;
 else if (PRAgainstDev) message += YouOpenedAPRAgainstDev;
 
-// INCLUDE CHANGELOG
+// CHANGELOG WAS NOT INCLUDED
 if (hasModifiedPhantom && !includesChangelog) {
   message += YouForgotAChangelogFile;
 }
