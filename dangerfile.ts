@@ -4,11 +4,11 @@ const userIsAdmin = danger.github.pr.user.login === "sidiousvic";
 const baseBranch = danger.github.pr.base.ref;
 const PRAgainstProd = baseBranch === "production";
 const PRAgainstDev = baseBranch === "dev";
-const hasModifiedPhantom = danger.git.modified_files.includes("src/phantom.ts");
+const hasModifiedPhantom = danger.git.modified_files.join("").includes("src/");
 const includesChangelog = danger.git.modified_files.includes("CHANGELOG.md");
 
 // MESSAGES
-const YouForgotAChangelogFile = `<h3>📑&nbsp;&nbsp;You forgot CHANGELOG.md!</h3>You've been playing with <code>phantom.ts</code>. Please describe your changes in <code>CHANGELOG.md</code>.<br></br>`;
+const YouForgotAChangelogFile = `<h3>📑&nbsp;&nbsp;You forgot the changelog.</h3>You've modified with Phantom source code. Please describe your changes in <code>CHANGELOG.md</code>.<br></br>`;
 
 const YouOpenedAPRAgainstProd = `<h3>💥&nbsp;&nbsp;Sick human, you have opened a pull request against <code>${baseBranch}</code>!</h3>Hop outta here before I destroy you with my alien frog lasers!<br></br>`;
 
