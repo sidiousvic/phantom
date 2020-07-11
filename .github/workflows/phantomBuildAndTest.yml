@@ -6,9 +6,9 @@ name: build and test
 
 on:
   push:
-    branches: [production, staging]
+    branches: [production]
   pull_request:
-    branches: [production, staging]
+    branches: [production]
 
 jobs:
   build:

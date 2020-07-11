@@ -7,7 +7,8 @@ on:
   release:
     types: [created]
   push:
-    branches: [production]
+    tags:
+    - '*' # trigger only when new versions are pushed
 
 jobs:
   build:
