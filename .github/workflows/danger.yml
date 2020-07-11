@@ -1,7 +1,8 @@
 name: danger
 on:
   pull_request:
-    branches: [production]
+    branches:
+      - "*"
 jobs:
   build:
     name: kermitoid
