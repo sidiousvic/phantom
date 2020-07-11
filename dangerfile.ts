@@ -8,11 +8,11 @@ const hasModifiedPhantom = danger.git.modified_files.join("").includes("src/");
 const includesChangelog = danger.git.modified_files.includes("CHANGELOG.md");
 
 // MESSAGES
-const YouForgotAChangelogFile = `<h3>📑&nbsp;&nbsp;You forgot the changelog.</h3>You've modified <b>Phantom</b> source code. Please add your changes to <code>CHANGELOG.md</code>.<br></br>`;
+const YouForgotAChangelogFile = `<h3>📑&nbsp;&nbsp;You forgot the changelog.</h3>You've modified <b>Phantom</b> source code. Please add your changes to <a href="https://github.com/sidiousvic/phantom/blob/production/README.md">CHANGELOG.md</a>.<br></br>`;
 
 const YouOpenedAPRAgainstProd = `<h3>💥&nbsp;&nbsp;Sick human, you have opened a pull request against <code>${baseBranch}</code>!</h3>Hop outta here before I destroy you with my alien frog lasers!<br></br>`;
 
-const YouOpenedAPRAgainstDev = `<h3>🐸&nbsp;&nbsp;Thanks for your pull request, ribbit!</h3>Go fix yourself a pina colada while the checks pass and someone reviews your code. 🍍<br></br>`;
+const YouOpenedAPRAgainstDev = `<h3>🐸&nbsp;&nbsp;Thanks for your pull request, ribbit!</h3>Go fix yourself a piña colada while the checks pass and someone reviews your code. 🍍<br></br>`;
 
 let message = "";
 
