@@ -25,4 +25,6 @@ if (hasModifiedPhantom && !includesChangelog) {
   message += YouForgotAChangelogFile;
 }
 
+if (!message) message += "<h3>🐸</h3>";
+
 markdown(message + "<!--");
