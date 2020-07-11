@@ -5,7 +5,7 @@ const modifiedMD = danger.git.modified_files
   .map((fileName) => `🍍 ${fileName}`)
   .join("<br>");
 markdown(
-  "**<h3>You have been messing with these files.**</h3> <br>" + modifiedMD
+  "**<h4>You have been messing with these files.**</h4> <br>" + modifiedMD
 );
 
 // this is o test.
