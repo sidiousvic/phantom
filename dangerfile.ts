@@ -1,9 +1,11 @@
-import { markdown, danger } from "danger";
+import { markdown } from "danger";
 
 // show modified files in PR
-const modifiedMD = danger.git.modified_files
-  .map((fileName) => `🍍&nbsp;&nbsp;\`${fileName}\``)
-  .join("<br>");
-markdown("**<h4>You have been messing with these files.**</h4>" + modifiedMD);
+// const modifiedMD = danger.git.modified_files
+//   .map((fileName) => `🍍&nbsp;&nbsp;\`${fileName}\``)
+//   .join("<br>");
+markdown(
+  "**<h4>Sick human, you opened a PR against `**production**`!</h4>Hop outta here before I destroy you with my alien frog lasers!**"
+);
 
-// this is z test.
+// this is c test.
