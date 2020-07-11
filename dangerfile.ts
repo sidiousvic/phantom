@@ -8,7 +8,7 @@ const PRAgainstDev = baseBranch === "dev";
 const includesChangelog = danger.git.modified_files.includes("CHANGELOG.md");
 
 // MESSAGES
-const YouForgotAChangelogFile = `<h3>📑&nbsp;&nbsp;You forgot the changelog.</h3>You've modified <b>Phantom</b> source code. Please add your changes to <a href="https://github.com/sidiousvic/phantom/blob/production/README.md">CHANGELOG.md</a>.<br></br>`;
+const YouForgotAChangelogFile = `<h3>📑&nbsp;&nbsp;Don't forget to update <code>CHANGELOG.md</code>.</h3>You've modified <b>Phantom</b>. Please add your changes to <a href="https://github.com/sidiousvic/phantom/blob/production/README.md">CHANGELOG.md</a>.<br></br>`;
 
 const YouOpenedAPRAgainstProd = `<h3>💥&nbsp;&nbsp;Sick human, you have opened a pull request against <code>${baseBranch}</code>!</h3>Hop outta here before I destroy you with my alien frog lasers!<br></br>`;
 
