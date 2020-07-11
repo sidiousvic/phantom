@@ -2,7 +2,7 @@
 # * build the source code
 # * run tests across different versions of node
 
-name: build and test
+name: build
 
 on:
   push:
@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    name: production
+    name: phantom
     runs-on: ubuntu-latest
 
     strategy:
