@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to [Phantom](https://github.com/sidiousvic/phantom/pull/27) will be documented in this file.
+All notable changes to [Phantom](https://github.com/sidiousvic/phantom) will be documented in this file.
 
 ## [Unreleased]
 
@@ -10,7 +10,8 @@ All notable changes to [Phantom](https://github.com/sidiousvic/phantom/pull/27) 
 
 ### Added
 
-- Danger JS for automated PR messaging. Kermitoid is implemented, and will respond to certain events.
+- Danger JS for automated PR messaging.
+- 🐸 Kermitoid is implemented, and will respond to certain PR events.
 - Added `CHANGELOG.md`.
 
 ## [v1.4.94] — 2020.07.08
