@@ -11,7 +11,7 @@ All notable changes to [Phantom](https://github.com/sidiousvic/phantom) will be 
 ### Added
 
 - Danger JS for automated PR messaging.
-- 🐸 Kermitoid is implemented, and will respond to certain PR events.
+- Kermitoid is implemented, and will respond to certain PR events. 🐸 
 - Added `CHANGELOG.md`.
 
 ## [v1.4.94] — 2020.07.08
