@@ -1,0 +1,33 @@
+# Changelog
+
+All notable changes to [Phantom](https://github.com/sidiousvic/phantom/pull/27) will be documented in this file.
+
+## [Unreleased]
+
+- Added Danger JS for automated PR messaging. Kermitoid is implemented.
+
+## [v1.4.94] — 2020.07.08
+
+### Changed
+
+- Implemented `throw DOMException` for dangerous nodes in `phantom.ts` and `sanitizer.ts`
+- Added test coverage for `<iframe>` elements
+
+## [v1.4.7] — 2020.07.07
+
+### Added
+
+- `sanitizer/` dir
+- allowlists for attrs, tags and css
+- `sanitizer.ts`
+
+### Changed
+
+- `phantom.ts` instances of `innerHTML` injection were reinforced with the sanitizer. HMTL is now sanitized before rendering to DOM.
+
+[unreleased]: https://github.com/sidiousvic/phantom/compare/v1.5.38...HEAD
+[v1.4.7]: https://github.com/sidiousvic/phantom/compare/v1.4.6...v1.4.7
+[v1.4.94]: https://github.com/sidiousvic/phantom/compare/v1.4.93...v1.4.94
+
+<sub>The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).</sub>
