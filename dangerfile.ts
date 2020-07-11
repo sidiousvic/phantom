@@ -8,7 +8,6 @@ switch (baseBranch) {
     markdown(
       `<h3>Sick human, you have opened a PR against <code>${baseBranch}</code>!</h3>Hop outta here before I destroy you with my alien frog lasers! 🐸&nbsp;&nbsp;💥`
     );
-    break;
   case "dev":
     // when opening a PR against the dev branch
     markdown(
@@ -16,4 +15,4 @@ switch (baseBranch) {
     );
 }
 
-// test
+// testx
