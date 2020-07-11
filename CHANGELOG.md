@@ -4,7 +4,14 @@ All notable changes to [Phantom](https://github.com/sidiousvic/phantom/pull/27) 
 
 ## [Unreleased]
 
-- Added Danger JS for automated PR messaging. Kermitoid is implemented.
+👻
+
+## [v1.5.0] — 2020.07.11
+
+### Added
+
+- Danger JS for automated PR messaging. Kermitoid is implemented, and will respond to certain events.
+- Added `CHANGELOG.md`.
 
 ## [v1.4.94] — 2020.07.08
 
@@ -18,16 +25,19 @@ All notable changes to [Phantom](https://github.com/sidiousvic/phantom/pull/27) 
 ### Added
 
 - `sanitizer/` dir
-- allowlists for attrs, tags and css
-- `sanitizer.ts`
+- `sanitizer/sanitizer.ts`
+- `sanitizer/allowlist.ts` allowlists for attrs, tags and css
+
 
 ### Changed
 
-- `phantom.ts` instances of `innerHTML` injection were reinforced with the sanitizer. HMTL is now sanitized before rendering to DOM.
+- In `phantom.ts` instances of `innerHTML` injection were reinforced with the sanitizer. HMTL is now sanitized before rendering to DOM.
 
 [unreleased]: https://github.com/sidiousvic/phantom/compare/v1.5.38...HEAD
-[v1.4.7]: https://github.com/sidiousvic/phantom/compare/v1.4.6...v1.4.7
+[v1.5.0]: https://github.com/sidiousvic/phantom/compare/v1.4.94...v1.5.0
 [v1.4.94]: https://github.com/sidiousvic/phantom/compare/v1.4.93...v1.4.94
+[v1.4.7]: https://github.com/sidiousvic/phantom/compare/v1.4.6...v1.4.7
+
 
 <sub>The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).</sub>
