@@ -8,7 +8,7 @@ on:
     types: [created]
   push:
     tags:
-    - '*' # trigger only when new versions are pushed
+      - "*" # trigger only when new versions are pushed
 
 jobs:
   build:
