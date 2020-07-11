@@ -18,7 +18,7 @@
     "noUnusedParameters": true, // *** report errors on unused parameters ***
     "experimentalDecorators": true, // *** enables experimental support for ES decorators ***
     "incremental": true, // *** enable incremental compilation by reading/writing information from prior compilations to a file on disk ***
-    "noFallthroughCasesInSwitch": true // *** report errors for fallthrough cases in switch statement ***
+    "noFallthroughCasesInSwitch": false // *** report errors for fallthrough cases in switch statement ***
   },
   "typeRoots": ["@types", "node_modules/@types"],
   "include": ["**/*"],
