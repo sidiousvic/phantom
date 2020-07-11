@@ -4,11 +4,12 @@ on:
     branches: [production]
 jobs:
   build:
+    name: kermitoid
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@production
+      - uses: actions/checkout@master
       - name: Use Node.js 12.x
-        uses: actions/setup-node@production
+        uses: actions/setup-node@master
         with:
           node-version: 12.x
       - name: npm install
