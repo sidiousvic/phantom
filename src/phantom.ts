@@ -164,5 +164,3 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
 }
 
 export default PHANTOM;
-
-// ci test
