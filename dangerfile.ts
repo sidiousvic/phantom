@@ -20,11 +20,11 @@ const YouOpenedAPRAgainstDev =
   `<h3>Gee thanks for your pull request, ribbit!</h3>Go fix yourself a pina colada while the checks pass and someone reviews your code. 🐸&nbsp;&nbsp;🍍<br></br>` +
   "<!--";
 
-let message = "<h2>🐸</h2>";
+let message = "<h3>🐸</h3>";
 
 // BRANCH PROTECTION
-if (PRAgainstProd && !userIsAdmin) message = YouOpenedAPRAgainstProd;
-else if (PRAgainstDev) message = YouOpenedAPRAgainstDev;
+if (PRAgainstProd && !userIsAdmin) message += YouOpenedAPRAgainstProd;
+else if (PRAgainstDev) message += YouOpenedAPRAgainstDev;
 
 // INCLUDE CHANGELOG WHEN MODIFYING PHANTOM.TS
 if (hasModifiedPhantom && !includesChangelog) {
