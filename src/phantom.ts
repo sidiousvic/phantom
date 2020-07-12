@@ -164,3 +164,5 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
 }
 
 export default PHANTOM;
+
+// fix bug
