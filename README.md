@@ -75,7 +75,7 @@ export default reduxStore;
 
 Phantom components are functions that return HTML template strings. This allows you to inject dynamic data (including other components) via template literals `${}`.
 
-We [`leet-html`](https://marketplace.visualstudio.com/items?itemName=EldarGerfanov.leet-html) extension for VSCode is recommended for HTML template highlighting.
+We recommend the [`leet-html`](https://marketplace.visualstudio.com/items?itemName=EldarGerfanov.leet-html) VSCode extension for HTML template highlighting.
 
 <details>
 <summary><b>Show code ↯</b></summary>
