@@ -252,7 +252,7 @@ Phantom is written and built using Typescript.
 generates a static build in `dist/` .
 
 **`npm run test`**
-runs the tests located in `__tests__/`.
+runs the tests located in `spec`.
 
 **`npm run example/[example name]`**
 runs an example app from `examples/` via `webpack-dev-server`.
