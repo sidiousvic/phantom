@@ -25,7 +25,7 @@
     }
   },
   "scripts": {
-    "build": "webpack",
+    "build": "tsc",
     "preversion": "npm run build && npm test",
     "postversion": "git push origin --all; git push origin --tags",
     "test": "jest",
