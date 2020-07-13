@@ -13,15 +13,15 @@
     "noEmit": false,
     "outDir": "dist",
     "downlevelIteration": true,
-    "sourceMap": true,
-    "declaration": false,
+    "sourceMap": false,
+    "declaration": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "experimentalDecorators": true,
-    "incremental": true,
+    "incremental": false,
     "noFallthroughCasesInSwitch": false
   },
   "typeRoots": ["@types", "node_modules/@types"],
-  "include": ["src/**/*"],
+  "include": ["src"],
   "exclude": ["node_modules", "spec"]
 }
