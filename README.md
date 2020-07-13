@@ -234,7 +234,7 @@ Two reasons, one philosophical, one technical:
 
 # 🔧 <a name="developers">Developers</a>
 
-Phantom is written in TypeScript and bundled using Webpack.
+Phantom is written and built using Typescript.
 
 ## Instructions
 
