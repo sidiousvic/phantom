@@ -12,8 +12,7 @@
   "homepage": "https://github.com/sidiousvic/phantom#readme",
   "types": "dist/types.d.ts",
   "files": [
-    "dist",
-    "dist/types.d.ts"
+    "dist/phantom.js"
   ],
   "repository": {
     "type": "git",
