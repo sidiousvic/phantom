@@ -234,7 +234,7 @@ Two reasons, one philosophical, one technical:
 
 # 🔧 <a name="developers">Developers</a>
 
-Phantom is written in TypeScript and bundled using Webpack.
+Phantom is written and built using Typescript.
 
 ## Instructions
 
@@ -252,7 +252,7 @@ Phantom is written in TypeScript and bundled using Webpack.
 generates a static build in `dist/` .
 
 **`npm run test`**
-runs the tests located in `__tests__/`.
+runs the tests located in `spec`.
 
 **`npm run example/[example name]`**
 runs an example app from `examples/` via `webpack-dev-server`.

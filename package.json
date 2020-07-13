@@ -10,10 +10,10 @@
     "url": "https://github.com/sidiousvic/phantom/issues"
   },
   "homepage": "https://github.com/sidiousvic/phantom#readme",
-  "types": "types.d.ts",
+  "types": "dist/types.d.ts",
   "files": [
     "dist",
-    "src/types.d.ts"
+    "dist/types.d.ts"
   ],
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
     }
   },
   "scripts": {
-    "build": "webpack",
+    "build": "tsc",
     "preversion": "npm run build && npm test",
     "postversion": "git push origin --all; git push origin --tags",
     "test": "jest",

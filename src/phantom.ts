@@ -1,4 +1,4 @@
-import sanitizeHTML from "../sanitizer/sanitizer";
+import sanitizeHTML from "./sanitizer/sanitizer";
 
 function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
   let pseudoDOM: pseudoDOM = {
