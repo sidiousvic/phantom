@@ -1,4 +1,4 @@
-import phantom from "../dist/phantom";
+import phantom from "../src/phantom";
 import reduxStore from "./utils/reduxStore";
 
 /*
