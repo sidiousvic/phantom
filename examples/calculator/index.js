@@ -1,4 +1,4 @@
-import phantom from "../../phantom.ts";
+import phantom from "../../src/phantom";
 import "./styles.css";
 import {
   enterDigit,
