@@ -4,7 +4,6 @@ const userIsAdmin = danger.github.pr.user.login === "sidiousvic";
 const baseBranch = danger.github.pr.base.ref;
 const PRAgainstProd = baseBranch === "production";
 const PRAgainstDev = baseBranch === "dev";
-// const hasModifiedPhantom = danger.git.modified_files.join("").includes("src/");
 const includesChangelog = danger.git.modified_files.includes("CHANGELOG.md");
 
 // MESSAGES
@@ -20,8 +19,8 @@ let message = "";
 if (PRAgainstProd && !userIsAdmin) message += YouOpenedAPRAgainstProd;
 else if (PRAgainstDev) message += YouOpenedAPRAgainstDev;
 
-// CHANGELOG WAS NOT INCLUDED
-if (!includesChangelog) {
+// CHANGELOG WAS NOT INCLUDED WHEN UPDATING PROD
+if (PRAgainstProd && !includesChangelog) {
   message += YouForgotAChangelogFile;
 }
 
