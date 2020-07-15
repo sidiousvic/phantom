@@ -1,6 +1,4 @@
-### Thank you for contributing to [Phantom](https://github.com/sidiousvic/phantom)!
-
-👻 Please review our [contribution guidelines](../CONTRIBUTING.md).
+### Thank you for contributing to [Phantom <img src="https://thumbs.gfycat.com/RequiredCriminalKitten-max-1mb.gif" width="40px">](https://github.com/sidiousvic/phantom)_!_
 
 ### Description
 
