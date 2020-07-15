@@ -1,5 +1,7 @@
-### Thank you for contributing to [Phantom <img src="https://thumbs.gfycat.com/RequiredCriminalKitten-max-1mb.gif" width="40px">](https://github.com/sidiousvic/phantom)_!_
+### Thank you for contributing to [Phantom <img src="https://thumbs.gfycat.com/RequiredCriminalKitten-max-1mb.gif" width="25px">](https://github.com/sidiousvic/phantom)_!_
 
-### Description
+```
+What changes did you make? Please describe them here.
 
-<sup>_What changes did you make?_ **⚠️ DO NOT LEAVE EMPTY** </sup>
+Don't shy away from images, lists, and other supporting media!
+```
