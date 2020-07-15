@@ -7,6 +7,15 @@ const PRAgainstDev = baseBranch === "dev";
 const hasModifiedPhantom = danger.git.modified_files.join("").includes("src/");
 const includesChangelog = danger.git.modified_files.includes("CHANGELOG.md");
 
+console.table({
+  userIsAdmin,
+  baseBranch,
+  PRAgainstProd,
+  PRAgainstDev,
+  hasModifiedPhantom,
+  includesChangelog,
+});
+
 // MESSAGES
 const YouForgotAChangelogFile = `<h3>📑&nbsp;&nbsp;You forgot to update the <code>CHANGELOG</code>!</h3>You've modified <b>Phantom</b>. Please record your changes to <a href="https://github.com/sidiousvic/phantom/blob/production/README.md"><code>CHANGELOG.md</code></a>.<br></br>`;
 
