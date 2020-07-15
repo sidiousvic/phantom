@@ -1,11 +1,11 @@
-name: danger
+name: kermitoid
 on:
   pull_request:
     branches:
       - "*"
 jobs:
   build:
-    name: kermitoid
+    name: danger
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
