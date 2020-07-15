@@ -1,6 +1,4 @@
-# Contributing to [Phantom](https://github.com/sidiousvic/phantom)
-
-<img src="https://thumbs.gfycat.com/RequiredCriminalKitten-max-1mb.gif" width="40px">
+# Contributing to [Phantom](https://github.com/sidiousvic/phantom) <img src="https://thumbs.gfycat.com/RequiredCriminalKitten-max-1mb.gif" width="40px">
 
 **Please follow the workflow below to ensure your contribution is reviewed.**
 
