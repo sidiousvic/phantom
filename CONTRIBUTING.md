@@ -16,7 +16,7 @@ Before contributing code, be sure to associate your work with an [existing issue
 
 `5` **Push** your work to `your-branch`, not your `master`.
 
-`git push --set-upstream your-branch`
+`git push -u your-branch`
 
 `6` **Pull request** against Phantom's `dev` branch for your changes to be reviewed
 
