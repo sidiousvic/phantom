@@ -2,7 +2,7 @@
 
 **Please follow the workflow below to ensure your contribution is reviewed.**
 
-Before contributing code, be sure to associate your work with an [existing issue, or create your own](https://github.com/sidiousvic/phantom/labels).
+Before contributing code, be sure to associate your work with an [existing issue, or create your own!](https://github.com/sidiousvic/phantom/labels)
 
 ### Instructions
 
