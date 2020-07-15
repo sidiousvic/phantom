@@ -1,5 +1,7 @@
 # Changelog
 
+// test
+
 All notable changes to [Phantom](https://github.com/sidiousvic/phantom) will be documented in this file.
 
 ## [Unreleased]
