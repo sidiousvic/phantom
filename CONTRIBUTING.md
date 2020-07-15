@@ -6,10 +6,10 @@ Before contributing code, be sure to associate your work with an [existing issue
 
 ### Instructions
 
-`0` **Read** the [Code of Conduct](./CODEOFCONDUCT.md)
-`1` **Fork** the repo on GitHub
-`2` **Clone** the project to your machine
-`3` **Install** dependencies with `npm i`
+`0` **Read** the [Code of Conduct](./CODEOFCONDUCT.md)  
+`1` **Fork** the repo on GitHub  
+`2` **Clone** the project to your machine  
+`3` **Install** dependencies with `npm i`  
 `4` **Commit** your updates to a `new-feature` or `bug-fix` branch.
 
 `git checkout -b your-branch`
@@ -30,5 +30,24 @@ Before contributing code, be sure to associate your work with an [existing issue
 
 - [ ] Please [label your issue](https://github.com/sidiousvic/phantom/labels) properly.
 - [ ] Please complete the issue template.
+
+### Checks
+
+The following checks are currently running in the Phantom repository.
+
+#### [Build](https://github.com/sidiousvic/phantom/blob/production/.github/workflows/phantomBuildAndTest.yml) <sup>`on:push:branches:[production]`</sup>
+
+Builds the package using Typescript, runs tests from `src/`.
+
+#### [Publish](https://github.com/sidiousvic/phantom/blob/production/.github/workflows/publishNpmGitHubPackage.yml) <sup>`on:release:types:[created]`</sup>
+
+Publishes the `@sidiousvic/phantom` package to npm and GitHub Packages.
+
+#### [Kermitoid](https://github.com/sidiousvic/phantom/blob/production/.github/workflows/danger.yml) <sup>`on:pull_request:branches:*`</sup>
+
+Runs `Kermitoid`, our resident amphibian bot, on PRs for the Phantom repo. Only for Phantom collaborators.
+<br>
+<br>
+<br>
 
 ### Thanks for contributing! 👻
