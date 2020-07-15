@@ -20,12 +20,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged --no-restage"
+      "pre-commit": "pretty-quick --staged --no-restage",
+      "pre-push": "npm run build && npm run danger:prepush"
     }
   },
   "scripts": {
     "build": "tsc",
     "preversion": "npm run build && npm test",
+    "danger:prepush": "yarn danger local --dangerfile dangerfile.ts --base dev",
     "postversion": "git push origin --all; git push origin --tags",
     "test": "jest",
     "example/pizza": "webpack --config examples/pizza/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/pizza/webpack.config.js",
