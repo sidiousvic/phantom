@@ -236,16 +236,6 @@ Two reasons, one philosophical, one technical:
 
 Phantom is written and built using Typescript.
 
-## Instructions
-
-0.  **Read** the [Code of Conduct](./CODEOFCONDUCT.md)
-1.  **Fork** the repo on GitHub
-2.  **Clone** the project to your machine
-3.  **Install** dependencies with `npm i`
-4.  **Commit** updates to your own branch
-5.  **Push** your work to your fork
-6.  **Pull request** for your changes to be reviewed
-
 ## Scripts
 
 **`npm run build`**
