@@ -17,7 +17,7 @@ console.table({
 });
 
 // MESSAGES
-const YouForgotAChangelogFile = `<h3>📑&nbsp;&nbsp;You forgot to update the <code>CHANGELOG</code>!</h3>You've modified <b>Phantom</b>. Please record your changes to <a href="https://github.com/sidiousvic/phantom/blob/production/README.md"><code>CHANGELOG.md</code></a>.<br></br>`;
+const YouForgotAChangelogFile = `<h3>📑&nbsp;&nbsp;I can't find the <code>CHANGELOG</code>!</h3>You've modified <b>Phantom</b>. Please record your changes to <a href="https://github.com/sidiousvic/phantom/blob/production/README.md"><code>CHANGELOG.md</code></a>.<br></br>`;
 
 const YouOpenedAPRAgainstProd = `<h3>💥&nbsp;&nbsp;Sick human, you have opened a pull request against <code>${baseBranch}</code>!</h3>Hop outta here before I destroy you with my alien frog lasers!<br></br>`;
 
