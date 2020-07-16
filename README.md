@@ -145,8 +145,7 @@ export default function Pizza(slices) {
 ```
 
 | ⚠️ &nbsp; Always bind _stateful_ elements with the `data-phantom` attribute. |
-| :--------------------------------------------------------------------------- |
-
+| :--------------------------------------------------------------------------- |  
 
 | ⚠️ &nbsp; Specify an id attribute for _all_ elements. |
 | :---------------------------------------------------- |
