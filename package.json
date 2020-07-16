@@ -1,7 +1,7 @@
 {
   "name": "@sidiousvic/phantom",
   "version": "1.7.7",
-  "description": "A Redux—powered, reactive state DOM renderer",
+  "description": "A state—reactive DOM rendering engine for building UIs. 👻",
   "main": "dist/phantom.js",
   "access": "public",
   "author": "sidiousvic",
@@ -36,9 +36,11 @@
     "renderer",
     "frontend",
     "framework",
-    "redux",
-    "functional",
-    "component"
+    "UI",
+    "state management",
+    "components",
+    "DOM",
+    "functional"
   ],
   "dependencies": {},
   "devDependencies": {
@@ -58,7 +60,6 @@
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
-    "redux": "^4.0.5",
     "serialize-javascript": "^4.0.0",
     "style-loader": "^1.2.1",
     "ts-loader": "^7.0.5",
