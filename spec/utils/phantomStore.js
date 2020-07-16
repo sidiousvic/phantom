@@ -1,4 +1,5 @@
-import { createStore } from "redux";
+import { createPhantomStore } from "../../dist/phantom";
+
 const data = {
   title: "VIC SIDIOUS",
 };
@@ -14,6 +15,6 @@ function reducer(state = data, action) {
   }
 }
 
-const store = createStore(reducer);
+const store = createPhantomStore(reducer);
 
 export default store;

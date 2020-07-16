@@ -1,12 +1,12 @@
 import phantom from "../src/phantom";
-import reduxStore from "./utils/reduxStore";
+import phantomStore from "./utils/phantomStore";
 
 /*
  * Test Phantom's HTML sanitization vs XSS injection
  */
 
 test("<img src='X' onerror='alert(0)'> is sanitized", () => {
-  const { launch } = phantom(reduxStore, phantomDOM);
+  const { launch } = phantom(phantomStore, phantomDOM);
 
   function phantomDOM() {
     return `
@@ -21,7 +21,7 @@ test("<img src='X' onerror='alert(0)'> is sanitized", () => {
 });
 
 test("Attempting to render <iframe> throws an DOMException", () => {
-  const { launch } = phantom(reduxStore, phantomDOM);
+  const { launch } = phantom(phantomStore, phantomDOM);
 
   function phantomDOM() {
     return `

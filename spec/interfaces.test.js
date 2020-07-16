@@ -1,28 +1,28 @@
 import phantom from "../src/phantom";
-import reduxStore from "./utils/reduxStore";
+import phantomStore from "./utils/phantomStore";
 
 /*
  * Test the Phantom engine's interfaces
  */
 
-test("the 'fire' interface points to the reduxStore dispatch", () => {
-  const { fire } = phantom(reduxStore, phantomElement);
+test("the 'fire' interface points to the phantomStore dispatch", () => {
+  const { fire } = phantom(phantomStore, phantomElement);
   function phantomElement() {
     return ``;
   }
-  expect(fire).toBe(reduxStore.dispatch);
+  expect(fire).toBe(phantomStore.dispatch);
 });
 
-test("the 'data' interface points to the reduxStore getState", () => {
-  const { data } = phantom(reduxStore, phantomElement);
+test("the 'data' interface points to the phantomStore getState", () => {
+  const { data } = phantom(phantomStore, phantomElement);
   function phantomElement() {
     return ``;
   }
-  expect(data).toBe(reduxStore.getState);
+  expect(data).toBe(phantomStore.getState);
 });
 
 test("the 'launch' interface returns an HTMLDivElement instance", () => {
-  const { launch } = phantom(reduxStore, phantomElement);
+  const { launch } = phantom(phantomStore, phantomElement);
   function phantomElement() {
     return ``;
   }
