@@ -1,7 +1,7 @@
-import sanitizeHTML from "./sanitizer/sanitizer";
+import phantomExorciser from "./exorciser/exorciser";
 
-function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
-  let pseudoDOM: pseudoDOM = {
+function PHANTOM(phantomStore: any, XDOM: XDOMFunction) {
+  let phantomDOM: PhantomDOM = {
     test: {
       tagName: "div",
       attributes: { id: "PHANTOM" },
@@ -19,7 +19,7 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
       body?.appendChild(PHANTOM);
     }
     try {
-      const DOM = renderPseudoElement();
+      const DOM = renderPhantomElement();
       swapElement(DOM, document.querySelector("#PHANTOM"));
       return DOM;
     } catch (errorNode) {
@@ -33,36 +33,39 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
     return `
     <div id="PHANTOM">
       ${XDOM()}
-    </div>
+    </div> 
     `;
   }
 
-  function renderPseudoElement(
-    pseudoElement = transmuteHTMLtoPseudoElement(coalescePhantomDOM())
+  function renderPhantomElement(
+    phantomElement = transmuteHTMLtoPhantomElement(coalescePhantomDOM())
   ) {
-    const { tagName, attributes, innerHTML, children } = pseudoElement;
-    let $children: PseudoElement[] = [];
+    const { tagName, attributes, innerHTML, children } = phantomElement;
+    let phantomElementChildren: PhantomElement[] = [];
 
     if (children && children.length) {
-      ($children as unknown) = Array.prototype.map.call(children, (child) => {
-        renderPseudoElement(child);
-      });
+      (phantomElementChildren as unknown) = Array.prototype.map.call(
+        children,
+        (child) => {
+          renderPhantomElement(child);
+        }
+      );
     }
 
     let DOMElement;
 
     /* 
     DOM diffing ahead. ↓↓↓
-    We look at the current pseudoDOM, and for every pseudoDOMNode, if
-    * the id of the pseudoDOMNode and current pseudoElement match, and
+    We look at the current phantomDOM, and for every phantomDOMNode, if
+    * the id of the phantomDOMNode and current phantomElement match, and
     * the nodes' dataset (data-phantom) are different (their data has changed),
     we swap the nodes.
     */
-    Object.values(pseudoDOM).map((pseudoDOMNode: any) => {
+    Object.values(phantomDOM).map((phantomDOMNode: any) => {
       if (
-        pseudoDOMNode.attributes.id === pseudoElement.attributes.id &&
-        JSON.stringify(pseudoDOMNode.dataset) !==
-          JSON.stringify(pseudoElement.dataset)
+        phantomDOMNode.attributes.id === phantomElement.attributes.id &&
+        JSON.stringify(phantomDOMNode.dataset) !==
+          JSON.stringify(phantomElement.dataset)
       ) {
         let newNode = document.createElement(tagName);
         for (const [k, v] of Object.entries(attributes)) {
@@ -76,7 +79,7 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
     * if dangerous, log an error and abort rendering
     */
         try {
-          newNode.innerHTML = sanitizeHTML(innerHTML);
+          newNode.innerHTML = phantomExorciser(innerHTML);
           let targetNode = document.getElementById(attributes.id);
           swapElement(newNode, targetNode);
           DOMElement = newNode;
@@ -86,7 +89,7 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
       }
     });
 
-    pseudoDOM[attributes.id] = pseudoElement;
+    phantomDOM[attributes.id] = phantomElement;
     DOMElement = document.createElement(tagName);
 
     for (const [k, v] of Object.entries(attributes)) {
@@ -101,14 +104,14 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
     * if dangerous, log an error and abort rendering
     */
     try {
-      DOMElement.innerHTML = sanitizeHTML(innerHTML);
+      DOMElement.innerHTML = phantomExorciser(innerHTML);
       return DOMElement;
     } catch (dangerousNodeError) {
       throw new Error(dangerousNodeError);
     }
   }
 
-  function transmuteHTMLtoPseudoElement(html: string) {
+  function transmuteHTMLtoPhantomElement(html: string) {
     if (typeof html !== "string") html = (html as HTMLElement).outerHTML;
     // TODO: find a better solution to mapped elements ↓↓↓
     html = html.replace(/>,/g, ">"); // ← remove commas from mapped element arrays
@@ -124,12 +127,15 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
       outerHTML,
     } = $el as HTMLElement;
 
-    let $children: PseudoElement[] = [];
+    let phantomElementChildren: PhantomElement[] = [];
 
     if (children && children.length) {
-      ($children as unknown) = Array.prototype.map.call(children, (child) => {
-        return transmuteHTMLtoPseudoElement(child);
-      });
+      (phantomElementChildren as unknown) = Array.prototype.map.call(
+        children,
+        (child) => {
+          return transmuteHTMLtoPhantomElement(child);
+        }
+      );
     }
     return {
       tagName,
@@ -138,7 +144,7 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
         class: classList,
       },
       dataset,
-      children: $children,
+      children: phantomElementChildren,
       innerHTML,
       outerHTML,
     };
@@ -152,14 +158,30 @@ function PHANTOM(reduxStore: any, XDOM: XDOMFunction) {
     return swapIn;
   }
 
-  reduxStore.subscribe(() => {
-    renderPseudoElement();
+  phantomStore.subscribe(() => {
+    renderPhantomElement();
   });
 
   return {
-    fire: reduxStore.dispatch,
-    data: reduxStore.getState,
+    fire: phantomStore.fire,
+    data: phantomStore.data,
     launch: launchDOM,
+  };
+}
+
+export function createPhantomStore(reducer: PhantomReducer) {
+  let state = reducer(undefined, {});
+  const subscriptions: Subscription[] = [];
+
+  return {
+    data: () => state,
+    fire: (action: PhantomAction) => {
+      state = reducer(state, action);
+      subscriptions.forEach((subscription) => subscription());
+    },
+    subscribe: (subscription: Subscription) => {
+      subscriptions.push(subscription);
+    },
   };
 }
 
