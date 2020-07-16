@@ -6,9 +6,9 @@ name: build
 
 on:
   push:
-    branches: [production]
+    branches: [production, dev]
   pull_request:
-    branches: [production]
+    branches: [production, dev]
 
 jobs:
   build:
