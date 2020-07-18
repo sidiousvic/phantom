@@ -20,7 +20,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged --no-restage"
+      "pre-commit": "pretty-quick --staged --no-restage",
+      "pre-push": "npm run test"
     }
   },
   "scripts": {
