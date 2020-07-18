@@ -21,10 +21,10 @@ test("the 'data' interface points to the phantomStore getState", () => {
   expect(data).toBe(phantomStore.data);
 });
 
-test("the 'launch' interface returns an HTMLDivElement instance", () => {
-  const { launch } = phantom(phantomStore, phantomElement);
+test("the 'appear' interface returns an HTMLDivElement instance", () => {
+  const { appear } = phantom(phantomStore, phantomElement);
   function phantomElement() {
     return ``;
   }
-  expect(launch() instanceof HTMLDivElement).toBe(true);
+  expect(appear() instanceof HTMLDivElement).toBe(true);
 });

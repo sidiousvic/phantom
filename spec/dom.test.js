@@ -7,7 +7,7 @@ import phantomStore from "./utils/phantomStore";
 
 test("The PHANTOM element is rendered and wraps around the application", () => {
   // init phantomElement
-  const { launch } = phantom(phantomStore, phantomElement);
+  const { appear } = phantom(phantomStore, phantomElement);
   function phantomElement() {
     return `
       <div>
@@ -15,7 +15,7 @@ test("The PHANTOM element is rendered and wraps around the application", () => {
       </div>
       `;
   }
-  launch();
+  appear();
 
   const PHANTOMEl = document.body.firstChild;
 
@@ -24,7 +24,7 @@ test("The PHANTOM element is rendered and wraps around the application", () => {
 
 test("DOM is updated after firing a state change", () => {
   // init phantomElement
-  const { fire, data, launch } = phantom(phantomStore, phantomElement);
+  const { fire, data, appear } = phantom(phantomStore, phantomElement);
   function phantomElement() {
     const { title } = data();
     return `
@@ -33,7 +33,7 @@ test("DOM is updated after firing a state change", () => {
       </div>
       `;
   }
-  launch();
+  appear();
 
   // add listener
   document.addEventListener("click", justDoShit);
@@ -53,7 +53,7 @@ test("DOM is updated after firing a state change", () => {
 
 test("PHANTOM DOM is properly rendered", () => {
   // init phantomElement
-  const { fire, data, launch } = phantom(phantomStore, phantomElement);
+  const { fire, data, appear } = phantom(phantomStore, phantomElement);
   function phantomElement() {
     const { title } = data();
     return `
@@ -63,7 +63,7 @@ test("PHANTOM DOM is properly rendered", () => {
       `;
   }
 
-  launch();
+  appear();
 
   // add listener
   document.addEventListener("click", justDoShit);

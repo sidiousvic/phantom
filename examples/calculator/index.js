@@ -15,10 +15,10 @@ import phantomStore from "./phantomStore";
 const listen = document.addEventListener;
 
 // initialize phantom
-export const { fire, data, launch } = phantom(phantomStore, phantomComponent);
+export const { fire, data, appear } = phantom(phantomStore, phantomComponent);
 
 // initial render
-launch();
+appear();
 
 // components
 function phantomComponent() {
