@@ -1,4 +1,4 @@
-import { createPhantomStore } from "../../dist/phantom";
+import { createPhantomStore } from "../../src/phantom";
 
 const data = {
   title: "VIC SIDIOUS",
