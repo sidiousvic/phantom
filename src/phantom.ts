@@ -165,7 +165,7 @@ function PHANTOM(phantomStore: any, XDOM: XDOMFunction) {
   return {
     fire: phantomStore.fire,
     data: phantomStore.data,
-    appear: launchDOM,
+    poop: launchDOM,
   };
 }
 
