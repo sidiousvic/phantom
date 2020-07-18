@@ -1,6 +1,5 @@
-import { createStore } from "redux";
+import { createPhantomStore } from "../../dist/phantom";
 
-// redux store
 const initialState = {
   list: [
     { id: 0, text: "Walk the dog", done: false },
@@ -44,5 +43,5 @@ function reducer(state = initialState, action) {
   }
 }
 
-const reduxStore = createStore(reducer);
-export default reduxStore;
+const phantomStore = createPhantomStore(reducer);
+export default phantomStore;

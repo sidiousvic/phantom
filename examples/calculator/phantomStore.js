@@ -1,6 +1,5 @@
-import { createStore } from "redux";
+import { createPhantomStore } from "../../dist/phantom";
 
-// redux store
 const initialState = {
   screen: ["0"],
   n1: null,
@@ -72,5 +71,5 @@ function reducer(state = initialState, action) {
   }
 }
 
-const reduxStore = createStore(reducer);
-export default reduxStore;
+const phantomStore = createPhantomStore(reducer);
+export default phantomStore;

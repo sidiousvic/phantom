@@ -2,7 +2,7 @@
 
 ![](https://github.com/sidiousvic/phantom/workflows/build/badge.svg) [![npm version](https://badge.fury.io/js/%40sidiousvic%2Fphantom.svg)](https://badge.fury.io/js/%40sidiousvic%2Fphantom) [![install size](https://badgen.net/packagephobia/install/@sidiousvic/phantom)](https://packagephobia.com/result?p=%40sidiousvic%2Fphantom)
 
-### A Redux powered, state—reactive DOM rendering engine. 👻
+### A state—reactive DOM rendering engine for building UIs. 👻
 
 ### `npm i @sidiousvic/phantom`
 
@@ -20,7 +20,7 @@ export default function Pizza(slices) {
 }
 ```
 
-#### You update data via Redux, and Phantom swaps DOM nodes for you.
+#### You update data via actions, and Phantom swaps DOM nodes for you.
 
 <br>
 
@@ -38,17 +38,15 @@ export default function Pizza(slices) {
 
 # 🚀 <a name="get-launched">Get launched</a>
 
-### 1. Create a Redux Store
+### 1. Create a Phantom store
 
-Phantom will couple with **Redux** to subscribe DOM rendering to state updates.
-
-#### Install [Redux](https://redux.js.org/introduction/getting-started) &nbsp;`npm i redux`
+Phantom will integrate with a Redux—like store to subscribe DOM rendering to state updates. Use `createPhantomStore` to produce your store.
 
 <details>
 <summary><b>Show code ↯</b></summary>
 
 ```js
-import { createStore } from "redux";
+import { createPhantomStore } from "@sidiousvic/phantom";
 
 const data = {
   slices: ["🍕", "🍕", "🍕"],
@@ -64,9 +62,9 @@ function reducer(state = data, action) {
   }
 }
 
-const store = createStore(reducer);
+const store = createPhantomStore(reducer);
 
-export default reduxStore;
+export default phantomStore;
 ```
 
 </details>
@@ -90,28 +88,32 @@ function phantomComponent() {
 
 </details>
 
-### 3. Initialize and `phantom.launch()`
+### 3. Initialize Phantom and `appear()`
 
-Start the Phantom engine with the `reduxStore` and a `phantomElement`.
+Start the Phantom engine with the `phantomStore` and a `phantomElement`.
 
 <details>
 <summary><b>Show code ↯</b></summary>
 
 ```js
 import phantom from "@sidiousvic/phantom";
-import reduxStore from "./reduxStore.js";
+import phantomStore from "./phantomStore.js";
 import Pizza from "./ui/Pizza.js";
 
-export const { fire, data, launch } = phantom(reduxStore, phantomComponent);
+const { fire, data, appear } = phantom(phantomStore, phantomComponent);
 
-launch(); // initial render
+appear(); // 3, 2, 1... 🚀 initial render!
 ```
 
-Phantom will expose three key methods: `fire`, `data`, and `launch`.
+Phantom will then expose the methods `fire`, `data` and `appear`.
 
-`fire` and `data` are only syntactic pointers to the `reduxStore`'s `dispatch` and `getState` methods respectively. **You are welcome to avoid them and call the store directly for action dispatching and state getting.**
+`fire` and `data` are pointers to the phantomStore. You're welcome to call them from the store directly.
 
-`launch` will perform the initial DOM render on call.
+`fire` takes an action and _fires_ it through the store.
+
+`data` returns the current in—store _data_.
+
+`appear` will perform the initial DOM render on call, your UI's first _apparition_. 👻
 
 </details>
 
@@ -119,7 +121,7 @@ Phantom will expose three key methods: `fire`, `data`, and `launch`.
 
 # 🍕 <a name="manage-state">Manage state</a>
 
-### Use `data()` to read state from the Redux store.
+### Use `data` to read state from the Phantom store.
 
 ```js
 function phantomComponent() {
@@ -145,20 +147,19 @@ export default function Pizza(slices) {
 | ⚠️ &nbsp; Always bind _stateful_ elements with the `data-phantom` attribute. |
 | :--------------------------------------------------------------------------- |
 
-<br>
 
 | ⚠️ &nbsp; Specify an id attribute for _all_ elements. |
 | :---------------------------------------------------- |
 
 
-### Use `fire()` to fire an action and trigger a state update + re—render.
+### Use `fire` to dispatch an action and trigger a state update + re—render.
 
 ```js
 document.addEventListener("click", eatPizza);
 
 function eatPizza(e) {
   if (e.target.id === "slices-h1") {
-    fire({ type: "EAT_PIZZA" }); // fire an action to the store
+    fire({ type: "EAT_PIZZA" });
   }
 }
 ```
@@ -186,7 +187,7 @@ Phantom lets you divide your UI into components, abstracting markup into composa
 
 #### 🧪 Reactive
 
-The Phantom engine integrates with your Redux store and subscribes to state updates. It swaps nodes when their data changes.
+The Phantom engine integrates with a store and subscribes to state updates. It swaps nodes when their data changes.
 
 #### 👩🏾‍🏭 Closer to the JS _metal_
 

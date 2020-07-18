@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { createPhantomStore } from "../../dist/phantom";
 
 const initialState = {
   slices: [
@@ -33,5 +33,5 @@ function reducer(state = initialState, action) {
   }
 }
 
-const reduxStore = createStore(reducer);
-export default reduxStore;
+const phantomStore = createPhantomStore(reducer);
+export default phantomStore;

@@ -1,12 +1,12 @@
 /*
  * This is an adaptation of Alok Menghrajani's HTML sanitizer, by sidiousvic.
  https://www.quaxio.com/html_white_listed_sanitizer/
- * Takes a potentiallyDangerousHTML string, returns a sanitized node.
+ * Takes a potentiallyDangerousHTML string, returns a sanitized (exorcised) node.
  */
 
 import { allowedTags, allowedCSS } from "./allowed";
 
-function sanitizeNode(node: HTMLElement) {
+function exorciseNode(node: HTMLElement) {
   const doc = document.implementation.createHTMLDocument();
 
   const nodeName = node.nodeName.toLowerCase();
@@ -24,7 +24,7 @@ function sanitizeNode(node: HTMLElement) {
     throw new Error(nodeName);
   }
 
-  const sanitizedNode = doc.createElement(nodeName);
+  const exorcisedNode = doc.createElement(nodeName);
 
   // re-inject allowed attributes
   for (
@@ -35,7 +35,7 @@ function sanitizeNode(node: HTMLElement) {
     const attributeName = node.attributes.item(nodeAttributes)?.name as string;
     if (allowedTags[nodeName].hasOwnProperty(attributeName)) {
       const sanitizer = allowedTags[nodeName][attributeName];
-      sanitizedNode.setAttribute(
+      exorcisedNode.setAttribute(
         attributeName,
         sanitizer(node.getAttribute(attributeName)) as string
       );
@@ -44,22 +44,22 @@ function sanitizeNode(node: HTMLElement) {
 
   // re-inject allowed css
   for (let css in allowedCSS) {
-    sanitizedNode.style[allowedCSS[css]] = node.style[allowedCSS[css]];
+    exorcisedNode.style[allowedCSS[css]] = node.style[allowedCSS[css]];
   }
 
   // recursively sanitize childNodes
   while (node.childNodes.length > 0) {
     const child = node.removeChild(node.childNodes[0]);
-    sanitizedNode.appendChild(sanitizeNode(child as HTMLElement));
+    exorcisedNode.appendChild(exorciseNode(child as HTMLElement));
   }
-  return sanitizedNode;
+  return exorcisedNode;
 }
 
-export default function sanitizeHTML(potentiallyDangerousHTML: string) {
+export default function phantomExorciser(potentiallyDangerousHTML: string) {
   const doc = document.implementation.createHTMLDocument();
 
   const div = doc.createElement("div");
   div.innerHTML = potentiallyDangerousHTML;
 
-  return (sanitizeNode(div) as HTMLElement).innerHTML;
+  return (exorciseNode(div) as HTMLElement).innerHTML;
 }

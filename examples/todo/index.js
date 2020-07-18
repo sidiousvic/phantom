@@ -1,6 +1,6 @@
 import phantom from "../../dist/phantom";
 import "./styles.css";
-import reduxStore from "./redux";
+import phantomStore from "./phantomStore";
 import {
   toggle,
   scaleDown,
@@ -14,10 +14,10 @@ import {
 const listen = document.addEventListener;
 
 // initialize phantom
-export const { fire, data, launch } = phantom(reduxStore, phantomComponent);
+export const { fire, data, appear } = phantom(phantomStore, phantomComponent);
 
 // initial render
-launch();
+appear();
 
 setListFromLocalStorage();
 
