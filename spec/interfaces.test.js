@@ -10,7 +10,7 @@ test("the 'fire' interface points to the phantomStore dispatch", () => {
   function phantomElement() {
     return ``;
   }
-  expect(fire).toBe(phantomStore.dispatch);
+  expect(fire).toBe(phantomStore.fire);
 });
 
 test("the 'data' interface points to the phantomStore getState", () => {
@@ -18,7 +18,7 @@ test("the 'data' interface points to the phantomStore getState", () => {
   function phantomElement() {
     return ``;
   }
-  expect(data).toBe(phantomStore.getState);
+  expect(data).toBe(phantomStore.data);
 });
 
 test("the 'launch' interface returns an HTMLDivElement instance", () => {
