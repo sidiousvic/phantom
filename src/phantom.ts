@@ -1,4 +1,5 @@
-import phantomExorciser from "./exorciser/exorciser";
+import { XDOMFunction, PhantomDOM, PhantomElement } from "./types/phantomDOM";
+import phantomExorciser from "./phantomExorciser";
 
 function PHANTOM(phantomStore: any, XDOM: XDOMFunction) {
   let phantomDOM: PhantomDOM = {
@@ -166,22 +167,6 @@ function PHANTOM(phantomStore: any, XDOM: XDOMFunction) {
     fire: phantomStore.fire,
     data: phantomStore.data,
     appear: launchDOM,
-  };
-}
-
-export function createPhantomStore(reducer: PhantomReducer) {
-  let state = reducer(undefined, {});
-  const subscriptions: Subscription[] = [];
-
-  return {
-    data: () => state,
-    fire: (action: PhantomAction) => {
-      state = reducer(state, action);
-      subscriptions.forEach((subscription) => subscription());
-    },
-    subscribe: (subscription: Subscription) => {
-      subscriptions.push(subscription);
-    },
   };
 }
 
