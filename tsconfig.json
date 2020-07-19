@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "es2015",
+    "module": "esnext",
     "lib": ["dom", "es2017"],
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -14,7 +14,6 @@
     "sourceMap": true,
     "declaration": true,
     "declarationDir": "./types",
-    "baseUrl": "../..",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "experimentalDecorators": true,
