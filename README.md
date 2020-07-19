@@ -8,7 +8,7 @@
 
 <img src="https://i.imgur.com/0o2ZFjo.gif" width="300">
 
-#### Phantom lets you build state—reactive UIs using raw HTML in functional components.
+#### Phantom lets you build state—reactive UIs using raw HTML strings ejected from functions.
 
 ```js
 export default function Pizza(slices) {
@@ -20,7 +20,11 @@ export default function Pizza(slices) {
 }
 ```
 
-#### You update data via actions, and Phantom swaps DOM nodes for you.
+#### You update state via actions, and Phantom swaps DOM nodes for you.
+
+```js
+phantomStore.fire({ type: "EAT_PIZZA" });
+```
 
 <br>
 
@@ -170,7 +174,7 @@ function eatPizza(e) {
 
 ### Why use Phantom ?
 
-#### A baby panda dies every time you choose a 1MB+\* industrial—level frontend framework to code a pomodoro or a personal portfolio page. 🐼
+#### A baby panda dies every time you choose a 1MB+\* industrial—level frontend package to code a pomodoro clock or a personal portfolio page. 🐼
 
 <details>
 <summary><b>Show rationale ↯</b></summary>
@@ -222,11 +226,20 @@ In order for your element to be reactive to data changes, Phantom needs to know 
 <details>
 <summary><b>Show answer ↯</b></summary>
 
-Two reasons, one philosophical, one technical:
+Two reasons, one practical, one technical:
 
-**I.** Once you get into the habit, specifying `id`s results in remarkably declarative markup. It encourages you to think about each element's specific function in the UI and also helps to identify it visually.
+**I.** Once you get into the habit, specifying `id`s results in remarkably declarative markup. It encourages you to think about each element's specific function in the UI and also helps to easily identify it visually in the DOM tree.
 
 **II.** `id` is one of the mechanisms that the Phantom engine uses to detect which nodes to update.
+
+</details>
+
+### Is Phantom XSS secure?
+
+<details>
+<summary><b>Show answer ↯</b></summary>
+
+**Yes.** Phantom uses its internal [`phantomExorciser`](./src/exorciser) to sanitize HTML strings before injecting them into the DOM.
 
 </details>
 
@@ -238,16 +251,22 @@ Phantom is written and built using Typescript.
 
 ## Scripts
 
-**`npm run build`**
-generates a static build in `dist/` .
+- [x] **`npm run build`**  
+       generates a static build in `dist/` .
 
-**`npm run test`**
-runs the tests located in `spec`.
+- [x] **`npm run test`**  
+       runs the tests located in `spec`.
 
-**`npm run example/[example name]`**
-runs an example app from `examples/` via `webpack-dev-server`.
+- [x] **`npm run example/<example-name>`**  
+       runs an example app from `examples/`
 
 ### If you find a 🐞, please **[file an issue](https://github.com/sidiousvic/phantom/issues)**.
+
+## Contributing
+
+Phantom is maintained by [@sidiousvic](https://github.com/sidiousvic). He is always happy to welcome eager contributors to the project.
+
+#### [Contribution Guidelines](./CONTRIBUTING.md)
 
 <br>
 
