@@ -1,7 +1,8 @@
+// functions
 import createPhantomStore from "./createPhantomStore";
 import phantom from "./phantom";
 
-// @types
+// types
 // phantomDOM
 export { PhantomElement, XDOMFunction, PhantomDOM } from "./types/phantomDOM";
 
