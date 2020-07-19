@@ -6,15 +6,17 @@ All notable changes to [Phantom](https://github.com/sidiousvic/phantom) will be 
 
 👻
 
-### Upcoming Features
+## [v2.0.0] — 2020.07.19
 
-- [ ] Implemented phantomStore, annihilated Redux from Phantom
+## Features
+
+- [x] Implemented [phantomStore](https://github.com/sidiousvic/phantom#manage-state), annihilated Redux from Phantom
 
 ### APIs
 
-- [ ] `createStore (from redux)` > `createPhantomStore (from phantom)`
-- [ ] `sanitizeHTML` > `phantomExorciser`
-- [ ] `phantom.launch` > `phantom.appear`
+- [x] `createStore (from redux)` > `createPhantomStore (from phantom)`
+- [x] `sanitizeHTML` > `phantomExorciser`
+- [x] `phantom.launch` > `phantom.appear`
 
 ## [v1.7.7] — 2020.07.13
 
@@ -50,6 +52,7 @@ All notable changes to [Phantom](https://github.com/sidiousvic/phantom) will be 
 - [x] In `phantom.ts` instances of `innerHTML` injection were reinforced with the sanitizer. HMTL is now sanitized before rendering to DOM.
 
 [unreleased]: https://github.com/sidiousvic/phantom/compare/v1.6.0...HEAD
+[v2.0.0]: https://github.com/sidiousvic/phantom/compare/v1.7.7...v2.0.0
 [v1.7.7]: https://github.com/sidiousvic/phantom/compare/v1.6.0...v1.7.7
 [v1.6.0]: https://github.com/sidiousvic/phantom/compare/v1.4.94...v1.6.0
 [v1.4.94]: https://github.com/sidiousvic/phantom/compare/v1.4.93...v1.4.94
