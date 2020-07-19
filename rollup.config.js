@@ -26,7 +26,7 @@ export default [
   // CommonJS
   {
     input: "src/index.ts",
-    output: { file: "dist/lib/phantom.js", format: "cjs", indent: false },
+    output: { file: "lib/phantom.js", format: "cjs", indent: false },
     external: makeExternalPredicate([
       ...Object.keys(pkg.dependencies || {}),
       ...Object.keys(pkg.peerDependencies || {}),
