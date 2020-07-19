@@ -38,7 +38,8 @@ export default function exorciseNode(node: HTMLElement) {
 
   // re-inject allowed css
   for (let css in allowedCSS) {
-    exorcisedNode.style[allowedCSS[css]] = node.style[allowedCSS[css]];
+    exorcisedNode.style[Number(allowedCSS[css])] =
+      node.style[Number(allowedCSS[css])];
   }
 
   // recursively sanitize childNodes
