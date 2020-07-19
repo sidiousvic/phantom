@@ -1,4 +1,4 @@
-import phantom from "../../dist/phantom";
+import phantom from "../../dist/phantom.js";
 import "./styles.css";
 import phantomStore from "./phantomStore";
 import {
