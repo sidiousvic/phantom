@@ -1,12 +1,12 @@
 import phantom from "../src/phantom";
-import reduxStore from "./utils/reduxStore";
+import phantomStore from "./utils/phantomStore";
 
 /*
  * Test Phantom's HTML sanitization vs XSS injection
  */
 
 test("<img src='X' onerror='alert(0)'> is sanitized", () => {
-  const { launch } = phantom(reduxStore, phantomDOM);
+  const { appear } = phantom(phantomStore, phantomDOM);
 
   function phantomDOM() {
     return `
@@ -15,13 +15,13 @@ test("<img src='X' onerror='alert(0)'> is sanitized", () => {
   }
 
   const sanitized = `<img src="X">`;
-  const shouldBeSanitized = launch().innerHTML.trim();
+  const shouldBeSanitized = appear().innerHTML.trim();
 
   expect(shouldBeSanitized).toBe(sanitized);
 });
 
 test("Attempting to render <iframe> throws an DOMException", () => {
-  const { launch } = phantom(reduxStore, phantomDOM);
+  const { appear } = phantom(phantomStore, phantomDOM);
 
   function phantomDOM() {
     return `
@@ -29,5 +29,5 @@ test("Attempting to render <iframe> throws an DOMException", () => {
     `; // iframe is a forbidden tag
   }
 
-  expect(launch).toThrowError(DOMException);
+  expect(appear).toThrowError(DOMException);
 });

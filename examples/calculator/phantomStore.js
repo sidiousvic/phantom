@@ -1,6 +1,5 @@
-import { createStore } from "redux";
+import { createPhantomStore } from "../../dist/phantom";
 
-// redux store
 const initialState = {
   screen: ["0"],
   n1: null,
@@ -24,13 +23,23 @@ function reducer(state = initialState, action) {
       };
     case "REGISTER_N1":
       let n1 = parseFloat([...state.screen].join(""));
-      return {
-        ...state,
-        screen: [state.screen.join(""), action.operator],
-        n1,
-        operator: action.operator,
-        state: "calculating",
-      };
+      if (action.operator === "equals") {
+        return {
+          ...state,
+          screen: [state.screen],
+          n1,
+          operator: action.operator,
+          state: "calculating",
+        };
+      } else {
+        return {
+          ...state,
+          screen: [state.screen.join(""), action.operator],
+          n1,
+          operator: action.operator,
+          state: "calculating",
+        };
+      }
     case "CALCULATE":
       let result = [];
       console.log(state.screen.join("").split());
@@ -50,6 +59,9 @@ function reducer(state = initialState, action) {
         case "*":
           result = state.n1 * n2;
           break;
+        case "equals":
+          result = state.n1;
+          break;
       }
       return { ...state, screen: [result], n1: null, state: "calculated" };
     case "RESET":
@@ -59,5 +71,5 @@ function reducer(state = initialState, action) {
   }
 }
 
-const reduxStore = createStore(reducer);
-export default reduxStore;
+const phantomStore = createPhantomStore(reducer);
+export default phantomStore;

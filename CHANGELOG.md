@@ -6,40 +6,53 @@ All notable changes to [Phantom](https://github.com/sidiousvic/phantom) will be 
 
 👻
 
+## [v2.0.0] — 2020.07.19
+
+## Features
+
+- [x] Implemented [phantomStore](https://github.com/sidiousvic/phantom#manage-state), annihilated Redux from Phantom
+
+### APIs
+
+- [x] `createStore (from redux)` > `createPhantomStore (from phantom)`
+- [x] `sanitizeHTML` > `phantomExorciser`
+- [x] `phantom.launch` > `phantom.appear`
+
 ## [v1.7.7] — 2020.07.13
 
 ### Changed
 
-- Replaced Webpack for build, building with Typescript.
+- [x] Replaced Webpack for build, building with Typescript.
 
 ## [v1.6.0] — 2020.07.11
 
 ### Added
 
-- Danger JS for automated PR messaging.
-- Kermitoid is implemented, and will respond to certain PR events. 🐸
-- Added `CHANGELOG.md`.
+- [x] Danger JS for automated PR messaging.
+- [x] Kermitoid is implemented, and will respond to certain PR events. 🐸
+- [x] Added `CHANGELOG.md`.
 
 ## [v1.4.94] — 2020.07.08
 
 ### Changed
 
-- Implemented `throw DOMException` for dangerous nodes in `phantom.ts` and `sanitizer.ts`
-- Added test coverage for `<iframe>` elements
+- [x] Implemented `throw DOMException` for dangerous nodes in `phantom.ts` and `sanitizer.ts`
+- [x] Added test coverage for `<iframe>` elements
 
 ## [v1.4.7] — 2020.07.07
 
 ### Added
 
-- `sanitizer/` dir
-- `sanitizer/sanitizer.ts`
-- `sanitizer/allowlist.ts` allowlists for attrs, tags and css
+- [x] `sanitizer/` dir
+- [x] `sanitizer/sanitizer.ts`
+- [x] `sanitizer/allowlist.ts` allowlists for attrs, tags and css
 
 ### Changed
 
-- In `phantom.ts` instances of `innerHTML` injection were reinforced with the sanitizer. HMTL is now sanitized before rendering to DOM.
+- [x] In `phantom.ts` instances of `innerHTML` injection were reinforced with the sanitizer. HMTL is now sanitized before rendering to DOM.
 
 [unreleased]: https://github.com/sidiousvic/phantom/compare/v1.6.0...HEAD
+[v2.0.0]: https://github.com/sidiousvic/phantom/compare/v1.7.7...v2.0.0
 [v1.7.7]: https://github.com/sidiousvic/phantom/compare/v1.6.0...v1.7.7
 [v1.6.0]: https://github.com/sidiousvic/phantom/compare/v1.4.94...v1.6.0
 [v1.4.94]: https://github.com/sidiousvic/phantom/compare/v1.4.93...v1.4.94
