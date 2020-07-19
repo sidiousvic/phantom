@@ -1,4 +1,4 @@
-import { createPhantomStore } from "../../dist/phantom.js";
+import { createPhantomStore } from "../../lib/phantom";
 
 const initialState = {
   slices: [
