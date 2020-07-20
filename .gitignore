@@ -1,12 +1,13 @@
 node_modules
 
+#npm
 .npmrc
 
+# pack
 dist
 lib
-es
 /types
 
+# vscode
 .vscode
-
 .DS_Store
