@@ -1,14 +1,17 @@
 import { PhantomStore } from "./types/phantomStore";
-import { Phantom } from "./types/phantom";
-
 import {
-  PhantomDOMFunction,
+  Phantom,
+  PhantomComponent,
   PhantomDOM,
   PhantomElement,
-} from "./types/phantomDOM";
+} from "./types/phantom";
+
 import phantomExorciser from "./phantomExorciser";
 
-function PHANTOM(phantomStore: PhantomStore, PhantomDOM: PhantomDOMFunction) {
+function PHANTOM(
+  phantomStore: PhantomStore,
+  phantomComponent: PhantomComponent
+) {
   let phantomDOM: PhantomDOM = {
     test: {
       tagName: "div",
@@ -40,7 +43,7 @@ function PHANTOM(phantomStore: PhantomStore, PhantomDOM: PhantomDOMFunction) {
   function coalescePhantomDOM() {
     return `
     <div id="PHANTOM">
-      ${PhantomDOM()}
+      ${phantomComponent()}
     </div> 
     `;
   }
