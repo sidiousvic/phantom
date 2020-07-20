@@ -6,6 +6,12 @@ All notable changes to [Phantom](https://github.com/sidiousvic/phantom) will be 
 
 👻
 
+## [v2.1.0] — 2020.07.20
+
+- [x] Using `rollup` for builds.
+- [x] Package exports type definitions
+- [x] [Added tsc types test](./spec/types.test.ts)
+
 ## [v2.0.0] — 2020.07.19
 
 ## Features
