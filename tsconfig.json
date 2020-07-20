@@ -1,27 +1,27 @@
 {
   "compilerOptions": {
-    "target": "es2019",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["dom", "es2017"],
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "noEmit": false,
-    "outDir": "dist",
     "downlevelIteration": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "declaration": true,
+    "rootDir": "src",
+    "declarationDir": "./types",
+    "baseUrl": "../",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "experimentalDecorators": true,
+    "removeComments": false,
     "incremental": false,
     "noFallthroughCasesInSwitch": false
   },
-  "typeRoots": ["@types", "node_modules/@types"],
-  "include": ["src"],
-  "exclude": ["node_modules", "spec"]
+  "include": ["src/**/*"]
 }

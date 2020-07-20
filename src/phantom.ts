@@ -1,6 +1,10 @@
-import phantomExorciser from "./exorciser/exorciser";
+import { PhantomStore } from "./types/phantomStore";
+import { Phantom } from "./types/phantom";
 
-function PHANTOM(phantomStore: any, XDOM: XDOMFunction) {
+import { XDOMFunction, PhantomDOM, PhantomElement } from "./types/phantomDOM";
+import phantomExorciser from "./phantomExorciser";
+
+function PHANTOM(phantomStore: PhantomStore, XDOM: XDOMFunction) {
   let phantomDOM: PhantomDOM = {
     test: {
       tagName: "div",
@@ -169,20 +173,4 @@ function PHANTOM(phantomStore: any, XDOM: XDOMFunction) {
   };
 }
 
-export function createPhantomStore(reducer: PhantomReducer) {
-  let state = reducer(undefined, {});
-  const subscriptions: Subscription[] = [];
-
-  return {
-    data: () => state,
-    fire: (action: PhantomAction) => {
-      state = reducer(state, action);
-      subscriptions.forEach((subscription) => subscription());
-    },
-    subscribe: (subscription: Subscription) => {
-      subscriptions.push(subscription);
-    },
-  };
-}
-
-export default PHANTOM;
+export default PHANTOM as Phantom;

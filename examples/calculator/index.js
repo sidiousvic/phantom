@@ -1,4 +1,4 @@
-import phantom from "../../dist/phantom";
+import phantom from "../../lib/phantom";
 import "./styles.css";
 import {
   enterDigit,
