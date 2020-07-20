@@ -6,6 +6,10 @@ All notable changes to [Phantom](https://github.com/sidiousvic/phantom) will be 
 
 👻
 
+## [v2.1.2] — 2020.07.21
+
+- [x] Upgraded, renamed, reorganized types from `types/phantomDOM` into `types/phantom`
+
 ## [v2.1.1] — 2020.07.20
 
 - [x] Fixed exporting/importing bug.
@@ -61,7 +65,8 @@ All notable changes to [Phantom](https://github.com/sidiousvic/phantom) will be 
 
 - [x] In `phantom.ts` instances of `innerHTML` injection were reinforced with the sanitizer. HMTL is now sanitized before rendering to DOM.
 
-[unreleased]: https://github.com/sidiousvic/phantom/compare/v2.1.0...HEAD
+[unreleased]: https://github.com/sidiousvic/phantom/compare/v2.1.2...HEAD
+[v2.1.2]: https://github.com/sidiousvic/phantom/compare/v2.1.1...v2.1.2
 [v2.1.1]: https://github.com/sidiousvic/phantom/compare/v2.1.0...v2.1.1
 [v2.1.0]: https://github.com/sidiousvic/phantom/compare/v2.0.0...v2.1.0
 [v2.0.0]: https://github.com/sidiousvic/phantom/compare/v1.7.7...v2.0.0
