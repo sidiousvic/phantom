@@ -31,7 +31,7 @@ export default [
       file: "lib/phantom.js",
       format: "cjs",
       indent: false,
-      exports: "default",
+      exports: "auto",
     },
     external: makeExternalPredicate([
       ...Object.keys(pkg.dependencies || {}),
@@ -59,6 +59,7 @@ export default [
       file: "es/phantom.js",
       format: "es",
       indent: false,
+      exports: "auto",
     },
     external: makeExternalPredicate([
       ...Object.keys(pkg.dependencies || {}),
