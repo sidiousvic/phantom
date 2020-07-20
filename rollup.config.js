@@ -29,7 +29,7 @@ export default [
       file: "lib/phantom.js",
       format: "cjs",
       indent: false,
-      exports: "auto",
+      exports: "named",
     },
     external: makeExternalPredicate([
       ...Object.keys(pkg.dependencies || {}),
@@ -122,6 +122,7 @@ export default [
       format: "umd",
       name: "Phantom",
       indent: false,
+      exports: "named",
     },
     plugins: [
       nodeResolve({
@@ -148,6 +149,7 @@ export default [
       format: "umd",
       name: "Phantom",
       indent: false,
+      exports: "named",
     },
     plugins: [
       nodeResolve({

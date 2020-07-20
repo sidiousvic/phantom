@@ -1,6 +1,5 @@
 import { PhantomAction } from "./../src/types/phantomStore";
-import phantom from "../src/phantom";
-import createPhantomStore from "../src/createPhantomStore";
+import phantom, { createPhantomStore } from "../src/index";
 
 const initialData = {
   0: "0",

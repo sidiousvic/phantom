@@ -1,7 +1,5 @@
-// functions
-import createPhantomStore from "./createPhantomStore";
 import phantom from "./phantom";
-
+import createPhantomStore from "./createPhantomStore";
 // types
 export {
   PhantomElement,
@@ -14,6 +12,5 @@ export {
   Subscription,
 } from "./types/phantomStore"; // phantomStore
 
-// API exports
-phantom.createPhantomStore = createPhantomStore;
+export { createPhantomStore };
 export default phantom;
