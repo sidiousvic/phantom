@@ -33,7 +33,7 @@
   "scripts": {
     "clean": "rimraf lib dist es types",
     "build": "rollup -c",
-    "preversion": "npm run build && npm test",
+    "preversion": "npm test",
     "postversion": "git push origin --all; git push origin --tags",
     "test": "jest && tsc spec/types.test.ts --noEmit",
     "example/pizza": "webpack --config examples/pizza/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/pizza/webpack.config.js",
