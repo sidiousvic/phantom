@@ -11,5 +11,4 @@ export {
 } from "./types/phantomStore"; // phantomStore
 
 // API exports
-export { createPhantomStore };
-export default phantom;
+export { phantom, createPhantomStore };
