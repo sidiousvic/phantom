@@ -27,7 +27,12 @@ export default [
   // CommonJS
   {
     input: "src/index.ts",
-    output: { file: "lib/phantom.js", format: "cjs", indent: false },
+    output: {
+      file: "lib/phantom.js",
+      format: "cjs",
+      indent: false,
+      exports: "default",
+    },
     external: makeExternalPredicate([
       ...Object.keys(pkg.dependencies || {}),
       ...Object.keys(pkg.peerDependencies || {}),
@@ -50,7 +55,11 @@ export default [
   // ES
   {
     input: "src/index.ts",
-    output: { file: "es/phantom.js", format: "es", indent: false },
+    output: {
+      file: "es/phantom.js",
+      format: "es",
+      indent: false,
+    },
     external: makeExternalPredicate([
       ...Object.keys(pkg.dependencies || {}),
       ...Object.keys(pkg.peerDependencies || {}),
