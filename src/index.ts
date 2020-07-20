@@ -3,7 +3,11 @@ import createPhantomStore from "./createPhantomStore";
 import phantom from "./phantom";
 
 // types
-export { PhantomElement, XDOMFunction, PhantomDOM } from "./types/phantomDOM"; // phantomDOM
+export {
+  PhantomElement,
+  PhantomDOMFunction,
+  PhantomDOM,
+} from "./types/phantomDOM"; // phantomDOM
 export {
   PhantomAction,
   PhantomReducer,

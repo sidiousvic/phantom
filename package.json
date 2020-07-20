@@ -1,6 +1,6 @@
 {
   "name": "@sidiousvic/phantom",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A state—reactive DOM rendering engine for building UIs. 👻",
   "main": "lib/phantom.js",
   "unpkg": "dist/phantom.js",
@@ -35,7 +35,7 @@
     "build": "rollup -c",
     "preversion": "npm run build && npm test",
     "postversion": "git push origin --all; git push origin --tags",
-    "test": "jest",
+    "test": "jest && tsc spec/types.test.ts --noEmit",
     "example/pizza": "webpack --config examples/pizza/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/pizza/webpack.config.js",
     "example/todo": "webpack --config examples/todo/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/todo/webpack.config.js",
     "example/calculator": "webpack --config examples/calculator/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/calculator/webpack.config.js",
@@ -51,16 +51,16 @@
     "DOM",
     "functional"
   ],
-  "dependencies": {
-    "@babel/runtime": "^7.10.5"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/plugin-transform-runtime": "^7.10.5",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-typescript": "^7.10.1",
+    "@babel/runtime": "^7.10.5",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "@rollup/plugin-replace": "^2.3.3",
+    "@types/jest": "^26.0.5",
     "@types/node": "^14.0.13",
     "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
