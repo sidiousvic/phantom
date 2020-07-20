@@ -8,8 +8,6 @@ import pkg from "./package.json";
 
 const extensions = [".ts"];
 
-const noDeclarationFiles = { compilerOptions: { declaration: false } };
-
 const babelRuntimeVersion = pkg.dependencies["@babel/runtime"].replace(
   /^[^0-9]*/,
   ""
@@ -69,7 +67,9 @@ export default [
       nodeResolve({
         extensions,
       }),
-      typescript({ tsconfigOverride: noDeclarationFiles }),
+      typescript({
+        tsconfigOverride: { compilerOptions: { declaration: false } },
+      }),
       babel({
         extensions,
         plugins: [
@@ -94,7 +94,11 @@ export default [
       replace({
         "process.env.NODE_ENV": JSON.stringify("production"),
       }),
-      typescript({ tsconfigOverride: noDeclarationFiles }),
+      typescript({
+        tsconfigOverride: {
+          compilerOptions: { declaration: false, target: "es2019" },
+        },
+      }),
       babel({
         extensions,
         exclude: "node_modules/**",
@@ -123,7 +127,9 @@ export default [
       nodeResolve({
         extensions,
       }),
-      typescript({ tsconfigOverride: noDeclarationFiles }),
+      typescript({
+        tsconfigOverride: { compilerOptions: { declaration: false } },
+      }),
       babel({
         extensions,
         exclude: "node_modules/**",
@@ -147,7 +153,11 @@ export default [
       nodeResolve({
         extensions,
       }),
-      typescript({ tsconfigOverride: noDeclarationFiles }),
+      typescript({
+        tsconfigOverride: {
+          compilerOptions: { declaration: false, target: "es2019" },
+        },
+      }),
       babel({
         extensions,
         exclude: "node_modules/**",
