@@ -1,4 +1,4 @@
-import phantom from "../src/phantom";
+import phantom from "../lib/phantom";
 import phantomStore from "./utils/phantomStore";
 
 /*

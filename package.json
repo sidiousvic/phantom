@@ -1,8 +1,11 @@
 {
   "name": "@sidiousvic/phantom",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A state—reactive DOM rendering engine for building UIs. 👻",
-  "main": "dist/phantom.js",
+  "main": "lib/phantom.js",
+  "unpkg": "dist/phantom.js",
+  "module": "es/phantom.js",
+  "types": "types/index.d.ts",
   "access": "public",
   "author": "sidiousvic",
   "license": "MIT",
@@ -10,9 +13,12 @@
     "url": "https://github.com/sidiousvic/phantom/issues"
   },
   "homepage": "https://github.com/sidiousvic/phantom#readme",
-  "types": "dist/types.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "lib",
+    "es",
+    "src",
+    "types"
   ],
   "repository": {
     "type": "git",
@@ -25,13 +31,15 @@
     }
   },
   "scripts": {
-    "build": "tsc",
+    "clean": "rimraf lib dist es types",
+    "build": "rollup -c",
     "preversion": "npm run build && npm test",
     "postversion": "git push origin --all; git push origin --tags",
-    "test": "jest",
+    "test": "jest && tsc spec/types.test.ts --noEmit",
     "example/pizza": "webpack --config examples/pizza/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/pizza/webpack.config.js",
     "example/todo": "webpack --config examples/todo/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/todo/webpack.config.js",
-    "example/calculator": "webpack --config examples/calculator/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/calculator/webpack.config.js"
+    "example/calculator": "webpack --config examples/calculator/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/calculator/webpack.config.js",
+    "pretest": "npm run build"
   },
   "keywords": [
     "renderer",
@@ -46,8 +54,13 @@
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.10.3",
+    "@babel/plugin-transform-runtime": "^7.10.5",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-typescript": "^7.10.1",
+    "@babel/runtime": "^7.10.5",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@rollup/plugin-replace": "^2.3.3",
+    "@types/jest": "^26.0.5",
     "@types/node": "^14.0.13",
     "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
@@ -61,6 +74,11 @@
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.22.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-terser": "^6.1.0",
+    "rollup-plugin-typescript2": "^0.27.1",
     "serialize-javascript": "^4.0.0",
     "style-loader": "^1.2.1",
     "ts-loader": "^7.0.5",
@@ -69,5 +87,14 @@
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
-  }
+  },
+  "npmName": "phantom",
+  "npmFileMap": [
+    {
+      "basePath": "/dist/",
+      "files": [
+        "*.js"
+      ]
+    }
+  ]
 }

@@ -1,12 +1,6 @@
-/*
- * This is an adaptation of Alok Menghrajani's HTML sanitizer, by sidiousvic.
- https://www.quaxio.com/html_white_listed_sanitizer/
- * Takes a potentiallyDangerousHTML string, returns a sanitized (exorcised) node.
- */
+import { allowedTags, allowedCSS } from "./exorciserAllowlist";
 
-import { allowedTags, allowedCSS } from "./allowed";
-
-function exorciseNode(node: HTMLElement) {
+export default function exorciseNode(node: HTMLElement) {
   const doc = document.implementation.createHTMLDocument();
 
   const nodeName = node.nodeName.toLowerCase();
@@ -44,7 +38,8 @@ function exorciseNode(node: HTMLElement) {
 
   // re-inject allowed css
   for (let css in allowedCSS) {
-    exorcisedNode.style[allowedCSS[css]] = node.style[allowedCSS[css]];
+    exorcisedNode.style[Number(allowedCSS[css])] =
+      node.style[Number(allowedCSS[css])];
   }
 
   // recursively sanitize childNodes
@@ -53,13 +48,4 @@ function exorciseNode(node: HTMLElement) {
     exorcisedNode.appendChild(exorciseNode(child as HTMLElement));
   }
   return exorcisedNode;
-}
-
-export default function phantomExorciser(potentiallyDangerousHTML: string) {
-  const doc = document.implementation.createHTMLDocument();
-
-  const div = doc.createElement("div");
-  div.innerHTML = potentiallyDangerousHTML;
-
-  return (exorciseNode(div) as HTMLElement).innerHTML;
 }

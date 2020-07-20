@@ -1,4 +1,4 @@
-import { createPhantomStore } from "../../dist/phantom";
+import { createPhantomStore } from "../../lib/phantom";
 
 const initialState = {
   screen: ["0"],

@@ -1,8 +1,14 @@
-.DS_Store
-logs
-*.log
-npm-debug.log*
-.npmrc
-dist
 node_modules
+
+#npm
+.npmrc
+
+# pack
+dist
+lib
+es
+/types
+
+# vscode
 .vscode
+.DS_Store

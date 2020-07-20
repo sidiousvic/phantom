@@ -1,10 +1,14 @@
-// phantom official tag, attr, css allowLists
+import { AllowedTags, AllowedCSS } from "./../types/phantomExorciser";
+
+/*
+phantomExorciser tag, attrribute, and CSS allowlists
+*/
 
 function unconstrained(attribute: string | null) {
   return attribute;
 }
 
-const allowedAttributes = {
+export const allowedAttributes = {
   abbr: unconstrained,
   accept: unconstrained,
   "accept-charset": unconstrained,
