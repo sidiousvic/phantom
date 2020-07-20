@@ -83,33 +83,6 @@ export default [
     ],
   },
 
-  // ES for Browsers
-  {
-    input: "src/index.ts",
-    output: { file: "es/phantom.mjs", format: "es", indent: false },
-    plugins: [
-      nodeResolve({
-        extensions,
-      }),
-      replace({
-        "process.env.NODE_ENV": JSON.stringify("production"),
-      }),
-      typescript({ tsconfigOverride: noDeclarationFiles }),
-      babel({
-        extensions,
-        exclude: "node_modules/**",
-      }),
-      terser({
-        compress: {
-          pure_getters: true,
-          unsafe: true,
-          unsafe_comps: true,
-          warnings: false,
-        },
-      }),
-    ],
-  },
-
   // UMD Development
   {
     input: "src/index.ts",
