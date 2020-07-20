@@ -52,37 +52,6 @@ export default [
     ],
   },
 
-  // ES
-  {
-    input: "src/index.ts",
-    output: {
-      file: "es/phantom.js",
-      format: "es",
-      indent: false,
-      exports: "auto",
-    },
-    external: makeExternalPredicate([
-      ...Object.keys(pkg.dependencies || {}),
-      ...Object.keys(pkg.peerDependencies || {}),
-    ]),
-    plugins: [
-      nodeResolve({
-        extensions,
-      }),
-      typescript({ tsconfigOverride: noDeclarationFiles }),
-      babel({
-        extensions,
-        plugins: [
-          [
-            "@babel/plugin-transform-runtime",
-            { version: babelRuntimeVersion, useESModules: true },
-          ],
-        ],
-        runtimeHelpers: true,
-      }),
-    ],
-  },
-
   // UMD Development
   {
     input: "src/index.ts",
