@@ -1,7 +1,10 @@
+import { PhantomStore } from "./types/phantomStore";
+import { Phantom } from "./types/phantom";
+
 import { XDOMFunction, PhantomDOM, PhantomElement } from "./types/phantomDOM";
 import phantomExorciser from "./phantomExorciser";
 
-function PHANTOM(phantomStore: any, XDOM: XDOMFunction) {
+function PHANTOM(phantomStore: PhantomStore, XDOM: XDOMFunction) {
   let phantomDOM: PhantomDOM = {
     test: {
       tagName: "div",
@@ -170,4 +173,4 @@ function PHANTOM(phantomStore: any, XDOM: XDOMFunction) {
   };
 }
 
-export default PHANTOM;
+export default PHANTOM as Phantom;
