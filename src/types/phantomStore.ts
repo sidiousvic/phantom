@@ -1,5 +1,6 @@
 export interface PhantomAction<T = any> {
   type: T;
+  [key: string]: any;
 }
 
 export type PhantomReducer<S = any, PA extends PhantomAction = any> = (
@@ -15,10 +16,13 @@ export type PhantomStore = {
   subscribe: (subscription: Subscription) => void;
 };
 
+export type FireFunction = (action: PhantomAction<any>) => void;
+export type SubscribeFunction = (subscription: Subscription) => void;
+
 export type PhantomStoreCreator = (
   reducer: PhantomReducer<any, any>
 ) => {
   data: () => any;
-  fire: (action: PhantomAction<any>) => void;
-  subscribe: (subscription: Subscription) => void;
+  fire: FireFunction;
+  subscribe: SubscribeFunction;
 };
