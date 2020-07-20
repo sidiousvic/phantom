@@ -5,7 +5,7 @@ node_modules
 dist
 lib
 es
-types
+/types
 
 .vscode
 
