@@ -6,7 +6,7 @@ export type PhantomElement = {
   dataset?: DOMTokenList | {};
 };
 
-export type XDOMFunction = {
+export type PhantomDOMFunction = {
   (): string;
 };
 

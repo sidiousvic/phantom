@@ -1,10 +1,15 @@
-import { PhantomStoreCreator } from "./phantomStore";
+import {
+  PhantomStoreCreator,
+  PhantomStore,
+  FireFunction,
+} from "./phantomStore";
+import { PhantomDOMFunction } from "./phantomDOM";
 
 export type Phantom = {
-  (): {
-    fire: () => void;
+  (phantomStore: PhantomStore, phantomElement: PhantomDOMFunction): {
+    fire: FireFunction;
     data: () => any;
-    appear: () => HTMLElement | undefined;
+    appear: () => HTMLElement;
   };
   createPhantomStore: PhantomStoreCreator;
 };
