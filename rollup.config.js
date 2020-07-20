@@ -52,6 +52,64 @@ export default [
     ],
   },
 
+  // ES
+  {
+    input: "src/index.ts",
+    output: {
+      file: "es/phantom.js",
+      format: "es",
+      indent: false,
+      exports: "auto",
+    },
+    external: makeExternalPredicate([
+      ...Object.keys(pkg.dependencies || {}),
+      ...Object.keys(pkg.peerDependencies || {}),
+    ]),
+    plugins: [
+      nodeResolve({
+        extensions,
+      }),
+      typescript({ tsconfigOverride: noDeclarationFiles }),
+      babel({
+        extensions,
+        plugins: [
+          [
+            "@babel/plugin-transform-runtime",
+            { version: babelRuntimeVersion, useESModules: true },
+          ],
+        ],
+        runtimeHelpers: true,
+      }),
+    ],
+  },
+
+  // ES for Browsers
+  {
+    input: "src/index.ts",
+    output: { file: "es/phantom.mjs", format: "es", indent: false },
+    plugins: [
+      nodeResolve({
+        extensions,
+      }),
+      replace({
+        "process.env.NODE_ENV": JSON.stringify("production"),
+      }),
+      typescript({ tsconfigOverride: noDeclarationFiles }),
+      babel({
+        extensions,
+        exclude: "node_modules/**",
+      }),
+      terser({
+        compress: {
+          pure_getters: true,
+          unsafe: true,
+          unsafe_comps: true,
+          warnings: false,
+        },
+      }),
+    ],
+  },
+
   // UMD Development
   {
     input: "src/index.ts",
