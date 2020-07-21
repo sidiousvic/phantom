@@ -9,7 +9,7 @@ All notable changes to [Phantom](https://github.com/sidiousvic/phantom) will be 
 <!-- ## [v0.0.0] — y.m.d
 [v0.0.0]: https://github.com/sidiousvic/phantom/compare/vz.z.z...v0.0.0 -->
 
-## [v2.1.3] — 2020.07.21
+## [v2.1.4] — 2020.07.21
 
 - [x] Updated README.
 
@@ -73,7 +73,7 @@ All notable changes to [Phantom](https://github.com/sidiousvic/phantom) will be 
 - [x] In `phantom.ts` instances of `innerHTML` injection were reinforced with the sanitizer. HMTL is now sanitized before rendering to DOM
 
 [unreleased]: https://github.com/sidiousvic/phantom/compare/v2.1.2...HEAD
-[v2.1.3]: https://github.com/sidiousvic/phantom/compare/v2.1.2...v2.1.3
+[v2.1.4]: https://github.com/sidiousvic/phantom/compare/v2.1.2...v2.1.4
 [v2.1.2]: https://github.com/sidiousvic/phantom/compare/v2.1.1...v2.1.2
 [v2.1.1]: https://github.com/sidiousvic/phantom/compare/v2.1.0...v2.1.1
 [v2.1.0]: https://github.com/sidiousvic/phantom/compare/v2.0.0...v2.1.0
