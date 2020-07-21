@@ -42,12 +42,43 @@ phantomStore.fire({ type: "EAT_PIZZA" });
 
 # 💥 <a name="get-launched">Get launched</a>
 
-### 1. Create a Phantom store
+### 1. Write an entry Phantom component
+
+In Phantom, components are functions that return HTML template literals.
 
 <details>
 <summary><b>Show code ↯</b></summary>
 
+Template strings allow you to inject dynamic data (including other components) via template literal placeholders `${}`.
+
+```js
+export default function phantomComponent() {
+  const slices
+  return `
+    <div id="pizza-box">
+      <h1 id="slices-h1">🍕</h1>
+    </div>
+  `;
+}
+
+```
+
+<br>
+
+| 👻 &nbsp; We recommend the [`leet-html` VSCode extension](https://marketplace.visualstudio.com/items?itemName=EldarGerfanov.leet-html) for HTML string highlighting. |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+
+<br>
+
+</details>
+
+### 2. Create a Phantom store
+
 Use `createPhantomStore` to produce your store.
+
+<details>
+<summary><b>Show code ↯</b></summary>
 
 ```js
 import { createPhantomStore } from "@sidiousvic/phantom";
@@ -70,37 +101,12 @@ export default phantomStore;
 
 </details>
 
-### 2. Write an entry Phantom component
-
-<details>
-<summary><b>Show code ↯</b></summary>
-
-Phantom components are functions that return HTML template strings. This allows you to inject dynamic data (including other components) via template literal placeholders `${}`.
-
-```js
-export default function phantomComponent() {
-  const slices
-  return `
-    <div id="pizza-box">
-      <h1 id="slices-h1">🍕</h1>
-    </div>
-  `;
-}
-
-```
-
-| 👻 &nbsp; We recommend the [`leet-html` VSCode extension](https://marketplace.visualstudio.com/items?itemName=EldarGerfanov.leet-html) for HTML string highlighting. |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-
-
-</details>
-
 ### 3. Initialize Phantom and `appear()`
 
+Start the Phantom engine by feeding it a component and a store.
+
 <details>
 <summary><b>Show code ↯</b></summary>
-
-Start the Phantom engine by feeding it a component and a store.
 
 ```js
 import phantom from "@sidiousvic/phantom";
@@ -112,7 +118,7 @@ const { appear } = phantom(phantomComponent, phantomStore);
 appear(); // 3, 2, 1... 💥 initial render!
 ```
 
-Phantom will then expose the `appear` method. 💥
+Phantom will expose the `appear` method. 💥
 
 `appear` will perform the initial DOM render on call, your UI's first _apparition_. 👻
 
@@ -122,7 +128,9 @@ Phantom will then expose the `appear` method. 💥
 
 # 🍕 <a name="data-management">Data management</a>
 
-Templating is cool and all, but what if we want to inject dynamic data to our components? What if we want our UI to _react_ to data changes?
+Components are cool and all, but what if we want to use dynamic data?
+
+What if we want our UI to _react_ to data changes?
 
 Phantom integrates with a Redux—like store to subscribe the DOM to state updates.
 
@@ -136,23 +144,27 @@ import phantom from "@sidiousvic/phantom";
 import phantomComponent from "./phantomComponent.js";
 import phantomStore from "./phantomStore.js";
 
-const { appear, fire, data } = phantom(phantomComponent, phantomStore);
+const { appear, data, fire } = phantom(phantomComponent, phantomStore);
 
 appear(); // 3, 2, 1... 🚀 initial render!
 ```
 
-`fire` and `data` are pointers to the phantom store. You're welcome to call them from the store directly.
-
-`fire` takes an action and _fires_ it through the store.
-
-`data` returns the current in—store _data_.
+`data` and `fire` are pointers to the Phantom store.
 
 </details>
 
 ### 2. Use `data` to read state from the Phantom store.
 
+`data` returns the current in—store _data_.
+
 <details>
 <summary><b>Show code ↯</b></summary>
+
+```js
+const { slices } = data();
+```
+
+Data can be passed as arguments to child components.
 
 ```js
 function phantomComponent() {
@@ -162,13 +174,6 @@ function phantomComponent() {
   `;
 }
 ```
-
-</details>
-
-### 3. Inject data into your component using template literals.
-
-<details>
-<summary><b>Show code ↯</b></summary>
 
 You can use [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) placeholders to inject pieces of state into a component.
 
@@ -184,29 +189,7 @@ export default function Pizza(slices) {
 
 </details>
 
-### 4. Subscribe a component to data changes
-
-<details>
-<summary><b>Show code ↯</b></summary>
-
-Phantom can perform DOM differentiation and swap only the nodes whose state has updated. To activate this behavior,
-
-- [x] Include a `data-phantom` attribute with the piece(s) of state that you want to subscribe to.
-- [x] An id attribute.
-
-```js
-return `<element data-phantom="${your - data}">${your - data}</element>`;
-```
-
-| ⚠️ &nbsp; If you don't do this, Phantom will repaint the entire DOM tree on data updates 👻 |
-| :------------------------------------------------------------------------------------------ |
-
-
-Phantom will look at at both the `data-phantom` and `id` attributes in order to compute if a DOM node has to be repainted.
-
-</details>
-
-### 5. Use `fire` to dispatch an action and trigger a state update and rerender.
+### 3. Use `fire` to dispatch an action and trigger a state update and rerender.
 
 <details>
 <summary><b>Show code ↯</b></summary>
@@ -226,6 +209,28 @@ function eatPizza(e) {
   }
 }
 ```
+
+</details>
+
+### 4. Subscribe a component to data changes
+
+<details>
+<summary><b>Show code ↯</b></summary>
+
+Phantom can perform DOM differentiation and swap only the nodes whose state has updated. To activate this behavior,
+
+```js
+return `<element data-phantom="${yourData}">${yourData}</element>`;
+```
+
+- [x] Include a `data-phantom` attribute with the piece(s) of state that you want to subscribe to.
+- [x] An id attribute.
+
+Phantom will look at at both the `data-phantom` and `id` attributes in order to compute if a DOM node has to be repainted.
+
+| ⚠️ &nbsp; If you don't do this, Phantom will repaint the entire DOM on data updates. |
+| :----------------------------------------------------------------------------------- |
+
 
 </details>
 
@@ -271,7 +276,7 @@ Phantom only helps with DOM rendering. It's convenient, but close enough to the 
 <details>
 <summary><b>Show answer ↯</b></summary>
 
-When a component's data changes, Phantom will re—render that node in the DOM by diffing its internal **PseudoDOM**, an object representation of the DOM.
+When a component's data changes, Phantom will re—render that node in the DOM by diffing an internal **PhantomDOM**, a map representation of the DOM.
 
 </details>
 
@@ -280,7 +285,7 @@ When a component's data changes, Phantom will re—render that node in the DOM b
 <details>
 <summary><b>Show answer ↯</b></summary>
 
-**Yes.** Phantom uses its internal [`phantomExorciser`](./src/exorciser) to sanitize HTML strings before injecting them into the DOM.
+**Yes.** Phantom uses the internal **[PhantomExorciser](./src/exorciser)** to sanitize HTML strings before injecting them into the DOM.
 
 </details>
 
@@ -333,4 +338,6 @@ Devs who have cloned Phantom may use **`npm run example/[example name]`** and na
 
 ### <img src="https://media.giphy.com/media/jjBmeA29nxCrm/giphy.gif" width="40px"> Phantom is built with love and pepperoni by [@sidiousvic](https://www.github.com/sidiousvic)
 
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T81Y1BK)
+<br>
+
+<span style="float: right">[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T81Y1BK)</span>
