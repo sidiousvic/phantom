@@ -11,7 +11,7 @@ All notable changes to [Phantom](https://github.com/sidiousvic/phantom) will be 
 
 ## [v2.1.4] — 2020.07.21
 
-- [x] Updated README.
+- [x] Updated README
 
 ## [v2.1.2] — 2020.07.21
 
