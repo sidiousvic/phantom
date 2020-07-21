@@ -48,6 +48,8 @@ In Phantom, components are functions that return HTML template literals.
 
 <details>
 <summary><b>Show code ↯</b></summary>
+  
+<br>
 
 Template strings allow you to inject dynamic data (including other components) via template literal placeholders `${}`.
 
@@ -79,6 +81,8 @@ Use `createPhantomStore` to produce your store.
 
 <details>
 <summary><b>Show code ↯</b></summary>
+  
+<br>
 
 ```js
 import { createPhantomStore } from "@sidiousvic/phantom";
@@ -107,6 +111,8 @@ Start the Phantom engine by feeding it a component and a store.
 
 <details>
 <summary><b>Show code ↯</b></summary>
+  
+<br>
 
 ```js
 import phantom from "@sidiousvic/phantom";
@@ -138,6 +144,10 @@ Phantom integrates with a Redux—like store to subscribe the DOM to state updat
 
 <details>
 <summary><b>Show code ↯</b></summary>
+  
+<br>
+
+Pass Phantom a **component** and a **store**.
 
 ```js
 import phantom from "@sidiousvic/phantom";
@@ -149,19 +159,23 @@ const { appear, data, fire } = phantom(phantomComponent, phantomStore);
 appear(); // 3, 2, 1... 🚀 initial render!
 ```
 
-`data` and `fire` are pointers to the Phantom store.
+Besides `appear`, Phantom exposes two more handy methods, `data` and `fire`.
+
+We can use them to retrieve and update data from the Phantom store.
 
 </details>
 
 ### 2. Use `data` to read state from the Phantom store.
 
-`data` returns the current in—store _data_.
-
 <details>
 <summary><b>Show code ↯</b></summary>
+  
+<br>
+
+`data` returns the current in—store _data_.
 
 ```js
-const { slices } = data();
+const { slices } = data(); // where data = { slices: ["🍕","🍕","🍕"] }
 ```
 
 Data can be passed as arguments to child components.
@@ -193,6 +207,8 @@ export default function Pizza(slices) {
 
 <details>
 <summary><b>Show code ↯</b></summary>
+  
+<br>
 
 An action is an object with a `type` key and optional data payload.
 
@@ -216,6 +232,8 @@ function eatPizza(e) {
 
 <details>
 <summary><b>Show code ↯</b></summary>
+  
+<br>
 
 Phantom can perform DOM differentiation and swap only the nodes whose state has updated. To activate this behavior,
 
