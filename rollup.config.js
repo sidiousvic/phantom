@@ -26,7 +26,7 @@ export default [
   {
     input: "src/index.ts",
     output: {
-      file: "x/phantom.js",
+      file: "x/phantom.ts",
       format: "cjs",
       indent: false,
       exports: "named",
