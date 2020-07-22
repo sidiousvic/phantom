@@ -1,8 +1,4 @@
-import {
-  PhantomStoreCreator,
-  PhantomStore,
-  FireFunction,
-} from "./phantomStore";
+import { PhantomStore, FireFunction } from "./phantomStore";
 
 export type PhantomElement = {
   tagName: string;
@@ -21,10 +17,9 @@ export type PhantomDOM = {
 };
 
 export type Phantom = {
-  (phantomStore: PhantomStore, phantomElement: PhantomComponent): {
+  (phantomElement: PhantomComponent, phantomStore: PhantomStore): {
     fire: FireFunction;
     data: () => any;
     appear: () => HTMLElement;
   };
-  createPhantomStore: PhantomStoreCreator;
 };
