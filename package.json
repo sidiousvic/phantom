@@ -40,7 +40,7 @@
     "example/pizza": "webpack --config examples/pizza/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/pizza/webpack.config.js",
     "example/todo": "webpack --config examples/todo/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/todo/webpack.config.js",
     "example/calculator": "webpack --config examples/calculator/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/calculator/webpack.config.js",
-    "x": "webpack --config x/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config x/webpack.config.js",
+    "x": "cp -r src x/src && webpack --config x/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config x/webpack.config.js",
     "pretest": "npm run build"
   },
   "keywords": [

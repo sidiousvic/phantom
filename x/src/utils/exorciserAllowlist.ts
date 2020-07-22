@@ -1,15 +1,14 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
+import { AllowedTags, AllowedCSS } from "./../types/phantomExorciser";
 
 /*
 phantomExorciser tag, attrribute, and CSS allowlists
 */
-function unconstrained(attribute) {
+
+function unconstrained(attribute: string | null) {
   return attribute;
 }
 
-const allowedAttributes = {
+export const allowedAttributes = {
   abbr: unconstrained,
   accept: unconstrained,
   "accept-charset": unconstrained,
@@ -108,7 +107,8 @@ const allowedAttributes = {
   width: unconstrained,
   wrap: unconstrained,
 };
-const allowedTags = {
+
+export const allowedTags: AllowedTags = {
   a: allowedAttributes,
   abbr: allowedAttributes,
   acronym: allowedAttributes,
@@ -206,7 +206,8 @@ const allowedTags = {
   var: allowedAttributes,
   wbr: allowedAttributes,
 };
-const allowedCSS = [
+
+export const allowedCSS: AllowedCSS = [
   "background",
   "background-attachment",
   "background-clip",
@@ -337,256 +338,3 @@ const allowedCSS = [
   "word-spacing",
   "z-index",
 ];
-
-function exorciseNode(node) {
-  const doc = document.implementation.createHTMLDocument();
-  const nodeName = node.nodeName.toLowerCase();
-
-  if (nodeName == "#text") {
-    return node; // let text nodes be
-  }
-
-  if (nodeName == "#comment") {
-    return doc.createTextNode(""); // let comments die
-  } // throw error in case of disallowed nodes
-
-  if (!allowedTags.hasOwnProperty(nodeName)) {
-    // ain't dealing with this node
-    throw new Error(nodeName);
-  }
-
-  const exorcisedNode = doc.createElement(nodeName); // re-inject allowed attributes
-
-  for (
-    let nodeAttributes = 0;
-    nodeAttributes < node.attributes.length;
-    nodeAttributes++
-  ) {
-    var _node$attributes$item;
-
-    const attributeName =
-      (_node$attributes$item = node.attributes.item(nodeAttributes)) === null ||
-      _node$attributes$item === void 0
-        ? void 0
-        : _node$attributes$item.name;
-
-    if (allowedTags[nodeName].hasOwnProperty(attributeName)) {
-      const sanitizer = allowedTags[nodeName][attributeName];
-      exorcisedNode.setAttribute(
-        attributeName,
-        sanitizer(node.getAttribute(attributeName))
-      );
-    }
-  } // re-inject allowed css
-
-  for (let css in allowedCSS) {
-    exorcisedNode.style[Number(allowedCSS[css])] =
-      node.style[Number(allowedCSS[css])];
-  } // recursively sanitize childNodes
-
-  while (node.childNodes.length > 0) {
-    const child = node.removeChild(node.childNodes[0]);
-    exorcisedNode.appendChild(exorciseNode(child));
-  }
-
-  return exorcisedNode;
-}
-
-/*
- * This is an adaptation of Alok Menghrajani's HTML sanitizer by sidiousvic.
- 
- https://www.quaxio.com/html_white_listed_sanitizer/
-
- * Takes a potentiallyDangerousHTML string, returns a sanitized (exorcised) node.
- */
-function phantomExorciser(potentiallyDangerousHTML) {
-  const doc = document.implementation.createHTMLDocument();
-  const div = doc.createElement("div");
-  div.innerHTML = potentiallyDangerousHTML;
-  return exorciseNode(div).innerHTML;
-}
-
-const PHANTOM = (phantomComponent, phantomStore) => {
-  let phantomDOM = {
-    test: {
-      tagName: "div",
-      attributes: {
-        id: "PHANTOM",
-      },
-      children: [],
-      innerHTML: "",
-      dataset: {},
-    },
-  };
-
-  function launchDOM() {
-    const body = document.body;
-
-    if (!document.querySelector("#PHANTOM")) {
-      const PHANTOM = document.createElement("div");
-      PHANTOM.id = "PHANTOM";
-      body === null || body === void 0 ? void 0 : body.appendChild(PHANTOM);
-    }
-
-    try {
-      const DOM = renderPhantomElement();
-      swapElement(DOM, document.querySelector("#PHANTOM"));
-      return DOM;
-    } catch (errorNode) {
-      throw new DOMException(
-        `🚫Potentially dangerous node, <${errorNode}>. Phantom has destroyed it. If you think this is a mistake, please raise an issue at: https://github.com/sidiousvic/phantom/issues`
-      );
-    }
-  }
-
-  function coalescePhantomDOM() {
-    return `
-    <div id="PHANTOM">
-      ${phantomComponent()}
-    </div> 
-    `;
-  }
-
-  function renderPhantomElement(
-    phantomElement = transmuteHTMLtoPhantomElement(coalescePhantomDOM())
-  ) {
-    const { tagName, attributes, innerHTML, children } = phantomElement;
-    let phantomElementChildren = [];
-
-    if (children && children.length) {
-      phantomElementChildren = Array.prototype.map.call(children, (child) => {
-        renderPhantomElement(child);
-      });
-    }
-
-    let DOMElement;
-    /*
-    DOM diffing ahead. ↓↓↓
-    We look at the current phantomDOM, and for every phantomDOMNode, if
-    * the id of the phantomDOMNode and current phantomElement match, and
-    * the nodes' dataset (data-phantom) are different (their data has changed),
-    we swap the nodes.
-    */
-
-    Object.values(phantomDOM).map((phantomDOMNode) => {
-      if (
-        phantomDOMNode.attributes.id === phantomElement.attributes.id &&
-        JSON.stringify(phantomDOMNode.dataset) !==
-          JSON.stringify(phantomElement.dataset)
-      ) {
-        let newNode = document.createElement(tagName);
-
-        for (const [k, v] of Object.entries(attributes)) {
-          newNode.setAttribute(k, v);
-        }
-        /*
-        Node replacement and sanitization. ↓↓↓
-        We swap the obsolete DOMElement's innerHTML with the updated version.
-        The updated innerHTML is sanitized before this swap.
-        * if safe, we return the updated DOMElement.
-        * if dangerous, log an error and abort rendering
-        */
-
-        try {
-          newNode.innerHTML = phantomExorciser(innerHTML);
-          let targetNode = document.getElementById(attributes.id);
-          swapElement(newNode, targetNode);
-          DOMElement = newNode;
-        } catch (dangerousNodeError) {
-          throw new Error(dangerousNodeError);
-        }
-      }
-    });
-    phantomDOM[attributes.id] = phantomElement;
-    DOMElement = document.createElement(tagName);
-
-    for (const [k, v] of Object.entries(attributes)) {
-      DOMElement.setAttribute(k, v);
-    }
-    /*
-    HTML replacement and sanitization. ↓↓↓
-    We swap the obsolete DOMElement's innerHTML with the updated version.
-    The updated innerHTML is sanitized before this swap.
-    * if safe, we return the updated DOMElement.
-    * if dangerous, log an error and abort rendering
-    */
-
-    try {
-      DOMElement.innerHTML = phantomExorciser(innerHTML);
-      return DOMElement;
-    } catch (dangerousNodeError) {
-      throw new Error(dangerousNodeError);
-    }
-  }
-
-  function transmuteHTMLtoPhantomElement(html) {
-    if (typeof html !== "string") html = html.outerHTML; // TODO: find a better solution to mapped elements ↓↓↓
-
-    html = html.replace(/>,/g, ">"); // ← remove commas from mapped element arrays
-
-    let doc = new DOMParser().parseFromString(html, "text/html");
-    const $el = doc.body.firstChild;
-    const {
-      tagName,
-      children,
-      id,
-      dataset,
-      classList,
-      innerHTML,
-      outerHTML,
-    } = $el;
-    let phantomElementChildren = [];
-
-    if (children && children.length) {
-      phantomElementChildren = Array.prototype.map.call(children, (child) => {
-        return transmuteHTMLtoPhantomElement(child);
-      });
-    }
-
-    return {
-      tagName,
-      attributes: {
-        id,
-        class: classList,
-      },
-      dataset,
-      children: phantomElementChildren,
-      innerHTML,
-      outerHTML,
-    };
-  }
-
-  function swapElement(swapIn, swapOut) {
-    swapOut === null || swapOut === void 0
-      ? void 0
-      : swapOut.replaceWith(swapIn);
-    return swapIn;
-  }
-
-  phantomStore.subscribe(() => {
-    renderPhantomElement();
-  });
-  return {
-    fire: phantomStore.fire,
-    data: phantomStore.data,
-    appear: launchDOM,
-  };
-};
-
-function createPhantomStore(reducer) {
-  let state = reducer(undefined, {});
-  const subscriptions = [];
-  return {
-    data: () => state,
-    fire: (action) => {
-      state = reducer(state, action);
-      subscriptions.forEach((subscription) => subscription());
-    },
-    subscribe: (subscription) => {
-      subscriptions.push(subscription);
-    },
-  };
-}
-
-exports.createPhantomStore = createPhantomStore;
-exports.default = PHANTOM;
