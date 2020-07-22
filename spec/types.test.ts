@@ -42,8 +42,8 @@ const {
   data,
   appear,
 }: { fire: FireFunction; data: any; appear: () => HTMLElement } = phantom(
-  phantomStore,
-  phantomComponent
+  phantomComponent,
+  phantomStore
 );
 
 const appearShouldReturnHTMLElement: HTMLElement = appear();
