@@ -8,7 +8,7 @@ import phantomStore from "./utils/phantomStore";
 describe("Phantom and the DOM", () => {
   test("The PHANTOM element is rendered and wraps around the application", () => {
     // init phantomComponent
-    const { appear } = phantom(phantomStore, phantomComponent);
+    const { appear } = phantom(phantomComponent, phantomStore);
     function phantomComponent() {
       return `
         <div>
@@ -25,7 +25,7 @@ describe("Phantom and the DOM", () => {
 
   test("DOM is updated after firing a state change", () => {
     // init phantomComponent
-    const { fire, data, appear } = phantom(phantomStore, phantomComponent);
+    const { fire, data, appear } = phantom(phantomComponent, phantomStore);
     function phantomComponent() {
       const { title } = data();
       return `
@@ -57,7 +57,7 @@ describe("Phantom and the DOM", () => {
 
   test("PHANTOM element is properly rendered", () => {
     // init phantomComponent
-    const { data, appear } = phantom(phantomStore, phantomComponent);
+    const { data, appear } = phantom(phantomComponent, phantomStore);
 
     function phantomComponent() {
       return `

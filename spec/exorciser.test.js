@@ -8,7 +8,7 @@ import phantomStore from "./utils/phantomStore";
 describe("The Phantom Exorciser", () => {
   test("<img src='X' onerror='alert(0)'> is sanitized", () => {
     // init phantom
-    const { appear } = phantom(phantomStore, phantomComponent);
+    const { appear } = phantom(phantomComponent, phantomStore);
 
     // define a component
     function phantomComponent() {
@@ -26,7 +26,7 @@ describe("The Phantom Exorciser", () => {
 
   test("Attempting to render <iframe> throws an DOMException", () => {
     // init phantom
-    const { appear } = phantom(phantomStore, phantomComponent);
+    const { appear } = phantom(phantomComponent, phantomStore);
 
     function phantomComponent() {
       return `

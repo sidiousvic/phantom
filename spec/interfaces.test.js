@@ -11,7 +11,7 @@ import phantomStore from "./utils/phantomStore";
 describe("Phantom and its interfaces", () => {
   test("the 'fire' interface points to the phantomStore", () => {
     // init phantom
-    const { fire } = phantom(phantomStore, phantomComponent);
+    const { fire } = phantom(phantomComponent, phantomStore);
 
     function phantomComponent() {
       return ``;
@@ -21,7 +21,7 @@ describe("Phantom and its interfaces", () => {
   });
 
   test("the 'data' interface points to the phantomStore", () => {
-    const { data } = phantom(phantomStore, phantomComponent);
+    const { data } = phantom(phantomComponent, phantomStore);
     function phantomComponent() {
       return ``;
     }
@@ -29,7 +29,7 @@ describe("Phantom and its interfaces", () => {
   });
 
   test("the 'appear' interface returns an HTMLDivElement instance", () => {
-    const { appear } = phantom(phantomStore, phantomComponent);
+    const { appear } = phantom(phantomComponent, phantomStore);
     function phantomComponent() {
       return ``;
     }
