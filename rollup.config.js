@@ -22,6 +22,33 @@ const makeExternalPredicate = (externalArr) => {
 };
 
 export default [
+  // Experimental
+  {
+    input: "src/index.ts",
+    output: {
+      file: "x/phantom.js",
+      format: "cjs",
+      indent: false,
+      exports: "named",
+    },
+    external: makeExternalPredicate([
+      ...Object.keys(pkg.dependencies || {}),
+      ...Object.keys(pkg.peerDependencies || {}),
+    ]),
+    plugins: [
+      nodeResolve({
+        extensions,
+      }),
+      typescript({ useTsconfigDeclarationDir: true }),
+      babel({
+        extensions,
+        plugins: [
+          ["@babel/plugin-transform-runtime", { version: babelRuntimeVersion }],
+        ],
+        runtimeHelpers: true,
+      }),
+    ],
+  },
   // CommonJS
   {
     input: "src/index.ts",

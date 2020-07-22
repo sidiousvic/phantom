@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "KISS";
+  src: url("./die_nasty.ttf") format("truetype");
+}
+
+:root {
+  --purpleHaze: rgb(119, 0, 255);
+}
+
+html,
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  background: var(--purpleHaze);
+  color: #111;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: KISS, sans-serif;
+  font-size: 4vw;
+  font-weight: 300;
+  user-select: none;
+  cursor: grab;
+}
+
+#PHANTOM {
+  user-select: none;
+}
+
+#x:hover {
+  cursor: pointer;
+}
