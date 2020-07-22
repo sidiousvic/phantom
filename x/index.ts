@@ -4,6 +4,8 @@ import {
   FireFunction,
 } from "../src/types/phantomStore";
 import { PhantomComponent } from "../src/types/phantom";
+//@ts-ignore
+import phantom, { createPhantomStore } from "./phantom.js";
 import "./styles.css";
 /*
  * Test Phantom's type safety and exported types and interfaces
