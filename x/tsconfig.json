@@ -10,15 +10,12 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "downlevelIteration": true,
-    "rootDir": "spec",
-    "rootDirs": ["js"],
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "experimentalDecorators": true,
     "removeComments": false,
     "incremental": false,
-    "noFallthroughCasesInSwitch": false,
-    "typeRoots": ["./"]
+    "noFallthroughCasesInSwitch": false
   },
   "include": ["./index.ts"]
 }
