@@ -2,88 +2,79 @@ import phantom from "../lib/phantom";
 import phantomStore from "./utils/phantomStore";
 
 /*
- * Test Phantom's DOM output
+ * Test Phantom and its interactions with the DOM
  */
 
-test("The PHANTOM element is rendered and wraps around the application", () => {
-  // init phantomElement
-  const { appear } = phantom(phantomStore, phantomElement);
-  function phantomElement() {
-    return `
-      <div>
-        <h1>PHANTOM</h1>
-      </div>
-      `;
-  }
-  appear();
-
-  const PHANTOMEl = document.body.firstChild;
-
-  expect(PHANTOMEl.id).toBe("PHANTOM");
-});
-
-test("DOM is updated after firing a state change", () => {
-  // init phantomElement
-  const { fire, data, appear } = phantom(phantomStore, phantomElement);
-  function phantomElement() {
-    const { title } = data();
-    return `
-      <div id="title-div">
-        <h1 data-phantom="${title}" id="title-h1">${title}</h1>
-      </div>
-      `;
-  }
-  appear();
-
-  // add listener
-  document.addEventListener("click", justDoShit);
-  function justDoShit(e) {
-    if (e.target.id === "title-h1") {
-      fire({ type: "TOGGLE_TITLE" });
+describe("Phantom and the DOM", () => {
+  test("The PHANTOM element is rendered and wraps around the application", () => {
+    // init phantomComponent
+    const { appear } = phantom(phantomStore, phantomComponent);
+    function phantomComponent() {
+      return `
+        <div>
+          <h1>PHANTOM</h1>
+        </div>
+        `;
     }
-  }
+    appear();
 
-  // click title element
-  const toBeSwappedOut = document.getElementById("title-h1");
-  toBeSwappedOut.click();
-  const swappedIn = document.getElementById("title-h1");
+    const PHANTOMEl = document.body.firstChild;
 
-  expect(swappedIn.innerHTML).toBe("JUST DO SHIT");
-});
+    expect(PHANTOMEl.id).toBe("PHANTOM");
+  });
 
-test("PHANTOM DOM is properly rendered", () => {
-  // init phantomElement
-  const { fire, data, appear } = phantom(phantomStore, phantomElement);
-  function phantomElement() {
-    const { title } = data();
-    return `
-      <div id="title-div">
-        <h1 id="title-h1">${title}</h1>
-      </div>
-      `;
-  }
-
-  appear();
-
-  // add listener
-  document.addEventListener("click", justDoShit);
-  function justDoShit(e) {
-    if (e.target.id === "title-h1") {
-      fire({ type: "TOGGLE_TITLE" });
+  test("DOM is updated after firing a state change", () => {
+    // init phantomComponent
+    const { fire, data, appear } = phantom(phantomStore, phantomComponent);
+    function phantomComponent() {
+      const { title } = data();
+      return `
+        <div id="title-div">
+          <h1 data-phantom="${title}" id="title-h1">${title}</h1>
+        </div>
+        `;
     }
-  }
 
-  // get dom element's innerHTML, trim()
-  const domElementInnerHTML = document
-    .getElementById("PHANTOM")
-    .innerHTML.trim();
+    appear();
 
-  // click title element
-  const titleH1 = document.getElementById("title-h1");
-  titleH1.click();
+    // add click listener
+    document.addEventListener("click", justDoShit);
+    function justDoShit(e) {
+      if (e.target.id === "title-h1") {
+        fire({ type: "TOGGLE_TITLE" });
+      }
+    }
 
-  // get phantomElement's (as returned by phantomElement) HTML, trim()
-  const phantomElementHTML = phantomElement().trim();
+    const toBeSwappedOut = document.getElementById("title-h1");
 
-  expect(domElementInnerHTML).toBe(phantomElementHTML);
+    // simulate click
+    toBeSwappedOut.click();
+
+    const swappedIn = document.getElementById("title-h1");
+
+    expect(swappedIn.innerHTML).toBe("JUST DO SHIT");
+  });
+
+  test("PHANTOM element is properly rendered", () => {
+    // init phantomComponent
+    const { data, appear } = phantom(phantomStore, phantomComponent);
+
+    function phantomComponent() {
+      return `
+        <div id="phantom-test"></div>
+        `;
+    }
+
+    appear();
+
+    // get dom element's innerHTML, trim()
+    const domElementInnerHTML = document
+      .getElementById("PHANTOM")
+      .innerHTML.trim();
+
+    // get phantomComponent's HTML string, trim()
+    const phantomElementHTML = phantomComponent().trim();
+
+    expect(domElementInnerHTML).toBe(phantomElementHTML);
+  });
 });
