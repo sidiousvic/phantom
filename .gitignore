@@ -1,5 +1,4 @@
 node_modules
-
 #npm
 .npmrc
 
@@ -12,3 +11,16 @@ es
 # vscode
 .vscode
 .DS_Store
+
+
+# ⚠️ REMOVE THIS ONLY IF YOU ARE IN A FEATURE BRANCH OF X
+# dev________________________. ❌
+#      x \___________________. ❌
+#          x-feature\________. ✅
+#
+# In order to checkout an x-feature branch, use:
+#
+# git checkout -b x-feature x
+#
+# And track your experiments there.
+/x
