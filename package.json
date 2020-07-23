@@ -31,7 +31,7 @@
     }
   },
   "scripts": {
-    "clean": "rimraf lib dist es types",
+    "clean": "rimraf lib dist es types x",
     "build": "rollup -c",
     "preversion": "npm test",
     "postversion": "git push origin --tags --no-verify",
