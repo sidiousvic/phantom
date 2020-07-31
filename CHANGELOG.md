@@ -4,7 +4,17 @@ All notable changes to [Phantom](https://github.com/sidiousvic/phantom) will be 
 
 ## [Unreleased]
 
-👻
+### 👻 v3.0.0
+- [x] Class—based
+- [x] TS—friendly
+- [x] Avoids innerHTML (XSS safe, no phantomExorciser)
+- [x] User can define component `state` and `children` via class methods.
+- [x] `render` method can define HTML as template strings, no JSX
+- [x] Use custom elements such as `<app><app/>` to wrap component markup
+- [x] Object reference to any component and its state and inner elements. `const {app, child} = Phantom(App)`
+- [x] Provides access to a component's state, e.g. `app.photos` would return App's photos state.
+- [x] **Experimental** potential to provide useful decorators for component methods, such as `@onMount`
+- [x] More goodies to come.
 
 <!-- ## [v0.0.0] — y.m.d
 [v0.0.0]: https://github.com/sidiousvic/phantom/compare/vz.z.z...v0.0.0 -->
