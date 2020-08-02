@@ -14,7 +14,6 @@ All notable changes to [Phantom](https://github.com/sidiousvic/phantom) will be 
 - [x] Object reference to any component and its state and inner elements. `const {app, child} = Phantom(App)`
 - [x] Provides access to a component's state, e.g. `app.photos` would return App's photos state.
 - [x] **Experimental** potential to provide useful decorators for component methods, such as `@onMount`
-- [x] Decorators to extend user defined classes into PhantomComponents
 
 <!-- ## [v0.0.0] — y.m.d
 [v0.0.0]: https://github.com/sidiousvic/phantom/compare/vz.z.z...v0.0.0 -->
