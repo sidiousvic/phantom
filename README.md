@@ -6,7 +6,7 @@
 
 ### `npm i @sidiousvic/phantom`
 
-<img src="https://i.imgur.com/0o2ZFjo.gif" width="300">
+<img src="https://i.imgur.com/0o2ZFjo.gif" width="250">
 
 #### Phantom lets you build state—reactive UIs using raw HTML strings ejected from functions.
 
