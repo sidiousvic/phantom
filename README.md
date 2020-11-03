@@ -281,7 +281,7 @@ The Phantom engine integrates with a store and subscribes to state updates. It s
 
 #### 👩🏾‍🏭 Closer to the DOM _metal_
 
-Frameworks often abstract too much architecture and functionality out of the DOM. They make you yield too much to _their way_ of doing things—events, effects, styling, routing—you have to find the solutions withing _their_ ecosystem.
+Frameworks often abstract too much architecture and functionality out of the DOM. They make you yield too much to _their way_ of doing things—events, effects, styling, routing—you have to find the solutions within _that_ ecosystem.
 
 Phantom only helps with DOM rendering. It's convenient, but close enough to the DOM that you can integrate it with other solutions without using _fibers_, _combiners_ or _adapters_ of any kind.
 
