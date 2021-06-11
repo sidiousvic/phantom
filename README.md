@@ -1,12 +1,12 @@
 # **Phantom**
 
-![](https://github.com/sidiousvic/phantom/workflows/build/badge.svg) [![npm version](https://badge.fury.io/js/%40sidiousvic%2Fphantom.svg)](https://badge.fury.io/js/%40sidiousvic%2Fphantom) [![install size](https://badgen.net/packagephobia/install/@sidiousvic/phantom)](https://packagephobia.com/result?p=%40sidiousvic%2Fphantom)
+![](https://github.com/sidiousvic/phantom/workflows/build/badge.svg) [![install size](https://badgen.net/packagephobia/install/@sidiousvic/phantom)](https://packagephobia.com/result?p=%40sidiousvic%2Fphantom)
 
 ### A state—reactive DOM rendering engine for building UIs. 👻
 
 ### `npm i @sidiousvic/phantom`
 
-<img src="https://i.imgur.com/0o2ZFjo.gif" width="300">
+<img src="https://i.imgur.com/0o2ZFjo.gif" width="250">
 
 #### Phantom lets you build state—reactive UIs using raw HTML strings ejected from functions.
 
@@ -281,7 +281,7 @@ The Phantom engine integrates with a store and subscribes to state updates. It s
 
 #### 👩🏾‍🏭 Closer to the DOM _metal_
 
-Frameworks often abstract too much architecture and functionality out of the DOM. They make you yield too much to _their way_ of doing things—events, effects, styling, routing—you have to find the solutions withing _their_ ecosystem.
+Frameworks often abstract too much architecture and functionality out of the DOM. They make you yield too much to _their way_ of doing things—events, effects, styling, routing—you have to find the solutions within _that_ ecosystem.
 
 Phantom only helps with DOM rendering. It's convenient, but close enough to the DOM that you can integrate it with other solutions without using _fibers_, _combiners_ or _adapters_ of any kind.
 

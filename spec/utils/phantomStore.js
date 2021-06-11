@@ -15,6 +15,6 @@ function reducer(state = data, action) {
   }
 }
 
-const store = createPhantomStore(reducer);
+const phantomStore = createPhantomStore(reducer);
 
-export default store;
+export default phantomStore;

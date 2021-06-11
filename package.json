@@ -31,14 +31,16 @@
     }
   },
   "scripts": {
-    "clean": "rimraf lib dist es types",
+    "clean": "rimraf lib dist es types x",
     "build": "rollup -c",
     "preversion": "npm test",
     "postversion": "git push origin --tags --no-verify",
-    "test": "jest && tsc spec/types.test.ts --noEmit",
+    "test": "jest && npm run test-types",
+    "test-types": "tsc spec/types.test.ts --noEmit",
     "example/pizza": "webpack --config examples/pizza/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/pizza/webpack.config.js",
     "example/todo": "webpack --config examples/todo/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/todo/webpack.config.js",
     "example/calculator": "webpack --config examples/calculator/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config examples/calculator/webpack.config.js",
+    "x": "webpack --config x/webpack.config.js && webpack-dev-server --mode development --hot --watch-stdin --config x/webpack.config.js",
     "pretest": "npm run build"
   },
   "keywords": [

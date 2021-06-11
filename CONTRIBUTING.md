@@ -8,7 +8,7 @@
 
 ### Instructions
 
-`0` **Mind** the [Code of Conduct](./CODEOFCONDUCT.md)  
+`0` **Mind** the [Code of Conduct](./CODE_OF_CONDUCT.md)  
 `1` [**Fork** the repo](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) on GitHub  
 `2` [**Clone** the project](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github) to your machine  
 `3` [**Install** dependencies](https://docs.npmjs.com/cli/install) with `npm i`  

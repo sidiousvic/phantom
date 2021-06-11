@@ -8,10 +8,10 @@ import {
 
 import phantomExorciser from "./phantomExorciser";
 
-function PHANTOM(
-  phantomStore: PhantomStore,
-  phantomComponent: PhantomComponent
-) {
+const PHANTOM: Phantom = (
+  phantomComponent: PhantomComponent,
+  phantomStore: PhantomStore
+) => {
   let phantomDOM: PhantomDOM = {
     test: {
       tagName: "div",
@@ -178,6 +178,6 @@ function PHANTOM(
     data: phantomStore.data,
     appear: launchDOM,
   };
-}
+};
 
-export default PHANTOM as Phantom;
+export default PHANTOM;
