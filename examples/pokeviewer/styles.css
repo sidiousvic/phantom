@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300;400&display=swap");
+
+html {
+  background-image: url("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80");
+  background-position: center; /* Center the image */
+  background-size: cover;
+}
+
+body,
+#PHANTOM {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#poke-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#curr-poke-name {
+  font-size: 8rem;
+  font-family: "MuseoModerno", sans-serif;
+  margin: 0;
+  cursor: pointer;
+}
+
+#curr-poke-img {
+  max-width: 30rem;
+  cursor: pointer;
+}
+
+#next-poke-img-wrapper {
+  display: none;
+}
+
+#made-w-phantom,
+#made-by,
+#links {
+  display: inline-block;
+  /* type */
+  font-family: "MuseoModerno", cursive;
+  font-weight: 300;
+  /* spacing */
+  margin: 0;
+  padding: 0;
+  /* colors */
+  color: rgb(255, 206, 217);
+  /* type */
+  text-decoration: none;
+  text-align: right;
+  /* animation */
+  transition: ease-in-out 100ms;
+  font-size: 2rem;
+}
+
+#made-w-phantom:hover,
+#made-by:hover {
+  transition: ease-in-out 100ms;
+  color: rgb(242, 239, 255);
+  display: inline;
+}
+
+@media only screen and (max-width: 700px) {
+  #poke-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #curr-poke-name {
+    font-size: 3rem;
+    margin: 0;
+    font-family: "MuseoModerno", sans-serif;
+  }
+
+  #curr-poke-img {
+    max-width: 20rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #poke-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
