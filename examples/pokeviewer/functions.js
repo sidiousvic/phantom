@@ -35,8 +35,6 @@ export async function initialFetch(e) {
 export async function fetchNext({ target: { id } }) {
   if (id === "curr-poke-name" || id === "curr-poke-img") {
     const nextPoke = await fetchOnePoke();
-    console.log(nextPoke);
-
     fire({
       type: "SET_NEXT_POKE",
       nextPoke: {
